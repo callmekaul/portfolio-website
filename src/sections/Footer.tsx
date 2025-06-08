@@ -10,13 +10,13 @@ export const Footer = () => {
       </div>
       <div className='flex gap-4'>
         <Link
-          href='mailto:your@email.com'
+          href='mailto:theadityakaul@gmail.com'
           className='hover:text-blue-400 transition'
         >
           Email
         </Link>
         <Link
-          href='https://github.com/yourusername'
+          href='https://github.com/callmekaul'
           target='_blank'
           rel='noopener'
           className='hover:text-blue-400 transition'
@@ -24,7 +24,7 @@ export const Footer = () => {
           GitHub
         </Link>
         <Link
-          href='https://linkedin.com/in/yourusername'
+          href='https://linkedin.com/in/callmekaul'
           target='_blank'
           rel='noopener'
           className='hover:text-blue-400 transition'

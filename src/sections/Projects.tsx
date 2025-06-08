@@ -41,14 +41,17 @@ const portfolioProjects = [
   },
 ]
 
-export const ProjectsSection = () => {
-  return (
-    <section
-      id='projects'
-      className='flex flex-col min-h-screen w-full justify-center items-center px-4 py-12 snap-start'
-    >
-      <h2 className='heading mb-10'>Projects</h2>
-      <div className='text-body'>Projects Section</div>
-    </section>
-  )
-}
+export const ProjectsSection = () => (
+  <section
+    id="projects"
+    className="flex flex-col min-h-screen w-full justify-center items-center px-4 py-12 snap-start"
+  >
+    <div className="w-full max-w-6xl">
+      <h2 className="heading mb-10 text-left">Projects</h2>
+      <div className="text-body">
+        {/* Add your projects grid or list here */}
+        Projects Section
+      </div>
+    </div>
+  </section>
+)
