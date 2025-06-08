@@ -26,26 +26,28 @@ const config: Config = {
         serif: 'var(--font-serif)',
       },
       keyframes: {
-        auroraFlowToFro: {
-          "0%": {
-            transform: "translateX(-100%)",
-          },
-          "50%": {
-            transform: "translateX(100%)",
-          },
-          "100%": {
-            transform: "translateX(-100%)",
-          },
+        floatOrb1: {
+          '0%':   { transform: 'translate(0, 0) scale(1)' },
+          '100%': { transform: 'translate(40vw, 10vh) scale(1.1)' },
+        },
+        floatOrb2: {
+          '0%':   { transform: 'translate(0, 0) scale(1)' },
+          '100%': { transform: 'translate(-20vw, 30vh) scale(1.05)' },
+        },
+        floatOrb3: {
+          '0%':   { transform: 'translate(0, 0) scale(1)' },
+          '100%': { transform: 'translate(20vw, -20vh) scale(1.15)' },
+        },
+        floatOrb4: {
+          '0%':   { transform: 'translate(0, 0) scale(1)' },
+          '100%': { transform: 'translate(-30vw, -15vh) scale(1.08)' },
         },
       },
       animation: {
-        auroraFlowToFro15s: "auroraFlowToFro 15s ease-in-out infinite",
-        auroraFlowToFro18s: "auroraFlowToFro 18s ease-in-out infinite",
-        auroraFlowToFro20s: "auroraFlowToFro 20s ease-in-out infinite",
-        auroraFlowToFro12s: "auroraFlowToFro 12s ease-in-out infinite",
-        auroraFlowToFro25s: "auroraFlowToFro 25s ease-in-out infinite",
-        auroraFlowToFro17s: "auroraFlowToFro 17s ease-in-out infinite",
-        auroraFlowToFro22s: "auroraFlowToFro 22s ease-in-out infinite",
+        floatOrb1: 'floatOrb1 18s ease-in-out infinite alternate',
+        floatOrb2: 'floatOrb2 22s ease-in-out infinite alternate',
+        floatOrb3: 'floatOrb3 20s ease-in-out infinite alternate',
+        floatOrb4: 'floatOrb4 26s ease-in-out infinite alternate',
       },
     },
   },
