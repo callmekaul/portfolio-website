@@ -55,7 +55,7 @@ export default function RootLayout({
           <Header />
         </header>
         {/* Main content with snap scroll */}
-        <main className='flex-1 snap-y snap-mandatory h-screen'>
+        <main className='flex-1 snap-y snap-mandatory'>
           <AnimatePresence mode='wait'>
             <Transition routeKey={pathname}>{children}</Transition>
           </AnimatePresence>

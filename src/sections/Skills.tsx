@@ -93,7 +93,7 @@ const SkillRow: React.FC<{
 export const SkillsSection = () => (
   <section
     id='skills'
-    className='flex flex-col min-h-screen w-full min-w-0 justify-center items-center px-0 py-12 snap-start'
+    className='flex flex-col w-full min-w-0 justify-center items-center px-0 py-12 snap-start'
   >
     <div className='w-full bg-black/20 backdrop-blur-md'>
       <h2 className='heading mb-10 text-center w-full py-4'>Skills</h2>
