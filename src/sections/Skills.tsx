@@ -93,12 +93,12 @@ const SkillRow: React.FC<{
 export const SkillsSection = () => (
   <section
     id='skills'
-    className='flex flex-col min-h-screen w-full justify-center items-center px-0 py-12 snap-start'
+    className='flex flex-col min-h-screen w-full min-w-0 justify-center items-center px-0 py-12 snap-start'
   >
     <div className='w-full bg-black/20 backdrop-blur-md'>
       <h2 className='heading mb-10 text-center w-full py-4'>Skills</h2>
       <h3 className='subheading text-center'>Languages, Libraries & Tools</h3>
-      <div className='flex flex-col gap-4 py-4 w-full'>
+      <div className='flex flex-col gap-4 py-4 w-full min-w-0 overflow-x-auto'>
         {skillsData.map((group, i) => (
           <div key={group.category} className='w-full'>
             {/* <h3 className='subheading mb-2 px-4'>{group.category}</h3> */}

@@ -3,7 +3,7 @@
 import Link from 'next/link'
 
 export const HeroSection = () => (
-  <section id='hero' className='section snap-start relative overflow-hidden'>
+  <section id='hero' className='section snap-start relative min-w-0 overflow-hidden'>
     <div className='section-inner flex flex-1 flex-col justify-center items-start min-h-[70vh] py-16 md:py-24 lg:py-32'>
       <div
         className='

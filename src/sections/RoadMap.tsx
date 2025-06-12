@@ -3,7 +3,7 @@
 export const RoadMapSection = () => (
   <section
     id="roadmap"
-    className="flex flex-col min-h-screen w-full justify-center items-center px-4 py-12 snap-start"
+    className="flex flex-col min-h-screen w-full min-w-0 justify-center items-center px-4 py-12 snap-start"
   >
     <div className="w-full max-w-6xl">
       <h2 className="heading mb-10 text-left">Roadmap</h2>
