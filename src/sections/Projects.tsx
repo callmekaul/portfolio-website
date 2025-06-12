@@ -15,7 +15,7 @@ export const ProjectsSection = () => {
     >
       <div className='section-inner flex flex-col items-center'>
         <h2 className='heading mb-10 w-full text-center'>Projects</h2>
-        <div className='w-full min-w-0 overflow-x-auto mx-auto grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-8'>
+        <div className='w-full min-w-0 mx-auto grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-8'>
           {portfolioProjects.map((project, idx) => (
             <div
               key={project.title}
