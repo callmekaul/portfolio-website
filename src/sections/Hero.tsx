@@ -3,34 +3,59 @@
 import Link from 'next/link'
 
 export const HeroSection = () => (
-  <section
-    id='hero'
-    className='relative flex flex-col min-h-screen w-full justify-center items-center px-4 py-12 snap-start overflow-hidden'
-  >
-    <div className='relative z-10 flex flex-1 w-full max-w-6xl flex-col md:flex-row items-center md:items-stretch'>
-      {/* Left: Text */}
-      <div className='flex flex-col justify-center items-start w-full md:w-1/2 px-6 py-12 md:py-8'>
+  <section id='hero' className='section snap-start relative overflow-hidden'>
+    <div className='section-inner flex flex-1 flex-col justify-center items-start min-h-[70vh] py-16 md:py-24 lg:py-32'>
+      <div
+        className='
+          w-full
+          max-w-4xl
+          px-2
+          sm:px-8
+          md:px-16
+          lg:px-32
+          xl:px-48
+          flex flex-col items-start
+        '
+      >
         <h1 className='heading text-5xl md:text-6xl mb-4 drop-shadow-lg'>
           Aditya Kaul
         </h1>
         <h2 className='subheading text-2xl md:text-3xl mb-4'>
           FullStack + AI Developer
         </h2>
-        <p className='text-body max-w-md mb-8'>
-          I build modern web experiences and technical solutions.
+        <p className='text-body mb-8 leading-relaxed max-w-2xl'>
+          <span className='font-semibold text-sky-400'>
+            Integrations Developer
+          </span>{' '}
+          with <span className='font-semibold text-blue-400'>2+ years</span>{' '}
+          experience building robust data pipelines and automation at a global
+          scale.
           <br />
-          Passionate about code, design, and sharing knowledge.
+          <span className='font-semibold text-purple-400'>7+ years</span>{' '}
+          hands-on programming,{' '}
+          <span className='font-semibold text-purple-400'>4+ years</span> in
+          AI/ML.
+          <br />
+          <span className='text-blue-300 font-semibold'>
+            Passionate about solving real-world problems at scale with
+            intelligent systems.
+          </span>
         </p>
-        <Link
-          href='#contact'
-          className='btn btn-gradient text-lg font-semibold shadow-xl px-8 py-4 rounded-full'
-        >
-          Contact Me
-        </Link>
-      </div>
-      {/* Right: Avatar/Illustration (optional) */}
-      <div className='hidden md:flex flex-col justify-end items-end w-1/2 px-6 py-8 h-full'>
-        {/* <img src="/avatar.png" alt="Aditya Kaul" className="w-40 h-40 rounded-full shadow-lg" /> */}
+        <div className='flex gap-4'>
+          <a
+            href='/AdityaKaul_CV.pdf'
+            download
+            className='btn btn-secondary text-lg font-semibold rounded-full border border-blue-400 text-blue-400 bg-transparent hover:bg-blue-950/40 hover:text-white transition'
+          >
+            Download CV
+          </a>
+          <Link
+            href='#contact'
+            className='btn btn-gradient text-lg font-semibold rounded-full shadow-lg px-8 py-3 transition-all duration-200 hover:scale-105 hover:shadow-blue-500/30 focus:ring-2 focus:ring-blue-400 focus:ring-offset-2'
+          >
+            <span className='inline-flex items-center gap-2'>Contact Me</span>
+          </Link>
+        </div>
       </div>
     </div>
   </section>

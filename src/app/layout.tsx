@@ -40,9 +40,6 @@ export default function RootLayout({
           <div className='absolute left-[40vw] top-[40vh] w-[14vw] h-[14vw] bg-gradient-to-br from-yellow-300/30 via-yellow-400/10 to-transparent opacity-20 blur-2xl rounded-full animate-floatOrb3' />
         </div>
         {/* Sticky Header */}
-        <header className='sticky top-0 z-20'>
-          <Header />
-        </header>
         {/* Subtle gradient accent background */}
         <div className='fixed inset-0 -z-10 pointer-events-none'>
           {/* Top left blue blob */}
@@ -54,13 +51,16 @@ export default function RootLayout({
           {/* Top right yellow blob */}
           <div className='absolute right-[-12vw] top-[-8vw] w-[35vw] h-[35vw] bg-gradient-to-br from-yellow-300/20 via-orange-400/10 to-transparent rounded-full blur-2xl' />
         </div>
+        <header className='sticky top-0 z-20'>
+          <Header />
+        </header>
         {/* Main content with snap scroll */}
-        <main className='flex-1 overflow-y-auto snap-y snap-mandatory h-[100dvh]'>
+        <main className='flex-1 overflow-y-auto snap-y snap-mandatory h-screen'>
           <AnimatePresence mode='wait'>
             <Transition routeKey={pathname}>{children}</Transition>
           </AnimatePresence>
+          <Footer />
         </main>
-        <Footer />
       </body>
     </html>
   )

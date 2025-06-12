@@ -1,57 +1,37 @@
-import darkSaasLandingPage from '@/assets/images/dark-saas-landing-page.png'
-import lightSaasLandingPage from '@/assets/images/light-saas-landing-page.png'
-import aiStartupLandingPage from '@/assets/images/ai-startup-landing-page.png'
+'use client'
 
-const portfolioProjects = [
-  {
-    company: 'Acme Corp',
-    year: '2022',
-    title: 'Dark Saas Landing Page',
-    results: [
-      { title: 'Enhanced user experience by 40%' },
-      { title: 'Improved site speed by 50%' },
-      { title: 'Increased mobile traffic by 35%' },
-    ],
-    link: 'https://youtu.be/4k7IdSLxh6w',
-    image: darkSaasLandingPage,
-  },
-  {
-    company: 'Innovative Co',
-    year: '2021',
-    title: 'Light Saas Landing Page',
-    results: [
-      { title: 'Boosted sales by 20%' },
-      { title: 'Expanded customer reach by 35%' },
-      { title: 'Increased brand awareness by 15%' },
-    ],
-    link: 'https://youtu.be/7hi5zwO75yc',
-    image: lightSaasLandingPage,
-  },
-  {
-    company: 'Quantum Dynamics',
-    year: '2023',
-    title: 'AI Startup Landing Page',
-    results: [
-      { title: 'Enhanced user experience by 40%' },
-      { title: 'Improved site speed by 50%' },
-      { title: 'Increased mobile traffic by 35%' },
-    ],
-    link: 'https://youtu.be/Z7I5uSRHMHg',
-    image: aiStartupLandingPage,
-  },
-]
+import React, { useState } from 'react'
+import { ProjectCard, Project } from '@/components/ProjectCard'
+import { ProjectModal } from '@/components/ProjectModal'
+import { portfolioProjects } from '@/data/projects'
 
-export const ProjectsSection = () => (
-  <section
-    id="projects"
-    className="flex flex-col min-h-screen w-full justify-center items-center px-4 py-12 snap-start"
-  >
-    <div className="w-full max-w-6xl">
-      <h2 className="heading mb-10 text-left">Projects</h2>
-      <div className="text-body">
-        {/* Add your projects grid or list here */}
-        Projects Section
+export const ProjectsSection = () => {
+  const [active, setActive] = useState<number | null>(null)
+
+  return (
+    <section id='projects' className='section snap-start bg-transparent'>
+      <div className='section-inner flex flex-col items-center'>
+        <h2 className='heading mb-10 w-full px-2 sm:px-8 md:px-16 lg:px-32 xl:px-48 text-left'>
+          Projects
+        </h2>
+        <div className='w-full max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'>
+          {portfolioProjects.map((project, idx) => (
+            <div
+              key={project.title}
+              onClick={() => setActive(idx)}
+              className='cursor-pointer'
+            >
+              <ProjectCard project={project} onOpen={() => setActive(idx)} />
+            </div>
+          ))}
+        </div>
+        {active !== null && (
+          <ProjectModal
+            project={portfolioProjects[active]}
+            onClose={() => setActive(null)}
+          />
+        )}
       </div>
-    </div>
-  </section>
-)
+    </section>
+  )
+}
