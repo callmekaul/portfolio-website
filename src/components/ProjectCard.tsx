@@ -2,7 +2,6 @@
 
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-
 import type { Project } from '@/data/projects'
 
 export function ProjectCard({
@@ -14,11 +13,12 @@ export function ProjectCard({
 }) {
   return (
     <motion.div
-      whileHover={{ scale: 1.03 }}
+      whileHover={{ scale: 1.04 }}
       whileTap={{ scale: 0.98 }}
       onClick={onOpen}
-      className='cursor-pointer rounded-2xl overflow-hidden bg-zinc-900 shadow-md transition-transform w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-sm mx-auto flex flex-col'
+      className='cursor-pointer rounded-2xl overflow-hidden backdrop-blur-md bg-white/5 shadow-xl border border-white/10 transition-transform w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-sm mx-auto flex flex-col hover:border-pink-400/20'
     >
+      {/* Image */}
       <div className='relative w-full h-48 sm:h-52 md:h-56 lg:h-48'>
         <Image
           src={project.image}
@@ -30,6 +30,7 @@ export function ProjectCard({
         />
       </div>
 
+      {/* Content */}
       <div className='px-4 py-3 flex flex-col gap-2'>
         <h3 className='min-h-20 text-white font-semibold text-base sm:text-lg md:text-xl'>
           {project.title}
@@ -39,7 +40,7 @@ export function ProjectCard({
           {project.tools.map((tool, index) => (
             <span
               key={index}
-              className='bg-zinc-800 border border-white/10 px-2 py-1 rounded-md whitespace-nowrap'
+              className='bg-white/10 backdrop-blur-sm border border-white/10 px-2 py-1 rounded-md whitespace-nowrap'
             >
               {tool.title}
             </span>

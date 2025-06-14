@@ -11,11 +11,11 @@ export const ProjectsSection = () => {
   return (
     <section
       id='projects'
-      className='section w-full min-w-0 snap-start bg-transparent'
+      className='flex flex-col w-full min-w-0 justify-center items-center px-0 py-12 snap-start'
     >
       <div className='section-inner flex flex-col items-center'>
         <h2 className='heading mb-10 w-full text-center'>Projects</h2>
-        <div className='w-full max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-4'>
+        <div className='w-full max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-8'>
           {portfolioProjects.map((project, idx) => (
             <div
               key={project.title}
