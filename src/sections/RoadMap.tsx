@@ -53,7 +53,7 @@ export const RoadMapSection = () => {
             </h3>
             <ul className='flex flex-col gap-6'>
               {learningItems
-                .sort((a, b) => a.year - b.year)
+                .sort((a, b) => b.year - a.year) // reverse chronological order
                 .map((item, idx) => {
                   const isExpanded = expanded === getKey(item)
                   const Icon = item.icon
@@ -112,7 +112,7 @@ export const RoadMapSection = () => {
             </h3>
             <ul className='flex flex-col gap-6'>
               {milestones
-                .sort((a, b) => a.year - b.year)
+                .sort((a, b) => b.year - a.year) // reverse chronological order
                 .map((item, idx) => {
                   const isExpanded = expanded === getKey(item)
                   const Icon = item.icon
