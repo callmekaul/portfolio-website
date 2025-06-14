@@ -1,49 +1,65 @@
-import darkSaasLandingPage from '@/assets/images/dark-saas-landing-page.png'
-import lightSaasLandingPage from '@/assets/images/light-saas-landing-page.png'
-import aiStartupLandingPage from '@/assets/images/ai-startup-landing-page.png'
+import flexistImage from '@/assets/images/flexist.png'
+import rlEnemyAIImage from '@/assets/images/rl-enemy-ai.png'
+import tradingBotImage from '@/assets/images/trading-bot.png'
+import attendanceSystemImage from '@/assets/images/face-attendance.png'
+
 import type { Project } from '@/components/ProjectCard'
 
-export const portfolioProjects: Project[] =[
+export const portfolioProjects: Project[] = [
   {
-    company: 'Acme Corp',
-    year: '2022',
-    title: 'Dark Saas Landing Page',
+    company: 'Personal Project',
+    year: '2024',
+    title: 'Flexist - AI Powered Fitness SaaS',
     results: [
-      { title: 'Enhanced user experience by 40%' },
-      { title: 'Improved site speed by 50%' },
-      { title: 'Increased mobile traffic by 35%' },
+      { title: 'Built full-stack SaaS with FastAPI, PostgreSQL, Expo' },
+      { title: 'Implemented dynamic theming & role-based auth' },
+      { title: 'Integrated AI module generating structured workouts' },
     ],
-    link: 'https://youtu.be/4k7IdSLxh6w',
-    image: darkSaasLandingPage,
+    link: 'https://github.com/callmekaul/flexist-final',
+    image: flexistImage,
     description:
-      'A modern dark-themed SaaS landing page focused on conversions and speed.',
+      'Cross-platform fitness SaaS that generates personalized workout plans using AI and adapts to gym-specific branding and roles.',
   },
   {
-    company: 'Innovative Co',
+    company: 'College Major Project',
+    year: '2020',
+    title: 'RL Trained Enemy AI for Shooting Games',
+    results: [
+      { title: 'Trained agents for autonomous aiming & movement' },
+      { title: 'Implemented curriculum learning & sound-based AI' },
+      { title: 'Built realistic human-like enemy bots in Unity' },
+    ],
+    link: 'https://github.com/callmekaul/RL-shooting-AI',
+    image: rlEnemyAIImage,
+    description:
+      'Used Unity ML-Agents to build intelligent bots that adapt to player behavior, creating a challenging and immersive game environment.',
+  },
+  {
+    company: 'Personal Project',
     year: '2021',
-    title: 'Light Saas Landing Page',
+    title: 'Algorithmic Trading Bot for Cryptocurrencies',
     results: [
-      { title: 'Boosted sales by 20%' },
-      { title: 'Expanded customer reach by 35%' },
-      { title: 'Increased brand awareness by 15%' },
+      { title: 'Used MACD, RSI & ML to tune strategy parameters' },
+      { title: 'Implemented momentum & pair-trading strategies' },
+      { title: 'Achieved strong win-rate through backtesting' },
     ],
-    link: 'https://youtu.be/7hi5zwO75yc',
-    image: lightSaasLandingPage,
+    link: 'https://github.com/callmekaul/Crypto-Trading-Bot',
+    image: tradingBotImage,
     description:
-      'A clean, light SaaS landing page designed for accessibility and reach.',
+      'Python-based trading bot that runs algorithmic strategies on Binance with optimized signals and real-time data ingestion.',
   },
   {
-    company: 'Quantum Dynamics',
-    year: '2023',
-    title: 'AI Startup Landing Page',
+    company: 'College Minor Project',
+    year: '2020',
+    title: 'Facial Recognition Based Attendance System',
     results: [
-      { title: 'Enhanced user experience by 40%' },
-      { title: 'Improved site speed by 50%' },
-      { title: 'Increased mobile traffic by 35%' },
+      { title: 'Automated attendance logging via facial match' },
+      { title: 'Created GUI with OpenCV, Pandas & Tkinter' },
+      { title: 'Logged subject-wise timestamps from live feed' },
     ],
-    link: 'https://youtu.be/Z7I5uSRHMHg',
-    image: aiStartupLandingPage,
+    link: 'https://github.com/callmekaul/Facial-Recognition-Based-Attendance-System',
+    image: attendanceSystemImage,
     description:
-      'Landing page for an AI startup, featuring modern design and fast load times.',
+      'Desktop application that uses facial recognition to automate class attendance logging with real-time video feed analysis.',
   },
 ]
