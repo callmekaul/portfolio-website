@@ -10,7 +10,7 @@ export const SkillBadge: React.FC<SkillBadgeProps> = ({ name, level }) => {
 
   return (
     <div className='inline-flex items-center gap-3 px-4 py-2 rounded-full bg-zinc-900/60 border border-white/15 flex-shrink-0 max-w-full'>
-      <span className='font-medium text-white text-sm whitespace-nowrap'>
+      <span className='font-medium text-body text-sm whitespace-nowrap'>
         {name}
       </span>
       {/* <div className="flex items-center h-3 w-20 sm:w-24 md:w-28 lg:w-32 flex-shrink-0">

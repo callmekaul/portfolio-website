@@ -89,3 +89,11 @@ body::-webkit-scrollbar, html::-webkit-scrollbar {
     @apply text-sm;
   }
 }
+
+/* Hide scrollbar utility */
+.scrollbar-hide {
+  scrollbar-width: none; /* Firefox */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
