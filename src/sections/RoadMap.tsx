@@ -78,21 +78,6 @@ export const RoadMapSection = () => {
                           <span className='text-xs text-zinc-400'>
                             {item.year}
                           </span>
-                          <span
-                            className={`ml-2 text-xs px-2 py-0.5 rounded-full border ${
-                              item.status === 'complete'
-                                ? 'bg-green-900/60 border-green-400 text-green-300'
-                                : item.status === 'in-progress'
-                                ? 'bg-yellow-900/60 border-yellow-400 text-yellow-300'
-                                : 'bg-blue-900/60 border-blue-400 text-blue-300'
-                            }`}
-                          >
-                            {item.status === 'complete'
-                              ? 'Complete'
-                              : item.status === 'in-progress'
-                              ? 'In Progress'
-                              : 'Planned'}
-                          </span>
                         </div>
                         <div className='text-white/80'>{item.description}</div>
                         {/* Expanded details with animation */}
