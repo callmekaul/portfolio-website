@@ -1,9 +1,9 @@
 'use client'
 
 import React, { useState } from 'react'
-import { ProjectCard, Project } from '@/components/ProjectCard'
+import { ProjectCard } from '@/components/ProjectCard'
 import { ProjectModal } from '@/components/ProjectModal'
-import { portfolioProjects } from '@/data/projects'
+import { portfolioProjects, Project } from '@/data/projects'
 
 export const ProjectsSection = () => {
   const [active, setActive] = useState<number | null>(null)
@@ -15,7 +15,7 @@ export const ProjectsSection = () => {
     >
       <div className='section-inner flex flex-col items-center'>
         <h2 className='heading mb-10 w-full text-center'>Projects</h2>
-        <div className='w-full min-w-0 mx-auto grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-8'>
+        <div className='w-full max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-4'>
           {portfolioProjects.map((project, idx) => (
             <div
               key={project.title}

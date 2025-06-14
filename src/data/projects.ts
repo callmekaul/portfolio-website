@@ -3,7 +3,16 @@ import rlEnemyAIImage from '@/assets/images/rl-enemy-ai.png'
 import tradingBotImage from '@/assets/images/trading-bot.png'
 import attendanceSystemImage from '@/assets/images/face-attendance.png'
 
-import type { Project } from '@/components/ProjectCard'
+export interface Project {
+  company: string
+  year: string
+  title: string
+  tools: { title: string }[]
+  results: { title: string }[]
+  link: string
+  image: any
+  description: string
+}
 
 export const portfolioProjects: Project[] = [
   {
@@ -15,6 +24,12 @@ export const portfolioProjects: Project[] = [
       { title: 'Implemented dynamic theming & role-based auth' },
       { title: 'Integrated AI module generating structured workouts' },
     ],
+    tools: [
+      { title: 'FastAPI' },
+      { title: 'PostgreSQL' },
+      { title: 'Expo' },
+      { title: 'Tamagui' },
+      { title: 'OpenAI API' },],
     link: 'https://github.com/callmekaul/flexist-final',
     image: flexistImage,
     description:
@@ -28,6 +43,14 @@ export const portfolioProjects: Project[] = [
       { title: 'Trained agents for autonomous aiming & movement' },
       { title: 'Implemented curriculum learning & sound-based AI' },
       { title: 'Built realistic human-like enemy bots in Unity' },
+    ],
+    tools: [
+      { title: 'Unity ML-Agents' },
+      { title: 'Python' },
+      { title: 'TensorFlow' },
+      { title: 'Keras' },
+      { title: 'NumPy' },
+      { title: 'Pandas' },
     ],
     link: 'https://github.com/callmekaul/RL-shooting-AI',
     image: rlEnemyAIImage,
@@ -43,6 +66,13 @@ export const portfolioProjects: Project[] = [
       { title: 'Implemented momentum & pair-trading strategies' },
       { title: 'Achieved strong win-rate through backtesting' },
     ],
+    tools: [
+      { title: 'Python' },
+      { title: 'Binance API' },
+      { title: 'NumPy' },
+      { title: 'Pandas' },
+      { title: 'scikit-learn' },
+    ],
     link: 'https://github.com/callmekaul/Crypto-Trading-Bot',
     image: tradingBotImage,
     description:
@@ -56,6 +86,13 @@ export const portfolioProjects: Project[] = [
       { title: 'Automated attendance logging via facial match' },
       { title: 'Created GUI with OpenCV, Pandas & Tkinter' },
       { title: 'Logged subject-wise timestamps from live feed' },
+    ],
+    tools: [
+      { title: 'Python' },
+      { title: 'OpenCV' },
+      { title: 'Pandas' },
+      { title: 'Tkinter' },
+      { title: 'Face Recognition' },
     ],
     link: 'https://github.com/callmekaul/Facial-Recognition-Based-Attendance-System',
     image: attendanceSystemImage,

@@ -1,5 +1,9 @@
+'use client'
+
 import Image from 'next/image'
-import type { Project } from './ProjectCard'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useEffect } from 'react'
+import type { Project } from '@/data/projects'
 
 export function ProjectModal({
   project,
@@ -8,70 +12,111 @@ export function ProjectModal({
   project: Project
   onClose: () => void
 }) {
+  useEffect(() => {
+    // Lock background scroll and hide scrollbar
+    const originalStyle = window.getComputedStyle(document.body).overflow
+    const originalPaddingRight = window.getComputedStyle(
+      document.body
+    ).paddingRight
+
+    const scrollbarWidth =
+      window.innerWidth - document.documentElement.clientWidth
+
+    document.body.style.overflow = 'hidden'
+    document.body.style.paddingRight = `${scrollbarWidth}px`
+
+    return () => {
+      document.body.style.overflow = originalStyle
+      document.body.style.paddingRight = originalPaddingRight
+    }
+  }, [])
+
   return (
-    <div className='fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-fade-in'>
-      <div className='bg-zinc-900/95 rounded-2xl shadow-2xl max-w-lg w-full p-6 relative animate-modal-pop border border-pink-400/10'>
-        <button
-          className='absolute top-3 right-3 text-zinc-400 hover:text-pink-400 text-2xl font-bold focus:outline-none'
-          onClick={onClose}
-          aria-label='Close'
+    <AnimatePresence>
+      <motion.div
+        key='modal'
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className='fixed inset-0 z-50 bg-black/80 backdrop-blur-md overflow-y-auto scrollbar-hide'
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 40 }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
+          className='min-h-screen w-full flex flex-col text-white px-4 sm:px-8 pt-6 pb-20'
         >
-          &times;
-        </button>
-        <div className='w-full h-48 relative rounded-lg overflow-hidden mb-4'>
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            className='object-cover'
-            sizes='(max-width: 768px) 100vw, 400px'
-          />
-        </div>
-        <h3 className='font-bold text-2xl text-white mb-1'>{project.title}</h3>
-        <span className='text-sm text-pink-300 mb-2'>
-          {project.company} &middot; {project.year}
-        </span>
-        <p className='text-body mb-4'>{project.description}</p>
-        <ul className='mb-4 list-disc list-inside text-sm text-blue-200'>
-          {project.results.map((r, i) => (
-            <li key={i}>{r.title}</li>
-          ))}
-        </ul>
-        <a
-          href={project.link}
-          target='_blank'
-          rel='noopener noreferrer'
-          className='btn btn-gradient w-full py-2 rounded-lg text-base font-semibold text-center'
-        >
-          View Demo
-        </a>
-      </div>
-      <style jsx global>{`
-        .animate-fade-in {
-          animation: fade-in 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        @keyframes fade-in {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-        .animate-modal-pop {
-          animation: modal-pop 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        @keyframes modal-pop {
-          0% {
-            transform: scale(0.85) translateY(40px);
-            opacity: 0;
-          }
-          100% {
-            transform: scale(1) translateY(0);
-            opacity: 1;
-          }
-        }
-      `}</style>
-    </div>
+          {/* Close Button */}
+          <button
+            onClick={onClose}
+            className='fixed top-4 right-4 z-50 text-zinc-400 hover:text-pink-400 text-3xl font-bold'
+            aria-label='Close'
+          >
+            &times;
+          </button>
+
+          {/* Content */}
+          <div className='w-full max-w-5xl mx-auto flex flex-col gap-8'>
+            {/* Image */}
+            <div className='relative w-full h-64 sm:h-80 md:h-[28rem] rounded-xl overflow-hidden'>
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                className='object-cover'
+                sizes='100vw'
+                priority
+              />
+            </div>
+
+            {/* Text */}
+            <div className='flex flex-col gap-4'>
+              <h3 className='text-3xl font-bold'>{project.title}</h3>
+              <p className='text-sm text-pink-400'>
+                {project.company} &middot; {project.year}
+              </p>
+              <p className='text-zinc-300'>{project.description}</p>
+
+              <div>
+                <h4 className='text-sm font-semibold uppercase tracking-wide mb-2 text-white'>
+                  Tools Used
+                </h4>
+                <div className='flex flex-wrap gap-2 text-sm'>
+                  {project.tools.map((tool, index) => (
+                    <span
+                      key={index}
+                      className='bg-zinc-800 border border-white/10 px-3 py-1 rounded-md text-zinc-300'
+                    >
+                      {tool.title}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h4 className='text-sm font-semibold uppercase tracking-wide mb-2 text-white'>
+                  Highlights
+                </h4>
+                <ul className='list-disc list-inside text-zinc-300 text-sm space-y-1'>
+                  {project.results.map((r, i) => (
+                    <li key={i}>{r.title}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <a
+                href={project.link}
+                target='_blank'
+                rel='noopener noreferrer'
+                className='mt-6 inline-block bg-gradient-to-r from-pink-500 to-purple-500 hover:opacity-90 transition text-white font-semibold py-3 px-6 rounded-xl text-center w-full sm:w-fit'
+              >
+                View Demo
+              </a>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
   )
 }

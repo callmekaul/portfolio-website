@@ -20,6 +20,8 @@ export const skillsData: SkillGroup[] = [
       { name: 'C#', level: 4 },
       { name: 'JavaScript', level: 4 },
       { name: 'TypeScript', level: 4 },
+      { name: 'HTML', level: 4 },
+      { name: 'CSS', level: 4 },
     ],
   },
   {
