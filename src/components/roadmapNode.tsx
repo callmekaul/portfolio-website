@@ -9,7 +9,7 @@ interface RoadmapNodeData {
   label: string
 }
 
-export default memo(({ data }: { data: RoadmapNodeData }) => {
+const RoadmapNode = ({ data }: { data: RoadmapNodeData }) => {
   const statusColor: Record<Status, string> = {
     complete: 'bg-green-500',
     'in-progress': 'bg-yellow-400',
@@ -35,4 +35,8 @@ export default memo(({ data }: { data: RoadmapNodeData }) => {
       <Handle type='target' position={Position.Left} />
     </div>
   )
-})
+}
+
+RoadmapNode.displayName = 'RoadmapNode'
+
+export default memo(RoadmapNode)
