@@ -18,9 +18,7 @@ const nodeTypes = {
 export function RoadmapSection() {
   return (
     <section className='flex flex-col w-full h-[70vh] min-w-0 justify-center items-center px-0 py-12 snap-start'>
-      <h2 className='text-3xl font-bold text-white mb-6 text-center'>
-        Learning Roadmap
-      </h2>
+      <h2 className='text-subheading mb-6 text-center'>Learning Roadmap</h2>
       <div className='w-full h-full mx-auto border border-white/10 rounded-2xl shadow-inner bg-white/5 backdrop-blur-md scrollbar-hide'>
         {' '}
         <ReactFlowProvider>
