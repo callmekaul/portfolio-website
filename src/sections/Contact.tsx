@@ -25,9 +25,9 @@ export const ContactSection = () => {
   return (
     <section
       id='contact'
-      className='flex flex-col min-h-screen w-full min-w-0 justify-center items-center px-2 py-8 snap-start'
+      className='flex flex-col min-h-screen w-full min-w-0 justify-center items-center snap-start'
     >
-      <div className='w-full max-w-6xl flex flex-col md:flex-row bg-zinc-900/70 rounded-xl shadow-2xl overflow-hidden'>
+      <div className='w-full flex flex-col md:flex-row bg-zinc-900/70 overflow-hidden'>
         {/* Info panel or illustration (optional) */}
         <div className='hidden md:flex flex-col justify-center items-start w-1/2 px-12 py-16 bg-gradient-to-br from-blue-900/40 via-blue-800/20 to-transparent'>
           <h2 className='heading mb-4'>Contact</h2>

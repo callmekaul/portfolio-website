@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 export const Footer = () => {
   return (
-    <footer className='flex flex-col items-center justify-center w-full min-w-0 py-3 gap-2'>
+    <footer className='flex flex-col items-center justify-center w-full min-w-0 py-2 gap-2'>
       <div className='text-muted'>
         © {new Date().getFullYear()} Aditya Kaul. All rights reserved.
       </div>
