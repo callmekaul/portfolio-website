@@ -95,7 +95,7 @@ export const portfolioProjects: Project[] = [
     summary:
       'Flexist is a multi-tenant SaaS where gym admins manage members in a branded portal, while clients receive OpenAI-generated routines adapted to goals and equipment. Built with FastAPI, PostgreSQL, and Expo/Tamagui, the app runs identically on web and mobile.',
     images: [
-      '/projects/flexist/images/card.png',
+      '/projects/flexist/images/card.png'
       // '/projects/flexist/images/dashboard.png',
       // '/projects/flexist/images/workout.png',
       // '/projects/flexist/images/theme-dark.png',
