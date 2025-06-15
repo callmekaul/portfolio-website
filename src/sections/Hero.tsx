@@ -36,7 +36,7 @@ export const HeroSection = () => (
           <span className='font-semibold text-sky-400'>
             Integrations Developer
           </span>{' '}
-          with <span className='font-semibold text-blue-400'>2+ years</span>{' '}
+          with <span className='font-semibold text-blue-400'>2+ years</span> of
           experience building robust data pipelines and automation at a global
           scale.
           <br />

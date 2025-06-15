@@ -1,4 +1,4 @@
-import { FaCheckCircle, FaHourglassHalf, FaRegCircle } from 'react-icons/fa'
+import { FaCheckCircle, FaGraduationCap, FaHourglassHalf, FaRegCircle } from 'react-icons/fa'
 
 export const learningItems = [
   {
@@ -28,6 +28,15 @@ export const learningItems = [
     expandedDetails:
       'Gained foundational knowledge in Azure services, networking, and resource management. Applied it to build scalable data pipelines.',
   },
+  {
+      year: 2022,
+      title: 'Graduated – B.Tech CSE',
+      description: 'Completed my Bachelor’s in Computer Science.',
+      status: 'complete',
+      icon: FaGraduationCap,
+      expandedDetails:
+        'Graduated from Amity School of Engineering and Technology with a focus on AI/ML. Led technical projects and participated in research during undergrad.',
+    },
   {
     year: 2021,
     title: 'Reinforcement Learning',

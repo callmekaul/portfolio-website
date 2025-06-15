@@ -14,14 +14,6 @@ export const milestones = [
       'Built Azure-based ETL pipelines, developed automation templates saving $80k annually, and integrated emissions data systems across global platforms.',
   },
   {
-    year: 2022,
-    title: 'Graduated – B.Tech CSE',
-    description: 'Completed my Bachelor’s in Computer Science.',
-    icon: FaGraduationCap,
-    expandedDetails:
-      'Graduated from Amity School of Engineering and Technology with a focus on AI/ML. Led technical projects and participated in research during undergrad.',
-  },
-  {
     year: 2020,
     title: 'Game Developer – Oneros Tech',
     description: 'Worked on mobile game logic and adaptive AI.',

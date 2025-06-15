@@ -1,6 +1,7 @@
 import { HeroSection } from '@/sections/Hero'
 import { SkillsSection } from '@/sections/Skills'
-import { RoadMapSection } from '@/sections/RoadMap'
+import { JourneySection } from '@/sections/Journey'
+import { RoadmapSection } from '@/sections/Roadmap'
 import { ProjectsSection } from '@/sections/Projects'
 import { ContactSection } from '@/sections/Contact'
 
@@ -8,9 +9,10 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <RoadMapSection />
-      <SkillsSection />
+      <JourneySection />
       <ProjectsSection />
+      <SkillsSection />
+      <RoadmapSection />
       <ContactSection />
     </>
   )

@@ -5,9 +5,9 @@ import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 
 const navLinks = [
-  { href: '#skills', label: 'Skills' },
   { href: '#journey', label: 'Journey' },
   { href: '#projects', label: 'Projects' },
+  { href: '#skills', label: 'Skills' },
 ]
 
 const contactLinks = [
