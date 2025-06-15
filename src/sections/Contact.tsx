@@ -14,7 +14,6 @@ export const ContactSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // TODO: integrate email service
     setSubmitted(true)
   }
 
@@ -23,15 +22,14 @@ export const ContactSection = () => {
       id='contact'
       className='relative flex min-h-screen w-full items-center justify-center overflow-hidden px-4 py-16 snap-start'
     >
-      {/* card */}
       <motion.div
         initial={{ y: 40, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: 'easeOut' }}
-        className='relative z-10 flex w-full max-w-6xl flex-col overflow-hidden rounded-3xl bg-white/5 backdrop-blur-lg ring-1 ring-white/10 lg:flex-row'
+        className='relative z-10 flex w-full max-w-6xl flex-col overflow-hidden rounded-3xl glass-card lg:flex-row'
       >
         {/* left info panel */}
-        <div className='hidden w-full flex-col justify-center gap-6 bg-gradient-to-br from-blue-900/40 via-blue-800/20 to-transparent px-12 py-16 lg:flex lg:w-1/2'>
+        <div className='hidden w-full flex-col justify-center gap-6 px-12 py-16 lg:flex lg:w-1/2'>
           <h2 className='text-4xl font-extrabold text-white'>Let’s Talk</h2>
           <p className='text-zinc-300'>
             Have an idea, a question, or just want to say hi? Drop me a
@@ -39,12 +37,11 @@ export const ContactSection = () => {
           </p>
           <a
             href='mailto:theadityakaul@gmail.com'
-            className='inline-flex items-center gap-2 text-pink-400 underline decoration-pink-400/30 underline-offset-4 hover:opacity-80'
+            className='inline-flex items-center gap-2 text-[var(--color-accent)] underline decoration-[var(--color-accent)]/30 underline-offset-4 hover:opacity-80'
           >
             <FiMail /> theadityakaul@gmail.com
           </a>
         </div>
-
         {/* right form panel */}
         <div className='w-full px-6 py-10 sm:px-12 lg:w-1/2'>
           <h2 className='mb-2 text-3xl font-semibold text-white lg:hidden'>
@@ -54,12 +51,11 @@ export const ContactSection = () => {
             I’d love to hear from you! Fill out the form or email&nbsp;
             <a
               href='mailto:theadityakaul@gmail.com'
-              className='text-pink-400 underline underline-offset-4'
+              className='text-[var(--color-accent)] underline underline-offset-4'
             >
               theadityakaul@gmail.com
             </a>
           </p>
-
           {submitted ? (
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
@@ -75,7 +71,6 @@ export const ContactSection = () => {
             </motion.div>
           ) : (
             <form onSubmit={handleSubmit} className='space-y-6'>
-              {/* floating input */}
               {[
                 {
                   id: 'name',
@@ -91,7 +86,7 @@ export const ContactSection = () => {
                 },
               ].map(({ id, type, icon: Icon, placeholder }) => (
                 <div key={id} className='relative'>
-                  <Icon className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400' />
+                  <Icon className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[var(--color-muted)]' />
                   <input
                     id={id}
                     name={id}
@@ -100,14 +95,13 @@ export const ContactSection = () => {
                     placeholder={placeholder}
                     value={form[id as keyof typeof form]}
                     onChange={handleChange}
-                    className='w-full rounded-xl bg-zinc-900/70 px-12 py-3 text-white backdrop-blur-md ring-1 ring-white/10 focus:ring-2 focus:ring-pink-500'
+                    className='w-full rounded-xl bg-[var(--color-bg-glass)] px-12 py-3 text-white backdrop-blur-md ring-1 ring-[var(--color-primary)]/20 focus:ring-2 focus:ring-[var(--color-primary)]'
                   />
                 </div>
               ))}
-
               {/* message */}
               <div className='relative'>
-                <FiMessageCircle className='pointer-events-none absolute left-4 top-4 text-zinc-400' />
+                <FiMessageCircle className='pointer-events-none absolute left-4 top-4 text-[var(--color-muted)]' />
                 <textarea
                   id='message'
                   name='message'
@@ -116,18 +110,16 @@ export const ContactSection = () => {
                   placeholder='Message'
                   value={form.message}
                   onChange={handleChange}
-                  className='w-full resize-none rounded-xl bg-zinc-900/70 px-12 py-3 text-white backdrop-blur-md ring-1 ring-white/10 focus:ring-2 focus:ring-pink-500'
+                  className='w-full resize-none rounded-xl bg-[var(--color-bg-glass)] px-12 py-3 text-white backdrop-blur-md ring-1 ring-[var(--color-primary)]/20 focus:ring-2 focus:ring-[var(--color-primary)]'
                 />
               </div>
-
               {/* send button */}
               <button
                 type='submit'
-                className='relative inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-pink-600 to-purple-600 px-6 py-3 text-lg font-semibold text-white shadow-lg shadow-pink-500/20 transition hover:scale-[1.02] focus:outline-none'
+                className='btn btn-gradient w-full flex items-center justify-center gap-2'
               >
                 <FiSend className='text-xl' />
                 Send Message
-                <span className='absolute inset-0 -z-10 animate-pulse bg-gradient-to-r from-pink-600 to-purple-600 opacity-20 blur-2xl'></span>
               </button>
             </form>
           )}

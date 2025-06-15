@@ -17,23 +17,23 @@ const nodeTypes = {
 
 export function RoadmapSection() {
   return (
-    <section className='flex flex-col w-full h-[70vh] min-w-0 justify-center items-center px-0 py-12 snap-start'>
-      <h2 className='subheading mb-6 text-center'>Learning Roadmap</h2>
-      <div className='w-full h-full mx-auto border border-white/10 rounded-2xl shadow-inner bg-white/5 backdrop-blur-md scrollbar-hide'>
-        {' '}
+    <section className="flex flex-col w-full h-[70vh] min-w-0 justify-center items-center px-2 sm:px-4 md:px-8 lg:px-16 py-12 snap-start">
+      <h2 className="subheading mb-6 text-center">Learning Roadmap</h2>
+      <div className="w-full h-full mx-auto glass-card scrollbar-hide">
         <ReactFlowProvider>
           <ReactFlow
             nodes={roadmapNodes}
             edges={roadmapEdges}
             nodeTypes={nodeTypes}
             fitView
-            panOnDrag
             zoomOnScroll
             defaultViewport={{ x: 0, y: 0, zoom: 1 }}
-            className='scrollbar-hide'
+            className="scrollbar-hide"
             style={{ background: 'transparent' }}
           >
             <Background />
+            <MiniMap />
+            <Controls />
           </ReactFlow>
         </ReactFlowProvider>
       </div>

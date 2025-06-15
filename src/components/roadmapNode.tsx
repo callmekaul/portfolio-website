@@ -31,8 +31,8 @@ const RoadmapNode = ({ data }: { data: RoadmapNodeData }) => {
         )}
       ></div>
       {data.label}
-      <Handle type='source' position={Position.Right} />
-      <Handle type='target' position={Position.Left} />
+      <Handle type="source" position={Position.Right} />
+      <Handle type="target" position={Position.Left} />
     </div>
   )
 }
