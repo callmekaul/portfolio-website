@@ -1,114 +1,138 @@
 'use client'
 
 import { useState } from 'react'
+import { motion } from 'framer-motion'
+import { FiUser, FiMail, FiMessageCircle, FiSend } from 'react-icons/fi'
 
 export const ContactSection = () => {
-  const [form, setForm] = useState({
-    name: '',
-    subject: '',
-    message: '',
-  })
+  const [form, setForm] = useState({ name: '', subject: '', message: '' })
   const [submitted, setSubmitted] = useState(false)
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setForm({ ...form, [e.target.name]: e.target.value })
-  }
+  ) => setForm({ ...form, [e.target.name]: e.target.value })
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Integrate with your email API/service here
+    // TODO: integrate email service
     setSubmitted(true)
   }
 
   return (
     <section
       id='contact'
-      className='flex flex-col min-h-screen w-full min-w-0 justify-center items-center snap-start'
+      className='relative flex min-h-screen w-full items-center justify-center overflow-hidden px-4 py-16 snap-start'
     >
-      <div className='w-full flex flex-col md:flex-row bg-zinc-900/70 overflow-hidden'>
-        {/* Info panel or illustration (optional) */}
-        <div className='hidden md:flex flex-col justify-center items-start w-1/2 px-12 py-16 bg-gradient-to-br from-blue-900/40 via-blue-800/20 to-transparent'>
-          <h2 className='heading mb-4'>Contact</h2>
-          <p className='text-body mb-8'>
-            Interested in working together or have a question? Fill out the form
-            or email me at{' '}
-            <a
-              href='mailto:theadityakaul@gmail.com'
-              className='text-blue-400 underline'
-            >
-              theadityakaul@gmail.com
-            </a>
+      {/* card */}
+      <motion.div
+        initial={{ y: 40, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
+        className='relative z-10 flex w-full max-w-6xl flex-col overflow-hidden rounded-3xl bg-white/5 backdrop-blur-lg ring-1 ring-white/10 lg:flex-row'
+      >
+        {/* left info panel */}
+        <div className='hidden w-full flex-col justify-center gap-6 bg-gradient-to-br from-blue-900/40 via-blue-800/20 to-transparent px-12 py-16 lg:flex lg:w-1/2'>
+          <h2 className='text-4xl font-extrabold text-white'>Let’s Talk</h2>
+          <p className='text-zinc-300'>
+            Have an idea, a question, or just want to say hi? Drop me a
+            message—my inbox is always open.
           </p>
-          {/* You can add an illustration or avatar here if you want */}
+          <a
+            href='mailto:theadityakaul@gmail.com'
+            className='inline-flex items-center gap-2 text-pink-400 underline decoration-pink-400/30 underline-offset-4 hover:opacity-80'
+          >
+            <FiMail /> theadityakaul@gmail.com
+          </a>
         </div>
-        {/* Form */}
-        <div className='w-full md:w-1/2 flex flex-col justify-center px-6 py-10 md:px-12'>
-          <h2 className='heading mb-6 text-left md:hidden'>Contact</h2>
-          <p className='text-body mb-8 md:hidden'>
-            Interested in working together or have a question? Fill out the form
-            or email me at{' '}
+
+        {/* right form panel */}
+        <div className='w-full px-6 py-10 sm:px-12 lg:w-1/2'>
+          <h2 className='mb-2 text-3xl font-semibold text-white lg:hidden'>
+            Contact
+          </h2>
+          <p className='mb-6 text-zinc-300 lg:hidden'>
+            I’d love to hear from you! Fill out the form or email&nbsp;
             <a
               href='mailto:theadityakaul@gmail.com'
-              className='text-blue-400 underline'
+              className='text-pink-400 underline underline-offset-4'
             >
               theadityakaul@gmail.com
             </a>
           </p>
+
           {submitted ? (
-            <div className='text-green-400 text-lg font-semibold text-center py-8'>
-              Thank you for reaching out! I will get back to you soon.
-            </div>
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className='flex flex-col items-center gap-4 text-center'
+            >
+              <span className='text-4xl text-green-400'>✅</span>
+              <p className='text-lg font-medium text-green-300'>
+                Thanks for reaching out!
+                <br />
+                I’ll be in touch soon.
+              </p>
+            </motion.div>
           ) : (
-            <form className='flex flex-col gap-5' onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className='space-y-6'>
+              {/* floating input */}
+              {[
+                {
+                  id: 'name',
+                  type: 'text',
+                  icon: FiUser,
+                  placeholder: 'Name',
+                },
+                {
+                  id: 'subject',
+                  type: 'text',
+                  icon: FiMail,
+                  placeholder: 'Subject',
+                },
+              ].map(({ id, type, icon: Icon, placeholder }) => (
+                <div key={id} className='relative'>
+                  <Icon className='pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400' />
+                  <input
+                    id={id}
+                    name={id}
+                    type={type}
+                    required
+                    placeholder={placeholder}
+                    value={form[id as keyof typeof form]}
+                    onChange={handleChange}
+                    className='w-full rounded-xl bg-zinc-900/70 px-12 py-3 text-white backdrop-blur-md ring-1 ring-white/10 focus:ring-2 focus:ring-pink-500'
+                  />
+                </div>
+              ))}
+
+              {/* message */}
               <div className='relative'>
-                <input
-                  id='name'
-                  name='name'
-                  type='text'
-                  required
-                  autoComplete='name'
-                  placeholder='Name'
-                  className='w-full px-4 py-3 rounded-lg bg-zinc-800 border border-zinc-700 focus:border-blue-500 focus:outline-none text-white placeholder:text-zinc-400'
-                  value={form.name}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className='relative'>
-                <input
-                  id='subject'
-                  name='subject'
-                  type='text'
-                  required
-                  placeholder='Subject'
-                  className='w-full px-4 py-3 rounded-lg bg-zinc-800 border border-zinc-700 focus:border-blue-500 focus:outline-none text-white placeholder:text-zinc-400'
-                  value={form.subject}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className='relative'>
+                <FiMessageCircle className='pointer-events-none absolute left-4 top-4 text-zinc-400' />
                 <textarea
                   id='message'
                   name='message'
                   required
                   rows={5}
                   placeholder='Message'
-                  className='w-full px-4 py-3 rounded-lg bg-zinc-800 border border-zinc-700 focus:border-blue-500 focus:outline-none text-white placeholder:text-zinc-400 resize-none'
                   value={form.message}
                   onChange={handleChange}
+                  className='w-full resize-none rounded-xl bg-zinc-900/70 px-12 py-3 text-white backdrop-blur-md ring-1 ring-white/10 focus:ring-2 focus:ring-pink-500'
                 />
               </div>
+
+              {/* send button */}
               <button
                 type='submit'
-                className='btn btn-gradient w-full py-3 text-lg font-semibold rounded-full mt-2'
+                className='relative inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-pink-600 to-purple-600 px-6 py-3 text-lg font-semibold text-white shadow-lg shadow-pink-500/20 transition hover:scale-[1.02] focus:outline-none'
               >
+                <FiSend className='text-xl' />
                 Send Message
+                <span className='absolute inset-0 -z-10 animate-pulse bg-gradient-to-r from-pink-600 to-purple-600 opacity-20 blur-2xl'></span>
               </button>
             </form>
           )}
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }
