@@ -9,11 +9,15 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <JourneySection />
-      <ProjectsSection />
+      <div className='px-2 sm:px-4 md:px-8 lg:px-16'>
+        <JourneySection />
+        <ProjectsSection />
+      </div>
       <SkillsSection />
-      <RoadmapSection />
-      <ContactSection />
+      <div className='px-2 sm:px-4 md:px-8 lg:px-16'>
+        <RoadmapSection />
+        <ContactSection />
+      </div>
     </>
   )
 }

@@ -53,8 +53,9 @@ body::-webkit-scrollbar, html::-webkit-scrollbar {
 @layer components {
   /* Buttons */
   .btn {
-    @apply inline-flex items-center justify-center px-5 py-2 rounded-lg font-semibold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2;
+    @apply inline-flex items-center justify-center px-4 py-2 md:px-5 md:py-2 rounded-lg font-semibold transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2;
     border-radius: var(--radius);
+    font-size: 1rem;
   }
   .btn-primary {
     background: var(--color-primary);
@@ -74,19 +75,19 @@ body::-webkit-scrollbar, html::-webkit-scrollbar {
 
   /* Headings */
   .heading {
-    @apply font-extrabold text-4xl md:text-5xl mb-2 tracking-tight;
+    @apply font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-2 tracking-tight text-center;
     color: var(--color-primary);
   }
   .subheading {
-    @apply font-semibold text-xl md:text-2xl mb-2;
+    @apply font-semibold text-lg sm:text-xl md:text-2xl mb-2 text-center;
     color: var(--color-accent);
   }
   .text-body {
-    @apply text-base md:text-lg text-white/80;
+    @apply text-base sm:text-lg md:text-xl text-white/80;
   }
   .text-muted {
     color: var(--color-muted);
-    @apply text-sm;
+    @apply text-xs sm:text-sm;
   }
 }
 

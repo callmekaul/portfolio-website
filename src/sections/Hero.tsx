@@ -54,13 +54,13 @@ export const HeroSection = () => (
           <a
             href='/AdityaKaul_CV.pdf'
             download
-            className='btn btn-secondary text-base sm:text-lg font-semibold rounded-full border border-blue-400 text-blue-400 bg-transparent hover:bg-blue-950/40 hover:text-white transition px-6 py-2 sm:px-8 sm:py-3 w-full sm:w-auto text-center'
+            className='btn btn-secondary text-base sm:text-sm font-semibold rounded-full border border-blue-400 text-blue-400 bg-transparent hover:bg-blue-950/40 hover:text-white transition px-6 py-2 sm:px-8 sm:py-3 w-full sm:w-auto text-center'
           >
             Download CV
           </a>
           <Link
             href='#contact'
-            className='btn btn-gradient text-base sm:text-lg font-semibold rounded-full shadow-lg px-6 py-2 sm:px-8 sm:py-3 transition-all duration-200 hover:scale-105 focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 w-full sm:w-auto text-center'
+            className='btn btn-gradient text-base sm:text-sm font-semibold rounded-full shadow-lg px-6 py-2 sm:px-8 sm:py-3 transition-all duration-200 hover:scale-105 focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 w-full sm:w-auto text-center'
           >
             <span className='inline-flex items-center gap-2 justify-center w-full'>
               Contact Me
