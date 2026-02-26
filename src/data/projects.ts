@@ -1,0 +1,45 @@
+import { Project } from '@/types';
+
+export const projects: Project[] = [
+  {
+    id: 'project-1',
+    title: 'Project Alpha',
+    tagline: 'A real-time collaboration platform for remote teams',
+    tools: ['Next.js', 'WebSockets', 'PostgreSQL', 'Redis'],
+    challenge: 'Teams struggled with fragmented communication tools, leading to context-switching and lost productivity.',
+    solution: 'Built a unified workspace with real-time document editing, integrated chat, and smart notifications that reduce noise.',
+    impact: 'Adopted by 500+ teams within 3 months. Reduced average meeting time by 30% for pilot users.',
+    liveUrl: 'https://example.com',
+    githubUrl: 'https://github.com/example/project-alpha',
+  },
+  {
+    id: 'project-2',
+    title: 'Project Beta',
+    tagline: 'AI-powered code review assistant',
+    tools: ['Python', 'FastAPI', 'OpenAI API', 'Docker'],
+    challenge: 'Manual code reviews were bottlenecking the development pipeline, with PRs waiting days for feedback.',
+    solution: 'Created an automated review bot that analyzes PRs for common issues, style violations, and potential bugs.',
+    impact: 'Cut average PR review time from 2 days to 4 hours. Caught 15% more bugs before production.',
+    githubUrl: 'https://github.com/example/project-beta',
+  },
+  {
+    id: 'project-3',
+    title: 'Project Gamma',
+    tagline: 'Personal finance tracker with smart budgeting',
+    tools: ['React Native', 'TypeScript', 'Supabase', 'Plaid API'],
+    challenge: 'Existing budgeting apps were either too complex or too simple, failing to adapt to individual spending patterns.',
+    solution: 'Developed a mobile app that learns spending habits and proactively suggests budget adjustments.',
+    impact: 'Helped beta users save an average of 12% more per month compared to their previous budgeting tools.',
+    liveUrl: 'https://example.com',
+  },
+  {
+    id: 'project-4',
+    title: 'Project Delta',
+    tagline: 'Developer portfolio with desktop OS interface',
+    tools: ['Next.js', 'Framer Motion', 'Tailwind CSS', 'Zustand'],
+    challenge: 'Traditional portfolio websites feel static and fail to showcase technical creativity.',
+    solution: 'Built an interactive desktop-OS themed portfolio with draggable windows, smooth animations, and glass morphism.',
+    impact: 'This very website! A showcase of frontend engineering and design sensibility.',
+    githubUrl: 'https://github.com/example/portfolio',
+  },
+];
