@@ -20,10 +20,10 @@ export default function MobileDock() {
               whileTap={{ scale: 0.92 }}
               transition={{ duration: 0.1 }}
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.04] text-xl">
+              <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.04] text-2xl">
                 {meta.icon}
               </div>
-              <span className="text-[10px] font-medium text-white/40">{meta.title}</span>
+              <span className="text-xs font-medium text-white/40">{meta.title}</span>
             </motion.button>
           );
         })}

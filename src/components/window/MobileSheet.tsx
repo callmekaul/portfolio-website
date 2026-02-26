@@ -23,10 +23,10 @@ export default function MobileSheet({ id, title, icon, children }: MobileSheetPr
       exit={{ y: '100%' }}
       transition={{ type: 'spring', stiffness: 400, damping: 35 }}
     >
-      <header className="flex items-center justify-between border-b border-white/[0.06] px-4 py-3">
-        <div className="flex items-center gap-2.5">
-          <span className="text-base">{icon}</span>
-          <span className="text-sm font-medium text-white/80">{title}</span>
+      <header className="flex items-center justify-between border-b border-white/[0.06] px-5 py-4">
+        <div className="flex items-center gap-3">
+          <span className="text-lg">{icon}</span>
+          <span className="text-base font-medium text-white/80">{title}</span>
         </div>
         <button
           className="flex h-8 w-8 items-center justify-center rounded-lg text-white/40 transition-colors hover:bg-white/[0.08] hover:text-white/70"
@@ -39,7 +39,7 @@ export default function MobileSheet({ id, title, icon, children }: MobileSheetPr
           </svg>
         </button>
       </header>
-      <div className="window-scroll flex-1 overflow-y-auto p-4">
+      <div className="window-scroll flex-1 overflow-y-auto p-5">
         {children}
       </div>
     </motion.div>

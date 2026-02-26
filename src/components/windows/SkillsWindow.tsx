@@ -15,14 +15,14 @@ const item = {
 
 export default function SkillsWindow() {
   return (
-    <div className="space-y-5">
+    <div className="space-y-6">
       {skills.map((category) => (
         <div key={category.name}>
-          <p className="mb-2.5 text-xs font-medium uppercase tracking-wider text-white/30">
+          <p className="mb-3 text-sm font-medium uppercase tracking-wider text-white/30">
             {category.name}
           </p>
           <motion.div
-            className="flex flex-wrap gap-2"
+            className="flex flex-wrap gap-2.5"
             variants={container}
             initial="hidden"
             animate="show"
@@ -31,7 +31,7 @@ export default function SkillsWindow() {
               <motion.span
                 key={skill}
                 variants={item}
-                className="rounded-lg border border-white/[0.08] bg-white/[0.04] px-3 py-1.5 text-xs text-white/55"
+                className="rounded-lg border border-white/[0.08] bg-white/[0.04] px-4 py-2 text-sm text-white/55"
               >
                 {skill}
               </motion.span>

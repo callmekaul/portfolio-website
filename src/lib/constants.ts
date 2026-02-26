@@ -3,12 +3,12 @@ import { WindowId, WindowMeta, WindowDefault } from '@/types';
 export const WINDOW_IDS: WindowId[] = ['about', 'experience', 'projects', 'skills', 'resume', 'contact'];
 
 export const WINDOW_META: Record<WindowId, WindowMeta> = {
-  about:      { title: 'About Me',    icon: '👤', defaultSize: { width: 520, height: 480 } },
-  experience: { title: 'Experience',  icon: '💼', defaultSize: { width: 560, height: 520 } },
-  projects:   { title: 'Projects',    icon: '🚀', defaultSize: { width: 640, height: 520 } },
-  skills:     { title: 'Skills',      icon: '⚡', defaultSize: { width: 480, height: 440 } },
-  resume:     { title: 'Resume',      icon: '📄', defaultSize: { width: 650, height: 700 } },
-  contact:    { title: 'Contact',     icon: '✉️',  defaultSize: { width: 480, height: 520 } },
+  about:      { title: 'About Me',    icon: '👤', defaultSize: { width: 560, height: 520 } },
+  experience: { title: 'Experience',  icon: '💼', defaultSize: { width: 620, height: 560 } },
+  projects:   { title: 'Projects',    icon: '🚀', defaultSize: { width: 700, height: 560 } },
+  skills:     { title: 'Skills',      icon: '⚡', defaultSize: { width: 520, height: 480 } },
+  resume:     { title: 'Resume',      icon: '📄', defaultSize: { width: 700, height: 750 } },
+  contact:    { title: 'Contact',     icon: '✉️',  defaultSize: { width: 520, height: 580 } },
 };
 
 export const WINDOW_DEFAULTS: Record<WindowId, WindowDefault> = {

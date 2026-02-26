@@ -29,7 +29,7 @@ export default function Taskbar() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ type: 'spring', stiffness: 500, damping: 25 }}
-                className={`flex items-center gap-1.5 rounded-xl px-3 py-1.5 text-xs transition-colors ${
+                className={`flex items-center gap-2 rounded-xl px-4 py-2 text-sm transition-colors ${
                   isMinimized
                     ? 'text-white/30 hover:bg-white/[0.04]'
                     : 'bg-white/[0.06] text-white/60 hover:bg-white/[0.08]'
@@ -42,7 +42,7 @@ export default function Taskbar() {
                   }
                 }}
               >
-                <span className="text-sm">{meta.icon}</span>
+                <span className="text-base">{meta.icon}</span>
                 <span className="hidden sm:inline">{meta.title}</span>
               </motion.button>
             );

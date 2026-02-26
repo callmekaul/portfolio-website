@@ -33,11 +33,24 @@ export default function Desktop() {
   return (
     <div
       ref={constraintsRef}
-      className="relative h-dvh w-screen overflow-hidden bg-[#0a0a0f]"
+      className="bg-cyber relative h-dvh w-screen overflow-hidden"
     >
+      {/* Ambient glow orbs */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="orb orb-1" />
+        <div className="orb orb-2" />
+        <div className="orb orb-3" />
+      </div>
+
+      {/* Grid overlay */}
+      <div className="bg-grid pointer-events-none absolute inset-0" />
+
+      {/* Scanline overlay */}
+      <div className="scanline" />
+
       {/* Noise overlay */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.03]"
+        className="pointer-events-none absolute inset-0 opacity-[0.04]"
         style={{ backgroundImage: 'url(/noise.svg)', backgroundRepeat: 'repeat' }}
       />
 

@@ -11,25 +11,25 @@ export default function ExperienceWindow() {
         <GlassCard key={i}>
           <div className="flex items-start justify-between gap-3">
             <div>
-              <h3 className="text-sm font-semibold text-white/80">{exp.role}</h3>
-              <p className="text-xs text-white/40">{exp.company}</p>
+              <h3 className="text-base font-semibold text-white/80">{exp.role}</h3>
+              <p className="text-sm text-white/40">{exp.company}</p>
             </div>
             <div className="shrink-0 text-right">
-              <p className="text-xs text-white/40">{exp.period}</p>
-              <p className="text-xs text-white/25">{exp.location}</p>
+              <p className="text-sm text-white/40">{exp.period}</p>
+              <p className="text-sm text-white/25">{exp.location}</p>
             </div>
           </div>
 
-          <ul className="mt-3 space-y-1.5">
+          <ul className="mt-3 space-y-2">
             {exp.bullets.map((bullet, j) => (
-              <li key={j} className="flex gap-2 text-xs leading-relaxed text-white/50">
-                <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-white/20" />
+              <li key={j} className="flex gap-2.5 text-sm leading-relaxed text-white/50">
+                <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-white/20" />
                 {bullet}
               </li>
             ))}
           </ul>
 
-          <div className="mt-3 flex flex-wrap gap-1.5">
+          <div className="mt-3.5 flex flex-wrap gap-2">
             {exp.technologies.map((tech) => (
               <Tag key={tech}>{tech}</Tag>
             ))}

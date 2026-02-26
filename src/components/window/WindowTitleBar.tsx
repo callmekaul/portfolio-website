@@ -16,16 +16,16 @@ export default function WindowTitleBar({ id, title, icon, onPointerDown }: Windo
 
   return (
     <div
-      className="flex cursor-grab items-center justify-between border-b border-white/[0.06] px-4 py-3 active:cursor-grabbing select-none"
+      className="flex cursor-grab items-center justify-between border-b border-white/[0.06] px-5 py-3.5 active:cursor-grabbing select-none"
       onPointerDown={onPointerDown}
     >
-      <div className="flex items-center gap-2.5">
-        <span className="text-base">{icon}</span>
-        <span className="text-sm font-medium text-white/80">{title}</span>
+      <div className="flex items-center gap-3">
+        <span className="text-lg">{icon}</span>
+        <span className="text-base font-medium text-white/80">{title}</span>
       </div>
-      <div className="flex items-center gap-1.5">
+      <div className="flex items-center gap-2">
         <button
-          className="flex h-6 w-6 items-center justify-center rounded-md text-white/40 transition-colors hover:bg-white/[0.08] hover:text-white/70"
+          className="flex h-7 w-7 items-center justify-center rounded-md text-white/40 transition-colors hover:bg-white/[0.08] hover:text-white/70"
           onClick={(e) => { e.stopPropagation(); minimizeWindow(id); }}
           onPointerDown={(e) => e.stopPropagation()}
           aria-label="Minimize"
@@ -35,7 +35,7 @@ export default function WindowTitleBar({ id, title, icon, onPointerDown }: Windo
           </svg>
         </button>
         <button
-          className="flex h-6 w-6 items-center justify-center rounded-md text-white/40 transition-colors hover:bg-red-500/20 hover:text-red-400"
+          className="flex h-7 w-7 items-center justify-center rounded-md text-white/40 transition-colors hover:bg-red-500/20 hover:text-red-400"
           onClick={(e) => { e.stopPropagation(); closeWindow(id); }}
           onPointerDown={(e) => e.stopPropagation()}
           aria-label="Close"

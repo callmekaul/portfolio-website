@@ -7,15 +7,15 @@ export default function ResumeWindow() {
 
   if (isMobile) {
     return (
-      <div className="flex flex-col items-center gap-4 py-8">
-        <p className="text-sm text-white/50">
+      <div className="flex flex-col items-center gap-5 py-10">
+        <p className="text-base text-white/50">
           Tap below to view or download my resume.
         </p>
         <a
           href="/resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-xl border border-white/[0.08] bg-white/[0.06] px-6 py-3 text-sm text-white/70 transition-colors hover:bg-white/[0.1]"
+          className="rounded-xl border border-white/[0.08] bg-white/[0.06] px-7 py-3.5 text-base text-white/70 transition-colors hover:bg-white/[0.1]"
         >
           Open Resume ↗
         </a>
@@ -30,7 +30,7 @@ export default function ResumeWindow() {
           href="/resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-lg border border-white/[0.08] bg-white/[0.04] px-4 py-2 text-xs text-white/50 transition-colors hover:bg-white/[0.08] hover:text-white/70"
+          className="rounded-lg border border-white/[0.08] bg-white/[0.04] px-5 py-2.5 text-sm text-white/50 transition-colors hover:bg-white/[0.08] hover:text-white/70"
         >
           Open in New Tab ↗
         </a>

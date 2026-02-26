@@ -55,7 +55,7 @@ export default function Window({ id, constraintsRef, children }: WindowProps) {
         icon={meta.icon}
         onPointerDown={(e) => dragControls.start(e)}
       />
-      <div className="window-scroll flex-1 overflow-y-auto p-5">
+      <div className="window-scroll flex-1 overflow-y-auto p-6">
         {children}
       </div>
     </motion.div>
