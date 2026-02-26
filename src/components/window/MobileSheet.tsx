@@ -23,7 +23,7 @@ export default function MobileSheet({ id, title, icon, children }: MobileSheetPr
       exit={{ y: '100%' }}
       transition={{ type: 'spring', stiffness: 400, damping: 35 }}
     >
-      <header className="flex items-center justify-between border-b border-white/[0.06] px-5 py-4">
+      <header className="flex items-center justify-between border-b border-white/[0.06] bg-white/[0.03] px-5 py-4">
         <div className="flex items-center gap-3">
           <span className="text-lg">{icon}</span>
           <span className="text-base font-medium text-white/80">{title}</span>

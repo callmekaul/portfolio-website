@@ -12,10 +12,10 @@ export default function ResumeWindow() {
           Tap below to view or download my resume.
         </p>
         <a
-          href="/resume.pdf"
+          href="/AdityaKaul_CV.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-xl border border-white/[0.08] bg-white/[0.06] px-7 py-3.5 text-base text-white/70 transition-colors hover:bg-white/[0.1]"
+          className="rounded-xl border border-cyan-400/15 bg-cyan-400/[0.07] px-7 py-3.5 text-base text-cyan-300/70 transition-colors hover:bg-cyan-400/[0.12]"
         >
           Open Resume ↗
         </a>
@@ -27,16 +27,16 @@ export default function ResumeWindow() {
     <div className="flex h-full flex-col" style={{ minHeight: 500 }}>
       <div className="mb-3 flex justify-end">
         <a
-          href="/resume.pdf"
+          href="/AdityaKaul_CV.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-lg border border-white/[0.08] bg-white/[0.04] px-5 py-2.5 text-sm text-white/50 transition-colors hover:bg-white/[0.08] hover:text-white/70"
+          className="rounded-lg border border-cyan-400/15 bg-cyan-400/[0.06] px-5 py-2.5 text-sm text-cyan-300/60 transition-colors hover:bg-cyan-400/[0.1]"
         >
           Open in New Tab ↗
         </a>
       </div>
       <iframe
-        src="/resume.pdf"
+        src="/AdityaKaul_CV.pdf"
         className="flex-1 rounded-lg border border-white/[0.06]"
         title="Resume"
         style={{ minHeight: 450 }}

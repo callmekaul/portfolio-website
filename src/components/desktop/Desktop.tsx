@@ -5,6 +5,7 @@ import { useIsMobile } from '@/hooks/useIsMobile';
 import { useWindowStore } from '@/stores/windowStore';
 import { WINDOW_IDS } from '@/lib/constants';
 import DesktopIcons from './DesktopIcons';
+import DesktopGreeting from './DesktopGreeting';
 import MobileDock from './MobileDock';
 import WindowManager from '../window/WindowManager';
 import Taskbar from './Taskbar';
@@ -53,6 +54,9 @@ export default function Desktop() {
         className="pointer-events-none absolute inset-0 opacity-[0.04]"
         style={{ backgroundImage: 'url(/noise.svg)', backgroundRepeat: 'repeat' }}
       />
+
+      {/* Centered greeting */}
+      <DesktopGreeting />
 
       {!isMobile && <DesktopIcons />}
       <WindowManager constraintsRef={constraintsRef} />

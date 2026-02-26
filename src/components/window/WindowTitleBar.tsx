@@ -16,7 +16,7 @@ export default function WindowTitleBar({ id, title, icon, onPointerDown }: Windo
 
   return (
     <div
-      className="flex cursor-grab items-center justify-between border-b border-white/[0.06] px-5 py-3.5 active:cursor-grabbing select-none"
+      className="flex cursor-grab items-center justify-between rounded-t-2xl border-b border-white/[0.06] bg-white/[0.03] px-5 py-3.5 active:cursor-grabbing select-none"
       onPointerDown={onPointerDown}
     >
       <div className="flex items-center gap-3">

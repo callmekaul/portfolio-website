@@ -17,7 +17,7 @@ function ProjectDetail({ project, onBack }: { project: Project; onBack: () => vo
     >
       <button
         onClick={onBack}
-        className="mb-4 flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm text-white/40 transition-colors hover:bg-white/[0.06] hover:text-white/60"
+        className="mb-4 flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm text-cyan-400/50 transition-colors hover:bg-cyan-400/[0.06] hover:text-cyan-400/70"
       >
         <svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <path d="M8 1L3 6L8 11" />
@@ -47,7 +47,7 @@ function ProjectDetail({ project, onBack }: { project: Project; onBack: () => vo
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-lg border border-white/[0.08] bg-white/[0.04] px-5 py-2.5 text-sm text-white/60 transition-colors hover:bg-white/[0.08]"
+              className="rounded-lg border border-cyan-400/15 bg-cyan-400/[0.06] px-5 py-2.5 text-sm text-cyan-300/70 transition-colors hover:bg-cyan-400/[0.1]"
             >
               Live Demo ↗
             </a>
@@ -57,7 +57,7 @@ function ProjectDetail({ project, onBack }: { project: Project; onBack: () => vo
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-lg border border-white/[0.08] bg-white/[0.04] px-5 py-2.5 text-sm text-white/60 transition-colors hover:bg-white/[0.08]"
+              className="rounded-lg border border-purple-400/15 bg-purple-400/[0.06] px-5 py-2.5 text-sm text-purple-300/70 transition-colors hover:bg-purple-400/[0.1]"
             >
               GitHub ↗
             </a>
@@ -71,7 +71,7 @@ function ProjectDetail({ project, onBack }: { project: Project; onBack: () => vo
 function Section({ title, text }: { title: string; text: string }) {
   return (
     <div>
-      <p className="text-sm font-medium uppercase tracking-wider text-white/30">{title}</p>
+      <p className="text-sm font-medium uppercase tracking-wider text-cyan-400/40">{title}</p>
       <p className="mt-2 text-base leading-relaxed text-white/55">{text}</p>
     </div>
   );
@@ -101,9 +101,9 @@ export default function ProjectsWindow() {
             <button
               key={p.id}
               onClick={() => setSelected(p)}
-              className="group rounded-xl border border-white/[0.06] bg-white/[0.02] p-5 text-left transition-colors hover:border-white/[0.1] hover:bg-white/[0.04]"
+              className="group rounded-xl border border-white/[0.06] bg-white/[0.02] p-5 text-left transition-colors hover:border-cyan-400/15 hover:bg-cyan-400/[0.03]"
             >
-              <h3 className="text-base font-medium text-white/70 group-hover:text-white/85">
+              <h3 className="text-base font-medium text-white/70 group-hover:text-cyan-300/80">
                 {p.title}
               </h3>
               <p className="mt-1.5 text-sm leading-relaxed text-white/35">
@@ -111,7 +111,7 @@ export default function ProjectsWindow() {
               </p>
               <div className="mt-3 flex flex-wrap gap-1.5">
                 {p.tools.slice(0, 3).map((tool) => (
-                  <span key={tool} className="text-xs text-white/25">
+                  <span key={tool} className="text-xs text-purple-300/30">
                     {tool}
                   </span>
                 ))}

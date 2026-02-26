@@ -32,6 +32,7 @@ export default function Window({ id, constraintsRef, children }: WindowProps) {
         top: windowState.position.y,
         width: meta.defaultSize.width,
         maxHeight: 'calc(100dvh - 80px)',
+        pointerEvents: windowState.isMinimized ? 'none' : 'auto',
       }}
       initial={{ opacity: 0, scale: 0.92, y: 20 }}
       animate={

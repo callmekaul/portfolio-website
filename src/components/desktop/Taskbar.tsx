@@ -32,7 +32,7 @@ export default function Taskbar() {
                 className={`flex items-center gap-2 rounded-xl px-4 py-2 text-sm transition-colors ${
                   isMinimized
                     ? 'text-white/30 hover:bg-white/[0.04]'
-                    : 'bg-white/[0.06] text-white/60 hover:bg-white/[0.08]'
+                    : 'bg-cyan-400/[0.06] text-cyan-300/60 hover:bg-cyan-400/[0.1]'
                 }`}
                 onClick={() => {
                   if (isMinimized) {

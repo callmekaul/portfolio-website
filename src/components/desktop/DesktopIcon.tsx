@@ -21,7 +21,7 @@ export default function DesktopIcon({ id, icon, label }: DesktopIconProps) {
       whileTap={{ scale: 0.95 }}
       transition={{ type: 'spring', stiffness: 500, damping: 20 }}
     >
-      <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-white/[0.08] bg-white/[0.05] text-3xl backdrop-blur-md transition-colors hover:border-white/[0.16] hover:bg-white/[0.09]">
+      <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-white/[0.08] bg-white/[0.05] text-3xl backdrop-blur-md transition-colors hover:border-cyan-400/20 hover:bg-cyan-400/[0.06]">
         {icon}
       </div>
       <span className="text-[11px] font-medium text-white/45">{label}</span>
