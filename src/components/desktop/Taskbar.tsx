@@ -25,6 +25,8 @@ export default function Taskbar() {
   const windows = useWindowStore((s) => s.windows);
   const focusWindow = useWindowStore((s) => s.focusWindow);
   const restoreWindow = useWindowStore((s) => s.restoreWindow);
+  const minimizeWindow = useWindowStore((s) => s.minimizeWindow);
+  const topZIndex = useWindowStore((s) => s.topZIndex);
 
   const openWindows = WINDOW_IDS.filter((id) => windows[id].isOpen);
 
@@ -53,6 +55,8 @@ export default function Taskbar() {
                 onClick={() => {
                   if (isMinimized) {
                     restoreWindow(id);
+                  } else if (windows[id].zIndex === topZIndex) {
+                    minimizeWindow(id);
                   } else {
                     focusWindow(id);
                   }
