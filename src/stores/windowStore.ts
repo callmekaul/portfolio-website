@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { WindowId, WindowState, WindowStore } from '@/types';
-import { WINDOW_DEFAULTS, WINDOW_IDS } from '@/lib/constants';
+import { WINDOW_DEFAULTS, WINDOW_IDS, WINDOW_META } from '@/lib/constants';
 
 const initialWindows = Object.fromEntries(
   WINDOW_IDS.map((id) => [
@@ -9,8 +9,10 @@ const initialWindows = Object.fromEntries(
       id,
       isOpen: false,
       isMinimized: false,
+      isMaximized: false,
       zIndex: 0,
       position: WINDOW_DEFAULTS[id].position,
+      size: WINDOW_META[id].defaultSize,
     },
   ])
 ) as Record<WindowId, WindowState>;
@@ -35,7 +37,7 @@ export const useWindowStore = create<WindowStore>((set) => ({
     set((state) => ({
       windows: {
         ...state.windows,
-        [id]: { ...state.windows[id], isOpen: false },
+        [id]: { ...state.windows[id], isOpen: false, isMaximized: false },
       },
     })),
 
@@ -72,11 +74,32 @@ export const useWindowStore = create<WindowStore>((set) => ({
       };
     }),
 
+  toggleMaximize: (id) =>
+    set((state) => {
+      const newZ = state.topZIndex + 1;
+      const win = state.windows[id];
+      return {
+        topZIndex: newZ,
+        windows: {
+          ...state.windows,
+          [id]: { ...win, isMaximized: !win.isMaximized, zIndex: newZ },
+        },
+      };
+    }),
+
   updatePosition: (id, pos) =>
     set((state) => ({
       windows: {
         ...state.windows,
         [id]: { ...state.windows[id], position: pos },
+      },
+    })),
+
+  updateSize: (id, size) =>
+    set((state) => ({
+      windows: {
+        ...state.windows,
+        [id]: { ...state.windows[id], size },
       },
     })),
 }));

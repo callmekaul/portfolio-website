@@ -4,8 +4,10 @@ export interface WindowState {
   id: WindowId;
   isOpen: boolean;
   isMinimized: boolean;
+  isMaximized: boolean;
   zIndex: number;
   position: { x: number; y: number };
+  size: { width: number; height: number };
 }
 
 export interface WindowStore {
@@ -16,7 +18,9 @@ export interface WindowStore {
   minimizeWindow: (id: WindowId) => void;
   restoreWindow: (id: WindowId) => void;
   focusWindow: (id: WindowId) => void;
+  toggleMaximize: (id: WindowId) => void;
   updatePosition: (id: WindowId, pos: { x: number; y: number }) => void;
+  updateSize: (id: WindowId, size: { width: number; height: number }) => void;
 }
 
 export interface WindowMeta {

@@ -13,13 +13,13 @@ export default function DesktopGreeting() {
     <AnimatePresence>
       {!hasOpenWindows && (
         <motion.div
-          className="pointer-events-none absolute inset-0 flex items-center"
+          className="pointer-events-none absolute inset-0 flex items-start pt-[20vh] md:items-center md:pt-0"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
         >
-          <div className="pl-16 pr-8 md:pl-24">
+          <div className="pl-8 pr-8 md:pl-24">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
@@ -55,15 +55,6 @@ export default function DesktopGreeting() {
               transition={{ duration: 0.7, delay: 0.45, ease: 'easeOut' }}
             >
               {about.bio}
-            </motion.p>
-
-            <motion.p
-              className="mt-10 text-sm text-white/10"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.7, delay: 0.7 }}
-            >
-              Click an icon to get started →
             </motion.p>
           </div>
         </motion.div>

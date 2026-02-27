@@ -36,13 +36,6 @@ export default function Desktop() {
       ref={constraintsRef}
       className="bg-cyber relative h-dvh w-screen overflow-hidden"
     >
-      {/* Ambient glow orbs */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="orb orb-1" />
-        <div className="orb orb-2" />
-        <div className="orb orb-3" />
-      </div>
-
       {/* Grid overlay */}
       <div className="bg-grid pointer-events-none absolute inset-0" />
 
