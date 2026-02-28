@@ -1,4 +1,23 @@
-export type WindowId = 'about' | 'experience' | 'projects' | 'skills' | 'resume' | 'contact';
+export type WindowId = 'about' | 'experience' | 'projects' | 'skills' | 'resume' | 'contact' | 'display';
+
+export type ThemePreset = 'cyber' | 'ocean' | 'ember' | 'arctic';
+export type WallpaperType = 'matrix' | 'clouds' | 'stars' | 'aurora' | 'grid' | 'none';
+
+export interface ThemeColors {
+  bg: string;
+  panel: string;
+  surface: string;
+  accent: string;
+  secondary: string;
+  text: string;
+}
+
+export interface ThemeStore {
+  theme: ThemePreset;
+  wallpaper: WallpaperType;
+  setTheme: (theme: ThemePreset) => void;
+  setWallpaper: (wallpaper: WallpaperType) => void;
+}
 
 export interface WindowState {
   id: WindowId;

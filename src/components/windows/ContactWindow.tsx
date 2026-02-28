@@ -38,7 +38,7 @@ export default function ContactWindow() {
     <div className="space-y-6">
       {/* Socials */}
       <div>
-        <p className="mb-3 text-sm font-medium uppercase tracking-wider text-cyan-400/40">
+        <p className="mb-3 text-sm font-medium uppercase tracking-wider text-accent/40">
           Connect
         </p>
         <div className="flex gap-3">
@@ -63,7 +63,7 @@ export default function ContactWindow() {
 
       {/* Contact Form */}
       <form onSubmit={handleSubmit} className="space-y-3.5">
-        <p className="text-sm font-medium uppercase tracking-wider text-cyan-400/40">
+        <p className="text-sm font-medium uppercase tracking-wider text-accent/40">
           Send a Message
         </p>
 
@@ -85,7 +85,7 @@ export default function ContactWindow() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
-          className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-base text-white/80 outline-none placeholder:text-white/20 focus:border-cyan-400/25"
+          className="w-full rounded-lg border border-surface/[0.08] bg-surface/[0.03] px-4 py-3 text-base text-text/80 outline-none placeholder:text-text/20 focus:border-accent/25"
         />
         <input
           type="email"
@@ -93,7 +93,7 @@ export default function ContactWindow() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className="w-full rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-base text-white/80 outline-none placeholder:text-white/20 focus:border-cyan-400/25"
+          className="w-full rounded-lg border border-surface/[0.08] bg-surface/[0.03] px-4 py-3 text-base text-text/80 outline-none placeholder:text-text/20 focus:border-accent/25"
         />
         <textarea
           placeholder="Message"
@@ -101,13 +101,13 @@ export default function ContactWindow() {
           onChange={(e) => setMessage(e.target.value)}
           required
           rows={4}
-          className="w-full resize-none rounded-lg border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-base text-white/80 outline-none placeholder:text-white/20 focus:border-cyan-400/25"
+          className="w-full resize-none rounded-lg border border-surface/[0.08] bg-surface/[0.03] px-4 py-3 text-base text-text/80 outline-none placeholder:text-text/20 focus:border-accent/25"
         />
 
         <button
           type="submit"
           disabled={status === 'sending'}
-          className="w-full rounded-lg border border-cyan-400/15 bg-cyan-400/[0.07] py-3 text-base text-cyan-300/70 transition-colors hover:bg-cyan-400/[0.12] disabled:opacity-50"
+          className="w-full rounded-lg border border-accent/15 bg-accent/[0.07] py-3 text-base text-accent/70 transition-colors hover:bg-accent/[0.12] disabled:opacity-50"
         >
           {status === 'sending' ? 'Sending...' : 'Send Message'}
         </button>
@@ -142,7 +142,7 @@ function SocialLink({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.03] text-white/40 transition-colors hover:border-cyan-400/20 hover:bg-cyan-400/[0.06] hover:text-cyan-300/70"
+      className="flex h-12 w-12 items-center justify-center rounded-xl border border-surface/[0.08] bg-surface/[0.03] text-text/40 transition-colors hover:border-accent/20 hover:bg-accent/[0.06] hover:text-accent/70"
     >
       {children}
     </a>

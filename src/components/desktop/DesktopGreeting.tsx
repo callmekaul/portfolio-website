@@ -7,11 +7,11 @@ import { WINDOW_IDS } from '@/lib/constants';
 
 export default function DesktopGreeting() {
   const windows = useWindowStore((s) => s.windows);
-  const hasOpenWindows = WINDOW_IDS.some((id) => windows[id].isOpen);
+  const hasVisibleWindows = WINDOW_IDS.some((id) => windows[id].isOpen && !windows[id].isMinimized);
 
   return (
     <AnimatePresence>
-      {!hasOpenWindows && (
+      {!hasVisibleWindows && (
         <motion.div
           className="pointer-events-none absolute inset-0 flex items-start pt-[20vh] md:items-center md:pt-0"
           initial={{ opacity: 0 }}
@@ -25,13 +25,13 @@ export default function DesktopGreeting() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.15, ease: 'easeOut' }}
             >
-              <p className="text-base font-medium uppercase tracking-widest text-cyan-400/30">
+              <p className="text-base font-medium uppercase tracking-widest text-accent/30">
                 Welcome
               </p>
             </motion.div>
 
             <motion.h1
-              className="mt-4 text-6xl font-bold tracking-tight text-white/85 md:text-7xl"
+              className="mt-4 text-6xl font-bold tracking-tight text-text/85 md:text-7xl"
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.25, ease: 'easeOut' }}
@@ -40,7 +40,7 @@ export default function DesktopGreeting() {
             </motion.h1>
 
             <motion.p
-              className="mt-3 text-2xl text-purple-400/40 md:text-3xl"
+              className="mt-3 text-2xl text-secondary/40 md:text-3xl"
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.35, ease: 'easeOut' }}
@@ -49,7 +49,7 @@ export default function DesktopGreeting() {
             </motion.p>
 
             <motion.p
-              className="mt-8 max-w-md text-base leading-relaxed text-white/20"
+              className="mt-8 max-w-md text-base leading-relaxed text-text/20"
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.45, ease: 'easeOut' }}

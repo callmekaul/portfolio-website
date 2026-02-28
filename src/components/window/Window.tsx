@@ -165,7 +165,7 @@ export default function Window({ id, constraintsRef, children }: WindowProps) {
         }
       }}
       onPointerDown={handlePointerDown}
-      className={`absolute flex flex-col border border-white/[0.08] bg-white/[0.04] shadow-2xl shadow-black/40 backdrop-blur-xl ${
+      className={`absolute flex flex-col border border-surface/[0.15] bg-surface/[0.08] shadow-2xl shadow-black/40 backdrop-blur-xl ${
         isMaximized ? 'rounded-none' : 'rounded-2xl'
       }`}
     >

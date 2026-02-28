@@ -18,18 +18,18 @@ export default function WindowTitleBar({ id, title, icon, onPointerDown }: Windo
 
   return (
     <div
-      className="flex cursor-grab items-center justify-between rounded-t-2xl border-b border-white/[0.06] bg-white/[0.03] px-5 py-3.5 active:cursor-grabbing select-none"
+      className="flex cursor-grab items-center justify-between rounded-t-2xl border-b border-surface/[0.12] bg-panel px-5 py-3.5 active:cursor-grabbing select-none"
       onPointerDown={onPointerDown}
       onDoubleClick={() => toggleMaximize(id)}
     >
       <div className="flex items-center gap-3">
         <span className="text-lg">{icon}</span>
-        <span className="text-base font-medium text-white/80">{title}</span>
+        <span className="text-base font-medium text-text/80">{title}</span>
       </div>
       <div className="flex items-center gap-2">
         {/* Minimize */}
         <button
-          className="flex h-7 w-7 items-center justify-center rounded-md text-white/40 transition-colors hover:bg-white/[0.08] hover:text-white/70"
+          className="flex h-7 w-7 items-center justify-center rounded-md text-text/40 transition-colors hover:bg-surface/[0.08] hover:text-text/70"
           onClick={(e) => { e.stopPropagation(); minimizeWindow(id); }}
           onPointerDown={(e) => e.stopPropagation()}
           aria-label="Minimize"
@@ -40,7 +40,7 @@ export default function WindowTitleBar({ id, title, icon, onPointerDown }: Windo
         </button>
         {/* Maximize / Restore */}
         <button
-          className="flex h-7 w-7 items-center justify-center rounded-md text-white/40 transition-colors hover:bg-white/[0.08] hover:text-white/70"
+          className="flex h-7 w-7 items-center justify-center rounded-md text-text/40 transition-colors hover:bg-surface/[0.08] hover:text-text/70"
           onClick={(e) => { e.stopPropagation(); toggleMaximize(id); }}
           onPointerDown={(e) => e.stopPropagation()}
           aria-label={isMaximized ? 'Restore' : 'Maximize'}
@@ -60,7 +60,7 @@ export default function WindowTitleBar({ id, title, icon, onPointerDown }: Windo
         </button>
         {/* Close */}
         <button
-          className="flex h-7 w-7 items-center justify-center rounded-md text-white/40 transition-colors hover:bg-red-500/20 hover:text-red-400"
+          className="flex h-7 w-7 items-center justify-center rounded-md text-text/40 transition-colors hover:bg-red-500/20 hover:text-red-400"
           onClick={(e) => { e.stopPropagation(); closeWindow(id); }}
           onPointerDown={(e) => e.stopPropagation()}
           aria-label="Close"

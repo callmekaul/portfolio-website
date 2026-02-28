@@ -17,7 +17,7 @@ function ProjectDetail({ project, onBack }: { project: Project; onBack: () => vo
     >
       <button
         onClick={onBack}
-        className="mb-4 flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm text-cyan-400/50 transition-colors hover:bg-cyan-400/[0.06] hover:text-cyan-400/70"
+        className="mb-4 flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm text-accent/50 transition-colors hover:bg-accent/[0.06] hover:text-accent/70"
       >
         <svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <path d="M8 1L3 6L8 11" />
@@ -25,8 +25,8 @@ function ProjectDetail({ project, onBack }: { project: Project; onBack: () => vo
         Back to Projects
       </button>
 
-      <h2 className="text-xl font-semibold text-white/90">{project.title}</h2>
-      <p className="mt-1 text-base text-white/50">{project.tagline}</p>
+      <h2 className="text-xl font-semibold text-text/90">{project.title}</h2>
+      <p className="mt-1 text-base text-text/50">{project.tagline}</p>
 
       <div className="mt-3 flex flex-wrap gap-2">
         {project.tools.map((tool) => (
@@ -47,7 +47,7 @@ function ProjectDetail({ project, onBack }: { project: Project; onBack: () => vo
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-lg border border-cyan-400/15 bg-cyan-400/[0.06] px-5 py-2.5 text-sm text-cyan-300/70 transition-colors hover:bg-cyan-400/[0.1]"
+              className="rounded-lg border border-accent/15 bg-accent/[0.06] px-5 py-2.5 text-sm text-accent/70 transition-colors hover:bg-accent/[0.1]"
             >
               Live Demo ↗
             </a>
@@ -57,7 +57,7 @@ function ProjectDetail({ project, onBack }: { project: Project; onBack: () => vo
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-lg border border-purple-400/15 bg-purple-400/[0.06] px-5 py-2.5 text-sm text-purple-300/70 transition-colors hover:bg-purple-400/[0.1]"
+              className="rounded-lg border border-secondary/15 bg-secondary/[0.06] px-5 py-2.5 text-sm text-secondary/70 transition-colors hover:bg-secondary/[0.1]"
             >
               GitHub ↗
             </a>
@@ -71,8 +71,8 @@ function ProjectDetail({ project, onBack }: { project: Project; onBack: () => vo
 function Section({ title, text }: { title: string; text: string }) {
   return (
     <div>
-      <p className="text-sm font-medium uppercase tracking-wider text-cyan-400/40">{title}</p>
-      <p className="mt-2 text-base leading-relaxed text-white/55">{text}</p>
+      <p className="text-sm font-medium uppercase tracking-wider text-accent/40">{title}</p>
+      <p className="mt-2 text-base leading-relaxed text-text/55">{text}</p>
     </div>
   );
 }
@@ -101,22 +101,22 @@ export default function ProjectsWindow() {
             <button
               key={p.id}
               onClick={() => setSelected(p)}
-              className="group rounded-xl border border-white/[0.06] bg-white/[0.02] p-5 text-left transition-colors hover:border-cyan-400/15 hover:bg-cyan-400/[0.03]"
+              className="group rounded-xl border border-surface/[0.06] bg-surface/[0.02] p-5 text-left transition-colors hover:border-accent/15 hover:bg-accent/[0.03]"
             >
-              <h3 className="text-base font-medium text-white/70 group-hover:text-cyan-300/80">
+              <h3 className="text-base font-medium text-text/70 group-hover:text-accent/80">
                 {p.title}
               </h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-white/35">
+              <p className="mt-1.5 text-sm leading-relaxed text-text/35">
                 {p.tagline}
               </p>
               <div className="mt-3 flex flex-wrap gap-1.5">
                 {p.tools.slice(0, 3).map((tool) => (
-                  <span key={tool} className="text-xs text-purple-300/30">
+                  <span key={tool} className="text-xs text-secondary/30">
                     {tool}
                   </span>
                 ))}
                 {p.tools.length > 3 && (
-                  <span className="text-xs text-white/20">
+                  <span className="text-xs text-text/20">
                     +{p.tools.length - 3}
                   </span>
                 )}
