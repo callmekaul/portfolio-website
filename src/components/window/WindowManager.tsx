@@ -13,6 +13,7 @@ import SkillsWindow from '../windows/SkillsWindow';
 import ResumeWindow from '../windows/ResumeWindow';
 import ContactWindow from '../windows/ContactWindow';
 import DisplayWindow from '../windows/DisplayWindow';
+import MusicWindow from '../windows/MusicWindow';
 import { WindowId } from '@/types';
 
 const WINDOW_CONTENT: Record<WindowId, React.ReactNode> = {
@@ -23,6 +24,7 @@ const WINDOW_CONTENT: Record<WindowId, React.ReactNode> = {
   resume: <ResumeWindow />,
   contact: <ContactWindow />,
   display: <DisplayWindow />,
+  music: <MusicWindow />,
 };
 
 interface WindowManagerProps {

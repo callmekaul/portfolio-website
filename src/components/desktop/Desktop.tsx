@@ -19,6 +19,17 @@ export default function Desktop() {
   // Initialize theme on mount (triggers rehydration from localStorage)
   useThemeStore();
 
+  // Open default windows on desktop only (once)
+  const hasOpened = useRef(false);
+  useEffect(() => {
+    if (!isMobile && !hasOpened.current) {
+      hasOpened.current = true;
+      const { openWindow } = useWindowStore.getState();
+      openWindow('music');
+      openWindow('about');
+    }
+  }, [isMobile]);
+
   // Escape key closes the topmost open window
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {

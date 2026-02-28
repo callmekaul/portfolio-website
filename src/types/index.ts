@@ -1,4 +1,4 @@
-export type WindowId = 'about' | 'experience' | 'projects' | 'skills' | 'resume' | 'contact' | 'display';
+export type WindowId = 'about' | 'experience' | 'projects' | 'skills' | 'resume' | 'contact' | 'display' | 'music';
 
 export type ThemePreset = 'cyber' | 'ocean' | 'ember' | 'sunset';
 export type WallpaperType = 'matrix' | 'clouds' | 'stars' | 'aurora' | 'grid' | 'none';
@@ -77,4 +77,10 @@ export interface Project {
 export interface SkillCategory {
   name: string;
   items: string[];
+}
+
+export interface Track {
+  title: string;
+  artist: string;
+  videoId: string;
 }
