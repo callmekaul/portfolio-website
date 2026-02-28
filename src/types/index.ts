@@ -1,6 +1,6 @@
 export type WindowId = 'about' | 'experience' | 'projects' | 'skills' | 'resume' | 'contact' | 'display';
 
-export type ThemePreset = 'cyber' | 'ocean' | 'ember' | 'arctic';
+export type ThemePreset = 'cyber' | 'ocean' | 'ember' | 'sunset';
 export type WallpaperType = 'matrix' | 'clouds' | 'stars' | 'aurora' | 'grid' | 'none';
 
 export interface ThemeColors {

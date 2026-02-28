@@ -15,9 +15,9 @@ export const THEME_PRESETS: Record<ThemePreset, { label: string; colors: ThemeCo
     label: 'Ember',
     colors: { bg: '#120808', panel: '#2e1515', surface: '#ffd0b0', accent: '#fb923c', secondary: '#f472b6', text: '#fff0e8' },
   },
-  arctic: {
-    label: 'Arctic',
-    colors: { bg: '#e8edf2', panel: '#cdd5de', surface: '#1e293b', accent: '#0284c7', secondary: '#7c3aed', text: '#000000' },
+  sunset: {
+    label: 'Sunset',
+    colors: { bg: '#1a0a1e', panel: '#2d1233', surface: '#ffd6e0', accent: '#fbbf24', secondary: '#f472b6', text: '#fff0f5' },
   },
 };
 
