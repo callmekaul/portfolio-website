@@ -18,7 +18,7 @@ export default function WindowTitleBar({ id, title, icon, onPointerDown }: Windo
 
   return (
     <div
-      className="flex cursor-grab items-center justify-between rounded-t-2xl border-b border-surface/[0.12] bg-panel px-5 py-3.5 active:cursor-grabbing select-none"
+      className="flex cursor-grab items-center justify-between rounded-t-2xl bg-panel px-5 py-3.5 active:cursor-grabbing select-none"
       onPointerDown={onPointerDown}
       onDoubleClick={() => toggleMaximize(id)}
     >

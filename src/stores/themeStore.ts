@@ -5,19 +5,19 @@ import { ThemePreset, WallpaperType, ThemeColors, ThemeStore } from '@/types';
 export const THEME_PRESETS: Record<ThemePreset, { label: string; colors: ThemeColors }> = {
   cyber: {
     label: 'Cyber',
-    colors: { bg: '#06060c', panel: '#121218', surface: '#ffffff', accent: '#22d3ee', secondary: '#c084fc', text: '#ffffff' },
+    colors: { bg: '#06060c', panel: '#1a1a2e', surface: '#ffffff', accent: '#22d3ee', secondary: '#c084fc', text: '#ffffff' },
   },
   ocean: {
     label: 'Ocean',
-    colors: { bg: '#050a18', panel: '#0c1529', surface: '#a0c4ff', accent: '#38bdf8', secondary: '#2dd4bf', text: '#e0f0ff' },
+    colors: { bg: '#050a18', panel: '#0f2847', surface: '#a0c4ff', accent: '#38bdf8', secondary: '#2dd4bf', text: '#e0f0ff' },
   },
   ember: {
     label: 'Ember',
-    colors: { bg: '#120808', panel: '#1c0f0f', surface: '#ffd0b0', accent: '#fb923c', secondary: '#f472b6', text: '#fff0e8' },
+    colors: { bg: '#120808', panel: '#2e1515', surface: '#ffd0b0', accent: '#fb923c', secondary: '#f472b6', text: '#fff0e8' },
   },
   arctic: {
     label: 'Arctic',
-    colors: { bg: '#4a6d8c', panel: '#3a5a75', surface: '#ffffff', accent: '#7dd3fc', secondary: '#a5b4fc', text: '#f0f4f8' },
+    colors: { bg: '#e8edf2', panel: '#cdd5de', surface: '#1e293b', accent: '#0284c7', secondary: '#7c3aed', text: '#000000' },
   },
 };
 
