@@ -38,18 +38,33 @@ export default function Desktop() {
     const handleResize = () => {
       const vh = window.innerHeight;
       const { windows, batchUpdate } = useWindowStore.getState();
-      const updates: Record<string, { size: { width: number; height: number } }> = {};
+      const updates: Record<string, Partial<{ size: { width: number; height: number }; position: { x: number; y: number } }>> = {};
+      const vw = window.innerWidth;
+      const minVisible = 80;
 
       for (const id of WINDOW_IDS) {
         const win = windows[id];
         if (!win.isOpen || win.isMaximized) continue;
 
+        const patch: typeof updates[string] = {};
+
+        // Vertical: adjust height to fit
         const available = vh - taskbarH - padding - win.position.y;
         const maxH = WINDOW_META[id].defaultSize.height;
         const targetH = Math.max(240, Math.min(maxH, available));
-
         if (targetH !== win.size.height) {
-          updates[id] = { size: { width: win.size.width, height: targetH } };
+          patch.size = { width: win.size.width, height: targetH };
+        }
+
+        // Horizontal: push window left so at least half its width stays visible
+        const winW = patch.size ? patch.size.width : win.size.width;
+        const maxX = vw - winW * 0.25;
+        if (win.position.x > maxX) {
+          patch.position = { x: Math.max(0, maxX), y: win.position.y };
+        }
+
+        if (patch.size || patch.position) {
+          updates[id] = patch;
         }
       }
 
