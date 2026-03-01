@@ -4,53 +4,63 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { playlist } from '@/data/playlist';
 
 /* ------------------------------------------------------------------ */
-/*  YouTube IFrame API types (minimal)                                 */
+/*  SoundCloud Widget API types (minimal)                              */
 /* ------------------------------------------------------------------ */
-interface YTPlayer {
-  loadVideoById: (videoId: string) => void;
-  playVideo: () => void;
-  pauseVideo: () => void;
-  seekTo: (seconds: number, allowSeekAhead: boolean) => void;
-  getCurrentTime: () => number;
-  getDuration: () => number;
-  getPlayerState: () => number;
-  destroy: () => void;
+interface SCWidget {
+  play: () => void;
+  pause: () => void;
+  toggle: () => void;
+  seekTo: (ms: number) => void;
+  getPosition: (cb: (pos: number) => void) => void;
+  getDuration: (cb: (dur: number) => void) => void;
+  setVolume: (volume: number) => void;
+  getVolume: (cb: (volume: number) => void) => void;
+  isPaused: (cb: (paused: boolean) => void) => void;
+  load: (url: string, options: Record<string, unknown>) => void;
+  bind: (event: string, cb: (...args: unknown[]) => void) => void;
+  unbind: (event: string) => void;
 }
 
-interface YTPlayerEvent {
-  data: number;
-  target: YTPlayer;
+interface SCWidgetEvents {
+  READY: string;
+  PLAY: string;
+  PAUSE: string;
+  FINISH: string;
+  PLAY_PROGRESS: string;
 }
 
-/* Player state constants */
-const YT_UNSTARTED = -1;
-const YT_ENDED = 0;
-const YT_PLAYING = 1;
-const YT_PAUSED = 2;
+interface SCWidgetConstructor {
+  (el: HTMLIFrameElement): SCWidget;
+  Events: SCWidgetEvents;
+}
+
+declare global {
+  interface Window {
+    SC?: { Widget: SCWidgetConstructor };
+  }
+}
 
 /* ------------------------------------------------------------------ */
 /*  Helpers                                                            */
 /* ------------------------------------------------------------------ */
-function formatTime(seconds: number) {
-  if (!isFinite(seconds) || seconds < 0) return '0:00';
-  const m = Math.floor(seconds / 60);
-  const s = Math.floor(seconds % 60);
+function formatTime(ms: number) {
+  const totalSec = Math.floor(ms / 1000);
+  if (!isFinite(totalSec) || totalSec < 0) return '0:00';
+  const m = Math.floor(totalSec / 60);
+  const s = totalSec % 60;
   return `${m}:${s.toString().padStart(2, '0')}`;
 }
 
-/** Load the YT IFrame API script once globally */
-function ensureYTApi(): Promise<void> {
+function ensureSCApi(): Promise<void> {
   return new Promise((resolve) => {
-    if ((window as unknown as Record<string, unknown>).YT &&
-        (window as unknown as Record<string, unknown>).YTReady) {
+    if (window.SC?.Widget) {
       resolve();
       return;
     }
 
-    // If script tag already exists, wait for callback
-    if (document.getElementById('yt-iframe-api')) {
+    if (document.getElementById('sc-widget-api')) {
       const check = setInterval(() => {
-        if ((window as unknown as Record<string, unknown>).YTReady) {
+        if (window.SC?.Widget) {
           clearInterval(check);
           resolve();
         }
@@ -58,14 +68,17 @@ function ensureYTApi(): Promise<void> {
       return;
     }
 
-    (window as unknown as Record<string, () => void>).onYouTubeIframeAPIReady = () => {
-      (window as unknown as Record<string, boolean>).YTReady = true;
-      resolve();
-    };
-
     const tag = document.createElement('script');
-    tag.id = 'yt-iframe-api';
-    tag.src = 'https://www.youtube.com/iframe_api';
+    tag.id = 'sc-widget-api';
+    tag.src = 'https://w.soundcloud.com/player/api.js';
+    tag.onload = () => {
+      const check = setInterval(() => {
+        if (window.SC?.Widget) {
+          clearInterval(check);
+          resolve();
+        }
+      }, 50);
+    };
     document.head.appendChild(tag);
   });
 }
@@ -79,116 +92,93 @@ export default function MusicWindow() {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [ready, setReady] = useState(false);
+  const [volume, setVolume] = useState(10);
+  const [isSeeking, setIsSeeking] = useState(false);
 
-  const playerRef = useRef<YTPlayer | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const widgetRef = useRef<SCWidget | null>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
-  const pendingIndex = useRef<number | null>(null);
+  const eventsRef = useRef<SCWidgetEvents | null>(null);
+  const currentIndexRef = useRef(currentIndex);
+  currentIndexRef.current = currentIndex;
 
   const track = playlist[currentIndex];
 
-  /* ---- Tick: poll current time from YT player ---- */
-  const startTick = useCallback(() => {
-    if (timerRef.current) return;
-    timerRef.current = setInterval(() => {
-      const p = playerRef.current;
-      if (!p) return;
-      setCurrentTime(p.getCurrentTime());
-      const d = p.getDuration();
-      if (d > 0) setDuration(d);
-    }, 250);
+  /** Bind all playback events to the widget. Called after every load(). */
+  const bindEvents = useCallback((widget: SCWidget, events: SCWidgetEvents) => {
+    widget.bind(events.PLAY, () => {
+      setIsPlaying(true);
+      widget.getDuration((d: number) => setDuration(d));
+      widget.getVolume((v: number) => {
+        if (v !== volume) widget.setVolume(volume);
+      });
+    });
+
+    widget.bind(events.PAUSE, () => setIsPlaying(false));
+
+    widget.bind(events.FINISH, () => {
+      setIsPlaying(false);
+      setCurrentIndex((i) => (i + 1) % playlist.length);
+    });
+
+    widget.bind(events.PLAY_PROGRESS, (data: unknown) => {
+      const d = data as { currentPosition: number };
+      setIsSeeking((seeking) => {
+        if (!seeking) setCurrentTime(d.currentPosition);
+        return seeking;
+      });
+    });
   }, []);
 
-  const stopTick = useCallback(() => {
-    if (timerRef.current) {
-      clearInterval(timerRef.current);
-      timerRef.current = null;
-    }
-  }, []);
-
-  /* ---- Initialize YT player ---- */
+  /* ---- Initialize SC widget ---- */
   useEffect(() => {
     let destroyed = false;
 
-    ensureYTApi().then(() => {
-      if (destroyed || !containerRef.current) return;
+    ensureSCApi().then(() => {
+      if (destroyed || !iframeRef.current || !window.SC) return;
 
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const YT = (window as any).YT;
+      const widget = window.SC.Widget(iframeRef.current);
+      const events = window.SC.Widget.Events;
+      widgetRef.current = widget;
+      eventsRef.current = events;
 
-      const player: YTPlayer = new YT.Player(containerRef.current, {
-        height: '0',
-        width: '0',
-        videoId: playlist[0].videoId,
-        playerVars: {
-          autoplay: 0,
-          controls: 0,
-          disablekb: 1,
-          fs: 0,
-          modestbranding: 1,
-          rel: 0,
-        },
-        events: {
-          onReady: () => {
-            playerRef.current = player;
-            setReady(true);
-            // If a track was selected before ready
-            if (pendingIndex.current !== null) {
-              player.loadVideoById(playlist[pendingIndex.current].videoId);
-              pendingIndex.current = null;
-            }
-          },
-          onStateChange: (e: YTPlayerEvent) => {
-            if (e.data === YT_PLAYING) {
-              setIsPlaying(true);
-              startTick();
-            } else if (e.data === YT_PAUSED) {
-              setIsPlaying(false);
-              stopTick();
-            } else if (e.data === YT_ENDED) {
-              setIsPlaying(false);
-              stopTick();
-              // Auto-advance
-              setCurrentIndex((i) => (i + 1) % playlist.length);
-            } else if (e.data === YT_UNSTARTED) {
-              setIsPlaying(false);
-            }
-          },
-        },
+      widget.bind(events.READY, () => {
+        if (destroyed) return;
+        setReady(true);
+        bindEvents(widget, events);
       });
     });
 
     return () => {
       destroyed = true;
-      stopTick();
-      playerRef.current?.destroy();
-      playerRef.current = null;
+      widgetRef.current = null;
     };
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [bindEvents]);
 
-  /* ---- Load new video when track changes ---- */
+  /* ---- Load new track when index changes ---- */
   useEffect(() => {
-    const p = playerRef.current;
-    if (!p || !ready) {
-      pendingIndex.current = currentIndex;
-      return;
-    }
+    const w = widgetRef.current;
+    const events = eventsRef.current;
+    if (!w || !events || !ready) return;
+
     setCurrentTime(0);
     setDuration(0);
-    p.loadVideoById(track.videoId);
-  }, [currentIndex, track.videoId, ready]);
+    setIsPlaying(false);
+
+    w.load(track.trackUrl, {
+      auto_play: true,
+      show_artwork: false,
+      callback: () => {
+        bindEvents(w, events);
+      },
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentIndex, ready]);
 
   /* ---- Controls ---- */
   const togglePlay = useCallback(() => {
-    const p = playerRef.current;
-    if (!p) return;
-    if (isPlaying) {
-      p.pauseVideo();
-    } else {
-      p.playVideo();
-    }
-  }, [isPlaying]);
+    widgetRef.current?.toggle();
+  }, []);
 
   const prevTrack = useCallback(() => {
     setCurrentIndex((i) => (i - 1 + playlist.length) % playlist.length);
@@ -199,14 +189,31 @@ export default function MusicWindow() {
   }, []);
 
   const seek = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    const p = playerRef.current;
+    const w = widgetRef.current;
     const bar = progressRef.current;
-    if (!p || !bar || !duration) return;
+    if (!w || !bar || !duration) return;
     const rect = bar.getBoundingClientRect();
     const ratio = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-    p.seekTo(ratio * duration, true);
-    setCurrentTime(ratio * duration);
+    const targetMs = ratio * duration;
+
+    setIsSeeking(true);
+    setCurrentTime(targetMs);
+    w.seekTo(targetMs);
+
+    // Wait for SC to actually seek, then unlock progress updates
+    setTimeout(() => {
+      w.getPosition((pos: number) => {
+        setCurrentTime(pos);
+        setIsSeeking(false);
+      });
+    }, 300);
   }, [duration]);
+
+  const changeVolume = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const v = Number(e.target.value);
+    setVolume(v);
+    widgetRef.current?.setVolume(v);
+  }, []);
 
   const selectTrack = useCallback((index: number) => {
     setCurrentIndex(index);
@@ -214,12 +221,18 @@ export default function MusicWindow() {
 
   const progress = duration > 0 ? (currentTime / duration) * 100 : 0;
 
+  const embedUrl = `https://w.soundcloud.com/player/?url=${encodeURIComponent(playlist[0].trackUrl)}&auto_play=false&show_artwork=false&show_playcount=false&show_user=false&buying=false&sharing=false&download=false&color=%2322d3ee`;
+
   return (
     <div className="flex h-full flex-col gap-5">
-      {/* Hidden YT player container */}
-      <div className="absolute h-0 w-0 overflow-hidden">
-        <div ref={containerRef} />
-      </div>
+      {/* Hidden SC widget iframe */}
+      <iframe
+        ref={iframeRef}
+        className="absolute h-0 w-0 overflow-hidden"
+        src={embedUrl}
+        allow="autoplay"
+        tabIndex={-1}
+      />
 
       {/* Now Playing */}
       <div className="flex items-center gap-4">
@@ -284,6 +297,24 @@ export default function MusicWindow() {
         </button>
       </div>
 
+      {/* Volume */}
+      <div className="flex items-center gap-3">
+        <svg className="shrink-0 text-text/30" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0014 8.14v7.72A4.5 4.5 0 0016.5 12z" />
+        </svg>
+        <input
+          type="range"
+          min={0}
+          max={100}
+          value={volume}
+          onChange={changeVolume}
+          className="h-1 w-full cursor-pointer appearance-none rounded-full bg-surface/[0.08] accent-accent [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-accent"
+        />
+        <svg className="shrink-0 text-text/30" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0014 8.14v7.72A4.5 4.5 0 0016.5 12zM14 3.23v2.06a8 8 0 010 13.42v2.06A10 10 0 0014 3.23z" />
+        </svg>
+      </div>
+
       {/* Playlist */}
       <div>
         <p className="mb-2 text-sm font-medium uppercase tracking-wider text-accent/40">
@@ -292,7 +323,7 @@ export default function MusicWindow() {
         <div className="space-y-1">
           {playlist.map((t, i) => (
             <button
-              key={t.videoId}
+              key={t.trackUrl}
               onClick={() => selectTrack(i)}
               className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left transition-colors ${
                 i === currentIndex

@@ -3,7 +3,7 @@ import { WindowId, WindowMeta, WindowDefault } from '@/types';
 export const WINDOW_IDS: WindowId[] = ['about', 'experience', 'projects', 'skills', 'resume', 'contact', 'display', 'music'];
 
 export const WINDOW_META: Record<WindowId, WindowMeta> = {
-  about:      { title: 'About Me',    icon: '👤', defaultSize: { width: 620, height: 680 } },
+  about:      { title: 'About Me',    icon: '👤', defaultSize: { width: 620, height: 820 } },
   experience: { title: 'Experience',  icon: '💼', defaultSize: { width: 620, height: 560 } },
   projects:   { title: 'Projects',    icon: '🚀', defaultSize: { width: 700, height: 560 } },
   skills:     { title: 'Skills',      icon: '⚡', defaultSize: { width: 520, height: 480 } },

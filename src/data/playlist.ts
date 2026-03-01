@@ -2,28 +2,28 @@ import { Track } from '@/types';
 
 export const playlist: Track[] = [
   {
-    title: 'Synthetic Dreams',
-    artist: 'Synthwave Goose',
-    videoId: 'DMoCM_FgLP8',
-  },
-  {
-    title: 'After Hours',
-    artist: 'Lo-Fi Girl',
-    videoId: '5qap5aO4i9A',
-  },
-  {
-    title: 'Nightride',
+    title: 'Sunset',
     artist: 'The Midnight',
-    videoId: 'UiSB2Fbw9gs',
+    trackUrl: 'https://soundcloud.com/themidnightofficial/sunset',
   },
   {
-    title: 'A Real Hero',
-    artist: 'College & Electric Youth',
-    videoId: '-DSVDcw6iW8',
+    title: 'Days of Thunder',
+    artist: 'The Midnight',
+    trackUrl: 'https://soundcloud.com/themidnightofficial/days-of-thunder',
   },
   {
-    title: 'Resonance',
-    artist: 'HOME',
-    videoId: '8GW6sLrK40k',
+    title: 'Vampires',
+    artist: 'The Midnight',
+    trackUrl: 'https://soundcloud.com/themidnightofficial/vampires',
+  },
+  {
+    title: 'Sunset Drive',
+    artist: 'Keys of Moon',
+    trackUrl: 'https://soundcloud.com/keysofmoon/sunset-drive-synthwaveretrowave-music-free-download',
+  },
+  {
+    title: 'Resonance (80s Vaporwave Mix)',
+    artist: 'HOME / Adam J Brennan',
+    trackUrl: 'https://soundcloud.com/adamjbrennan/home-resonance-80s-vaporwave-mix',
   },
 ];
