@@ -13,6 +13,6 @@ export const about = {
   socials: {
     github: 'https://github.com/adityakaul',
     linkedin: 'https://linkedin.com/in/adityakaul',
-    email: 'hello@adityakaul.com',
+    email: 'theadityakaul@gmail.com',
   },
 };
