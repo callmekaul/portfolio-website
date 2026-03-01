@@ -34,8 +34,8 @@ export const about = {
     'Game Development',
   ],
   socials: {
-    github: 'https://github.com/adityakaul',
-    linkedin: 'https://linkedin.com/in/adityakaul',
+    github: 'https://github.com/callmekaull',
+    linkedin: 'https://www.linkedin.com/in/callmekaul/',
     email: 'theadityakaul@gmail.com',
   },
 };
