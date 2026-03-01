@@ -62,14 +62,17 @@ export interface Experience {
   technologies: string[];
 }
 
+export type ProjectCategory = 'Agentic AI and LLM Systems' | 'Machine Learning';
+
 export interface Project {
   id: string;
+  category: ProjectCategory;
   title: string;
   tagline: string;
   tools: string[];
-  challenge: string;
-  solution: string;
-  impact: string;
+  challenge: string[];
+  solution: string[];
+  impact: string[];
   liveUrl?: string;
   githubUrl?: string;
 }

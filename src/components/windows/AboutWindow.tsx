@@ -13,11 +13,6 @@ export default function AboutWindow() {
 
       <p className="text-base leading-relaxed text-text/60">{about.bio}</p>
 
-      <GlassCard>
-        <p className="text-sm font-medium uppercase tracking-wider text-accent/40">Mission</p>
-        <p className="mt-2 text-base leading-relaxed text-text/60">{about.mission}</p>
-      </GlassCard>
-
       <div>
         <p className="mb-3 text-sm font-medium uppercase tracking-wider text-accent/40">Hobbies</p>
         <div className="flex flex-wrap gap-2.5">

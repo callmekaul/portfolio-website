@@ -3,8 +3,33 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { projects } from '@/data/projects';
-import { Project } from '@/types';
+import { Project, ProjectCategory } from '@/types';
 import Tag from '../ui/Tag';
+
+const CATEGORIES: ProjectCategory[] = ['Agentic AI and LLM Systems', 'Machine Learning'];
+const projectsByCategory = CATEGORIES.map((cat) => ({
+  category: cat,
+  items: projects.filter((p) => p.category === cat),
+}));
+
+function ChevronIcon({ expanded }: { expanded: boolean }) {
+  return (
+    <motion.svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      animate={{ rotate: expanded ? 90 : 0 }}
+      transition={{ duration: 0.15 }}
+    >
+      <path d="M6 3L11 8L6 13" />
+    </motion.svg>
+  );
+}
 
 function ProjectDetail({ project, onBack }: { project: Project; onBack: () => void }) {
   return (
@@ -35,9 +60,9 @@ function ProjectDetail({ project, onBack }: { project: Project; onBack: () => vo
       </div>
 
       <div className="mt-6 space-y-5">
-        <Section title="Challenge" text={project.challenge} />
-        <Section title="Solution" text={project.solution} />
-        <Section title="Impact" text={project.impact} />
+        <Section title="Challenge" items={project.challenge} />
+        <Section title="Solution" items={project.solution} />
+        <Section title="Impact" items={project.impact} />
       </div>
 
       {(project.liveUrl || project.githubUrl) && (
@@ -68,17 +93,28 @@ function ProjectDetail({ project, onBack }: { project: Project; onBack: () => vo
   );
 }
 
-function Section({ title, text }: { title: string; text: string }) {
+function Section({ title, items }: { title: string; items: string[] }) {
   return (
     <div>
       <p className="text-sm font-medium uppercase tracking-wider text-accent/40">{title}</p>
-      <p className="mt-2 text-base leading-relaxed text-text/55">{text}</p>
+      <ul className="mt-2 space-y-1.5">
+        {items.map((item, i) => (
+          <li key={i} className="flex gap-2 text-base leading-relaxed text-text/55">
+            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/30" />
+            {item}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
 
 export default function ProjectsWindow() {
   const [selected, setSelected] = useState<Project | null>(null);
+  const [collapsed, setCollapsed] = useState<Record<string, boolean>>({});
+
+  const toggleCategory = (cat: string) =>
+    setCollapsed((prev) => ({ ...prev, [cat]: !prev[cat] }));
 
   return (
     <AnimatePresence mode="wait">
@@ -95,34 +131,67 @@ export default function ProjectsWindow() {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: 40 }}
           transition={{ duration: 0.2 }}
-          className="grid grid-cols-2 gap-3"
+          className="space-y-5"
         >
-          {projects.map((p) => (
-            <button
-              key={p.id}
-              onClick={() => setSelected(p)}
-              className="group rounded-xl border border-surface/[0.06] bg-surface/[0.02] p-5 text-left transition-colors hover:border-accent/15 hover:bg-accent/[0.03]"
-            >
-              <h3 className="text-base font-medium text-text/70 group-hover:text-accent/80">
-                {p.title}
-              </h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-text/35">
-                {p.tagline}
-              </p>
-              <div className="mt-3 flex flex-wrap gap-1.5">
-                {p.tools.slice(0, 3).map((tool) => (
-                  <span key={tool} className="text-xs text-secondary/30">
-                    {tool}
+          {projectsByCategory.map(({ category, items }) => {
+            const isCollapsed = !!collapsed[category];
+            return (
+              <div key={category}>
+                <button
+                  onClick={() => toggleCategory(category)}
+                  className="mb-3 flex w-full items-center gap-2.5 text-left transition-colors hover:text-accent/90"
+                >
+                  <ChevronIcon expanded={!isCollapsed} />
+                  <span className="text-base font-semibold text-text/70">
+                    {category}
                   </span>
-                ))}
-                {p.tools.length > 3 && (
-                  <span className="text-xs text-text/20">
-                    +{p.tools.length - 3}
+                  <span className="text-xs text-text/25">
+                    {items.length}
                   </span>
-                )}
+                </button>
+                <AnimatePresence initial={false}>
+                  {!isCollapsed && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="grid grid-cols-2 gap-3">
+                        {items.map((p) => (
+                          <button
+                            key={p.id}
+                            onClick={() => setSelected(p)}
+                            className="group rounded-xl border border-surface/[0.06] bg-surface/[0.02] p-5 text-left transition-colors hover:border-accent/15 hover:bg-accent/[0.03]"
+                          >
+                            <h3 className="text-base font-medium text-text/70 group-hover:text-accent/80">
+                              {p.title}
+                            </h3>
+                            <p className="mt-1.5 text-sm leading-relaxed text-text/35">
+                              {p.tagline}
+                            </p>
+                            <div className="mt-3 flex flex-wrap gap-1.5">
+                              {p.tools.slice(0, 3).map((tool) => (
+                                <span key={tool} className="text-xs text-secondary/30">
+                                  {tool}
+                                </span>
+                              ))}
+                              {p.tools.length > 3 && (
+                                <span className="text-xs text-text/20">
+                                  +{p.tools.length - 3}
+                                </span>
+                              )}
+                            </div>
+                          </button>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
-            </button>
-          ))}
+            );
+          })}
         </motion.div>
       )}
     </AnimatePresence>

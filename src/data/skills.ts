@@ -2,15 +2,19 @@ import { SkillCategory } from '@/types';
 
 export const skills: SkillCategory[] = [
   {
-    name: 'Languages',
-    items: ['TypeScript', 'JavaScript', 'Python', 'Go', 'SQL', 'HTML', 'CSS'],
+    name: 'Agentic AI & LLMs',
+    items: ['LangGraph', 'LangChain', 'OpenAI API', 'Anthropic API', 'RAG', 'Prompt Engineering', 'MCP', 'Unity ML-Agents'],
+  },
+  {
+    name: 'Programming Languages',
+    items: ['Python', 'C++', 'C#', 'SQL', 'HTML', 'CSS', 'TypeScript', 'JavaScript'],
   },
   {
     name: 'Libraries & Frameworks',
-    items: ['React', 'Next.js', 'Node.js', 'Express', 'Django', 'Tailwind CSS', 'Framer Motion'],
+    items: ['React', 'Next.js', '.NET', 'Expo', 'FastAPI', 'Flask', 'Pydantic', 'Tailwind CSS', 'Framer Motion', 'scikit-learn', 'pandas', 'OpenCV'],
   },
   {
-    name: 'Tools & Platforms',
-    items: ['Git', 'Docker', 'AWS', 'Vercel', 'PostgreSQL', 'Redis', 'Firebase', 'Figma'],
+    name: 'Tools',
+    items: ['Azure Data Factory', 'Azure Functions', 'Git', 'Docker', 'PostgreSQL', 'Unity', 'Vercel', 'Railway'],
   },
 ];

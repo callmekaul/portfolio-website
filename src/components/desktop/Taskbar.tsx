@@ -21,19 +21,22 @@ function Clock() {
   return <span>{time}</span>;
 }
 
-function StartMenu({ onClose }: { onClose: () => void }) {
+function StartMenu({ onClose, startBtnRef }: { onClose: () => void; startBtnRef: React.RefObject<HTMLButtonElement | null> }) {
   const openWindow = useWindowStore((s) => s.openWindow);
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+      if (
+        menuRef.current && !menuRef.current.contains(e.target as Node) &&
+        startBtnRef.current && !startBtnRef.current.contains(e.target as Node)
+      ) {
         onClose();
       }
     };
     document.addEventListener('pointerdown', handleClick);
     return () => document.removeEventListener('pointerdown', handleClick);
-  }, [onClose]);
+  }, [onClose, startBtnRef]);
 
   return (
     <motion.div
@@ -71,18 +74,20 @@ export default function Taskbar() {
   const minimizeWindow = useWindowStore((s) => s.minimizeWindow);
   const topZIndex = useWindowStore((s) => s.topZIndex);
   const [startOpen, setStartOpen] = useState(false);
+  const startBtnRef = useRef<HTMLButtonElement>(null);
 
   const openWindows = WINDOW_IDS.filter((id) => windows[id].isOpen);
 
   return (
     <>
       <AnimatePresence>
-        {startOpen && <StartMenu onClose={() => setStartOpen(false)} />}
+        {startOpen && <StartMenu onClose={() => setStartOpen(false)} startBtnRef={startBtnRef} />}
       </AnimatePresence>
 
       <div className="absolute bottom-0 left-0 right-0 z-[9999] flex h-12 items-center border-t border-surface/[0.12] bg-panel px-4">
         {/* Start button */}
         <button
+          ref={startBtnRef}
           onClick={() => setStartOpen((prev) => !prev)}
           className={`mr-2 flex h-8 w-8 items-center justify-center rounded-lg transition-colors ${
             startOpen
