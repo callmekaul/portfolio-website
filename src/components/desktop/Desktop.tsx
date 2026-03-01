@@ -20,15 +20,17 @@ export default function Desktop() {
   // Initialize theme on mount (triggers rehydration from localStorage)
   useThemeStore();
 
-  // Open default windows on desktop only (once)
+  // Open default windows on desktop only (once, after mobile check resolves)
   const hasOpened = useRef(false);
   useEffect(() => {
-    if (!isMobile && !hasOpened.current) {
+    if (isMobile === null || hasOpened.current) return;
+    if (!isMobile) {
       hasOpened.current = true;
       const { openWindow } = useWindowStore.getState();
       openWindow('music');
       openWindow('about');
     }
+    hasOpened.current = true;
   }, [isMobile]);
 
   // Vertical resize: adjust window heights when browser height changes

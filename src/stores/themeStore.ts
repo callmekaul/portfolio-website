@@ -49,7 +49,7 @@ export const useThemeStore = create<ThemeStore>()(
   persist(
     (set) => ({
       theme: 'cyber',
-      wallpaper: 'grid',
+      wallpaper: 'clouds',
 
       setTheme: (theme) => {
         applyTheme(theme);
