@@ -10,7 +10,7 @@ export default function DesktopIcons() {
   const mainIds = WINDOW_IDS.filter((id) => !UTILITY_IDS.includes(id));
 
   return (
-    <div className="absolute right-6 top-6 flex gap-6">
+    <div className="window-scroll absolute right-6 top-6 bottom-14 flex gap-6 overflow-y-auto">
       {/* Portfolio icons */}
       <div className="flex flex-col gap-5">
         {mainIds.map((id) => (

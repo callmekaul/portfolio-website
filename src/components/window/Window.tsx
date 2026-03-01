@@ -146,11 +146,27 @@ export default function Window({ id, constraintsRef, children }: WindowProps) {
       drag={!isMaximized}
       dragControls={dragControls}
       dragMomentum={false}
-      dragConstraints={constraintsRef}
-      dragElastic={0.05}
+      dragElastic={0}
       dragListener={false}
+      onDrag={() => {
+        // Clamp during drag so window can't leave viewport
+        const store = useWindowStore.getState();
+        const win = store.windows[id];
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+        const taskbarH = 48;
+        const minVisible = 80;
+
+        const rawX = win.position.x + dragX.get();
+        const rawY = win.position.y + dragY.get();
+
+        const clampedX = Math.max(-win.size.width + minVisible, Math.min(rawX, vw - minVisible));
+        const clampedY = Math.max(0, Math.min(rawY, vh - taskbarH - 40));
+
+        if (clampedX !== rawX) dragX.set(clampedX - win.position.x);
+        if (clampedY !== rawY) dragY.set(clampedY - win.position.y);
+      }}
       onDragEnd={() => {
-        // Sync drag offset into position so we have a clean state
         const dx = dragX.get();
         const dy = dragY.get();
         if (dx !== 0 || dy !== 0) {

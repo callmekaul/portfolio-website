@@ -102,4 +102,19 @@ export const useWindowStore = create<WindowStore>((set) => ({
         [id]: { ...state.windows[id], size },
       },
     })),
+
+  batchUpdate: (updates) =>
+    set((state) => {
+      const next = { ...state.windows };
+      for (const [id, patch] of Object.entries(updates)) {
+        const wid = id as WindowId;
+        if (!patch) continue;
+        next[wid] = {
+          ...next[wid],
+          ...(patch.position && { position: patch.position }),
+          ...(patch.size && { size: patch.size }),
+        };
+      }
+      return { windows: next };
+    }),
 }));

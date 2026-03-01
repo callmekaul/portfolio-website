@@ -4,7 +4,7 @@ import { useRef, useEffect } from 'react';
 import { useIsMobile } from '@/hooks/useIsMobile';
 import { useWindowStore } from '@/stores/windowStore';
 import { useThemeStore } from '@/stores/themeStore';
-import { WINDOW_IDS } from '@/lib/constants';
+import { WINDOW_IDS, WINDOW_META } from '@/lib/constants';
 import DesktopIcons from './DesktopIcons';
 import DesktopGreeting from './DesktopGreeting';
 import MobileDock from './MobileDock';
@@ -29,6 +29,38 @@ export default function Desktop() {
       openWindow('about');
     }
   }, [isMobile]);
+
+  // Vertical resize: adjust window heights when browser height changes
+  useEffect(() => {
+    const taskbarH = 48;
+    const padding = 8;
+
+    const handleResize = () => {
+      const vh = window.innerHeight;
+      const { windows, batchUpdate } = useWindowStore.getState();
+      const updates: Record<string, { size: { width: number; height: number } }> = {};
+
+      for (const id of WINDOW_IDS) {
+        const win = windows[id];
+        if (!win.isOpen || win.isMaximized) continue;
+
+        const available = vh - taskbarH - padding - win.position.y;
+        const maxH = WINDOW_META[id].defaultSize.height;
+        const targetH = Math.max(240, Math.min(maxH, available));
+
+        if (targetH !== win.size.height) {
+          updates[id] = { size: { width: win.size.width, height: targetH } };
+        }
+      }
+
+      if (Object.keys(updates).length > 0) {
+        batchUpdate(updates);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Escape key closes the topmost open window
   useEffect(() => {

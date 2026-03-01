@@ -40,6 +40,7 @@ export interface WindowStore {
   toggleMaximize: (id: WindowId) => void;
   updatePosition: (id: WindowId, pos: { x: number; y: number }) => void;
   updateSize: (id: WindowId, size: { width: number; height: number }) => void;
+  batchUpdate: (updates: Partial<Record<WindowId, Partial<Pick<WindowState, 'position' | 'size'>>>>) => void;
 }
 
 export interface WindowMeta {
