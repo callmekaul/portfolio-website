@@ -8,22 +8,22 @@ export default function MobileDock() {
   const openWindow = useWindowStore((s) => s.openWindow);
 
   return (
-    <div className="absolute bottom-0 left-0 right-0 p-4 pb-6">
-      <div className="grid grid-cols-3 gap-4 rounded-2xl border border-surface/[0.12] bg-panel p-4">
+    <div className="absolute bottom-0 left-0 right-0 p-3 pb-5">
+      <div className="grid grid-cols-4 gap-3 rounded-2xl border border-surface/[0.12] bg-panel/80 backdrop-blur-md p-3">
         {WINDOW_IDS.map((id) => {
           const meta = WINDOW_META[id];
           return (
             <motion.button
               key={id}
-              className="flex flex-col items-center gap-1.5"
+              className="flex flex-col items-center gap-1"
               onClick={() => openWindow(id)}
               whileTap={{ scale: 0.92 }}
               transition={{ duration: 0.1 }}
             >
-              <div className="flex h-14 w-14 items-center justify-center rounded-xl border border-surface/[0.08] bg-surface/[0.04] text-2xl">
+              <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-surface/[0.08] bg-surface/[0.04] text-lg">
                 {meta.icon}
               </div>
-              <span className="text-xs font-medium text-text/40">{meta.title}</span>
+              <span className="text-[10px] font-medium text-text/35">{meta.title}</span>
             </motion.button>
           );
         })}

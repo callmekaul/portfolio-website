@@ -6,7 +6,8 @@ import { useWindowStore } from '@/stores/windowStore';
 import { useThemeStore } from '@/stores/themeStore';
 import { WINDOW_IDS, WINDOW_META } from '@/lib/constants';
 import DesktopIcons from './DesktopIcons';
-import DesktopGreeting from './DesktopGreeting';
+
+import MobileHero from './MobileHero';
 import MobileDock from './MobileDock';
 import WindowManager from '../window/WindowManager';
 import Taskbar from './Taskbar';
@@ -111,9 +112,7 @@ export default function Desktop() {
         style={{ backgroundImage: 'url(/noise.svg)', backgroundRepeat: 'repeat' }}
       />
 
-      {/* Centered greeting */}
-      <DesktopGreeting />
-
+      {isMobile && <MobileHero />}
       {!isMobile && <DesktopIcons />}
       <WindowManager constraintsRef={constraintsRef} />
       {isMobile ? <MobileDock /> : <Taskbar />}
