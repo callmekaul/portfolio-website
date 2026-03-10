@@ -2,11 +2,19 @@ import { Project } from '@/types';
 
 export const projects: Project[] = [
   {
-    id: 'project-1',
+    id: 'hirewise',
     category: 'Agentic AI and LLM Systems',
     title: 'HireWise — Automated Hiring Agent',
     tagline: 'Multi-Agent Recruitment Assistant',
     tools: ['LangGraph', 'LangChain', 'FastAPI', 'Next.js', 'Anthropic API', 'OpenAI API', 'WebSockets'],
+    images: [
+      '/projects/hirewise/1.png',
+      '/projects/hirewise/2.png',
+      '/projects/hirewise/3.png',
+      '/projects/hirewise/4.png',
+      '/projects/hirewise/5.png',
+      '/projects/hirewise/6.png',
+    ],
     challenge: [
       'Different companies have varying requirements for the same role, based on their unique context, culture, and needs',
       'Manually creating an Ideal Candidate Profile and screening candidates against it is time-consuming and subjective',
@@ -25,11 +33,16 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: 'project-2',
+    id: 'upsc-essay-grader',
     category: 'Agentic AI and LLM Systems',
     title: 'UPSC Essay Grader',
     tagline: 'Hollistic Multi-Criterion UPSC Essay Evaluator',
     tools: ['LangGraph', 'LangChain', 'FastAPI', 'Pydantic'],
+    images: [
+      '/projects/upsc-essay-grader/1.png',
+      '/projects/upsc-essay-grader/2.png',
+      '/projects/upsc-essay-grader/3.png',
+    ],
     challenge: [
       'Manual essay grading is time-consuming and subjective, especially at UPSC scale',
       'Students receive generic feedback without actionable, criterion-specific suggestions',
@@ -49,11 +62,18 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/callmekaul/EssayGrader',
   },
   {
-    id: 'project-3',
+    id: 'flexist',
     category: 'Agentic AI and LLM Systems',
     title: 'Flexist - AI Powered Fitness SaaS',
     tagline: 'Personal Trainer in Your Pocket',
     tools: ['React Native', 'TypeScript', 'Expo', 'PostgreSQL', 'Flask', 'OpenAI API'],
+    images: [
+      '/projects/flexist/1.png',
+      '/projects/flexist/2.png',
+      '/projects/flexist/3.png',
+      '/projects/flexist/4.png',
+      '/projects/flexist/5.png',
+    ],
     challenge: [
       'Conventional Personal Training is Expensive, and majority gymmers only need fitness plans and diet advice, not hand-holding through every workout',
       'Huge Gap between gym membership and personal training - users want guidance but don\'t need full-time trainers',
@@ -72,7 +92,7 @@ export const projects: Project[] = [
   ],
   },
   {
-    id: 'project-4',
+    id: 'facial-recognition',
     category: 'Machine Learning',
     title: 'Facial Recognition Attendance System',
     tagline: 'Automated Attendance Tracking',
@@ -83,7 +103,7 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/callmekaul/Facial-Recognition-Based-Attendance-System',
   },
     {
-    id: 'project-5',
+    id: 'crypto-trading-bot',
     category: 'Machine Learning',
     title: 'Cryptocurrency Trading Bot',
     tagline: 'ML Trained Cryptocurrency Trading Bot',
@@ -96,7 +116,7 @@ export const projects: Project[] = [
     impact: ['Automated trading decisions, reducing manual effort, removing emotional bias and succesful beating benchmark returns.'],
   },
   {
-    id: 'project-6',
+    id: 'rl-fps-bot',
     category: 'Machine Learning',
     title: 'RL-Trained FPS Enemy Bot',
     tagline: 'Autonomous Enemy AI for Shooting Games',

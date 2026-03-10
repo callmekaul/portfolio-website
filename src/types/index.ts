@@ -74,6 +74,7 @@ export interface Project {
   challenge: string[];
   solution: string[];
   impact: string[];
+  images?: string[];
   liveUrl?: string;
   githubUrl?: string;
 }

@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { projects } from '@/data/projects';
 import { Project, ProjectCategory } from '@/types';
 import Tag from '../ui/Tag';
+import BentoImageGrid from '../ui/BentoImageGrid';
+import ImageLightbox from '../ui/ImageLightbox';
 
 const CATEGORIES: ProjectCategory[] = ['Agentic AI and LLM Systems', 'Machine Learning'];
 const projectsByCategory = CATEGORIES.map((cat) => ({
@@ -32,6 +34,8 @@ function ChevronIcon({ expanded }: { expanded: boolean }) {
 }
 
 function ProjectDetail({ project, onBack }: { project: Project; onBack: () => void }) {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
   return (
     <motion.div
       key="detail"
@@ -49,6 +53,27 @@ function ProjectDetail({ project, onBack }: { project: Project; onBack: () => vo
         </svg>
         Back to Projects
       </button>
+
+      {project.images && project.images.length > 0 && (
+        <div className="mb-5">
+          <BentoImageGrid
+            images={project.images}
+            alt={project.title}
+            onImageClick={(i) => setLightboxIndex(i)}
+          />
+        </div>
+      )}
+
+      <AnimatePresence>
+        {lightboxIndex !== null && project.images && (
+          <ImageLightbox
+            images={project.images}
+            alt={project.title}
+            initialIndex={lightboxIndex}
+            onClose={() => setLightboxIndex(null)}
+          />
+        )}
+      </AnimatePresence>
 
       <h2 className="text-xl font-semibold text-text/90">{project.title}</h2>
       <p className="mt-1 text-base text-text/50">{project.tagline}</p>
