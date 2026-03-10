@@ -30,9 +30,9 @@ export default function AboutWindow() {
 
       <div className="flex flex-wrap gap-2.5">
         {[
-          { text: `${yearsSince(2022)}+ Years of Global Enterprise Experience`, border: 'border-accent/10', bg: 'bg-accent/[0.05]', color: 'text-accent/50' },
-          { text: `${yearsSince(2020)}+ Years of Working with AI`, border: 'border-secondary/10', bg: 'bg-secondary/[0.05]', color: 'text-secondary/50' },
-          { text: `${yearsSince(2018)}+ Years Writing Clean Code`, border: 'border-emerald-400/10', bg: 'bg-emerald-400/[0.05]', color: 'text-emerald-400/50' },
+          { text: `${yearsSince(2022)}+ Years of Global Enterprise Experience`, border: 'border-accent/25', bg: 'bg-accent/10', color: 'text-accent/70' },
+          { text: `${yearsSince(2020)}+ Years of Working with AI`, border: 'border-secondary/25', bg: 'bg-secondary/10', color: 'text-secondary/70' },
+          { text: `${yearsSince(2018)}+ Years Writing Clean Code`, border: 'border-emerald-400/25', bg: 'bg-emerald-400/10', color: 'text-emerald-400/70' },
         ].map((tag) => (
           <span
             key={tag.text}
@@ -44,25 +44,25 @@ export default function AboutWindow() {
       </div>
 
       <div>
-        <p className="mb-3 text-sm font-medium uppercase tracking-wider text-accent/40">Education</p>
+        <p className="mb-3 text-sm font-medium uppercase tracking-wider text-accent/60">Education</p>
         <div className="space-y-3">
           {about.education.map((edu) => (
             <GlassCard key={edu.institution}>
               <p className="text-sm font-medium text-text/80">{edu.institution}</p>
               <p className="mt-0.5 text-sm text-text/50">{edu.degree}</p>
-              <p className="mt-1 text-xs text-text/30">{edu.location} · {edu.period}</p>
+              <p className="mt-1 text-xs text-text/45">{edu.location} · {edu.period}</p>
             </GlassCard>
           ))}
         </div>
       </div>
 
       <div>
-        <p className="mb-3 text-sm font-medium uppercase tracking-wider text-accent/40">Hobbies</p>
+        <p className="mb-3 text-sm font-medium uppercase tracking-wider text-accent/60">Hobbies</p>
         <div className="flex flex-wrap gap-2.5">
           {about.hobbies.map((hobby) => (
             <span
               key={hobby}
-              className="rounded-lg border border-secondary/10 bg-secondary/[0.05] px-3.5 py-2 text-sm text-secondary/50"
+              className="rounded-lg border border-secondary/25 bg-secondary/10 px-3.5 py-2 text-sm text-secondary/70"
             >
               {hobby}
             </span>

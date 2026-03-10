@@ -7,7 +7,7 @@ export const experiences: Experience[] = [
     period: 'Aug 2022 — Present',
     location: 'Bangalore, India - Hybrid',
     bullets: [
-      'Spearheaded the automation of critical business processes with AI Agents and MCP servers, eliminating mailbox traige and reducing business workflow effort by 95%%',
+      'Spearheaded the automation of critical business processes with AI Agents and MCP servers, eliminating mailbox triage and reducing business workflow effort by 95%%',
       'Leveraged RAG pipelines integrated with rule based execution layers to take grounded and context-aware actions, ensuring reliability and consistency in automated workflows',
       'Built ETL pipelines with Azure Data Factory, delivering production-ready integrations on tight deadlines, enabling seamless data flow for over 10000 assets across 70+ countries',
       'Designed config-driven templates to standardize file transfers, reducing dev time by 90% and saving ~$80K/year',

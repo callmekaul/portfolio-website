@@ -249,7 +249,7 @@ export default function MusicWindow() {
       <div className="space-y-1.5">
         <div
           ref={progressRef}
-          className="group relative h-1.5 cursor-pointer rounded-full bg-surface/[0.08]"
+          className="group relative h-1.5 cursor-pointer rounded-full bg-surface/30"
           onClick={seek}
         >
           <div
@@ -261,7 +261,7 @@ export default function MusicWindow() {
             style={{ left: `${progress}%` }}
           />
         </div>
-        <div className="flex justify-between text-[11px] text-text/25">
+        <div className="flex justify-between text-[11px] text-text/40">
           <span>{formatTime(currentTime)}</span>
           <span>{formatTime(duration)}</span>
         </div>
@@ -269,7 +269,7 @@ export default function MusicWindow() {
 
       {/* Controls */}
       <div className="flex items-center justify-center gap-6">
-        <button onClick={prevTrack} className="text-text/40 transition-colors hover:text-text/70">
+        <button onClick={prevTrack} className="text-text/50 transition-colors hover:text-text/80">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
             <path d="M6 6h2v12H6zm3.5 6 8.5 6V6z" />
           </svg>
@@ -290,7 +290,7 @@ export default function MusicWindow() {
           )}
         </button>
 
-        <button onClick={nextTrack} className="text-text/40 transition-colors hover:text-text/70">
+        <button onClick={nextTrack} className="text-text/50 transition-colors hover:text-text/80">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
             <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6z" />
           </svg>
@@ -299,7 +299,7 @@ export default function MusicWindow() {
 
       {/* Volume */}
       <div className="flex items-center gap-3">
-        <svg className="shrink-0 text-text/30" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+        <svg className="shrink-0 text-text/45" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
           <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0014 8.14v7.72A4.5 4.5 0 0016.5 12z" />
         </svg>
         <input
@@ -308,16 +308,16 @@ export default function MusicWindow() {
           max={100}
           value={volume}
           onChange={changeVolume}
-          className="h-1 w-full cursor-pointer appearance-none rounded-full bg-surface/[0.08] accent-accent [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-accent"
+          className="h-1 w-full cursor-pointer appearance-none rounded-full bg-surface/30 accent-accent [&::-webkit-slider-thumb]:h-3 [&::-webkit-slider-thumb]:w-3 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-accent"
         />
-        <svg className="shrink-0 text-text/30" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+        <svg className="shrink-0 text-text/45" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
           <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0014 8.14v7.72A4.5 4.5 0 0016.5 12zM14 3.23v2.06a8 8 0 010 13.42v2.06A10 10 0 0014 3.23z" />
         </svg>
       </div>
 
       {/* Playlist */}
       <div>
-        <p className="mb-2 text-sm font-medium uppercase tracking-wider text-accent/40">
+        <p className="mb-2 text-sm font-medium uppercase tracking-wider text-accent/60">
           Playlist
         </p>
         <div className="space-y-1">
@@ -327,16 +327,16 @@ export default function MusicWindow() {
               onClick={() => selectTrack(i)}
               className={`flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left transition-colors ${
                 i === currentIndex
-                  ? 'bg-accent/[0.08] text-accent/80'
-                  : 'text-text/50 hover:bg-surface/[0.05] hover:text-text/70'
+                  ? 'bg-accent/15 text-accent'
+                  : 'text-text/60 hover:bg-surface/30 hover:text-text/80'
               }`}
             >
-              <span className="w-5 text-center text-xs text-text/25">
+              <span className="w-5 text-center text-xs text-text/40">
                 {i === currentIndex && isPlaying ? '▶' : i + 1}
               </span>
               <div className="min-w-0 flex-1">
                 <p className="truncate text-sm font-medium">{t.title}</p>
-                <p className="truncate text-xs text-text/30">{t.artist}</p>
+                <p className="truncate text-xs text-text/45">{t.artist}</p>
               </div>
             </button>
           ))}

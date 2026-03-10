@@ -10,7 +10,7 @@ export default function DisplayWindow() {
     <div className="space-y-6">
       {/* Theme Presets */}
       <div>
-        <p className="mb-3 text-sm font-medium uppercase tracking-wider text-accent/40">
+        <p className="mb-3 text-sm font-medium uppercase tracking-wider text-accent/60">
           Theme
         </p>
         <div className="grid grid-cols-2 gap-2.5">
@@ -23,8 +23,8 @@ export default function DisplayWindow() {
                 onClick={() => setTheme(key)}
                 className={`group flex flex-col items-center gap-2 rounded-xl border p-3 transition-colors ${
                   isActive
-                    ? 'border-accent/30 bg-accent/[0.06]'
-                    : 'border-surface/[0.06] bg-surface/[0.02] hover:border-surface/[0.12] hover:bg-surface/[0.04]'
+                    ? 'border-accent/50 bg-accent/15'
+                    : 'border-surface/50 bg-surface/20 hover:border-surface/70 hover:bg-surface/40'
                 }`}
               >
                 {/* Color swatches */}
@@ -44,7 +44,7 @@ export default function DisplayWindow() {
                 </div>
                 <span
                   className={`text-xs font-medium ${
-                    isActive ? 'text-accent/70' : 'text-text/40'
+                    isActive ? 'text-accent' : 'text-text/40'
                   }`}
                 >
                   {preset.label}
@@ -57,7 +57,7 @@ export default function DisplayWindow() {
 
       {/* Wallpaper */}
       <div>
-        <p className="mb-3 text-sm font-medium uppercase tracking-wider text-accent/40">
+        <p className="mb-3 text-sm font-medium uppercase tracking-wider text-accent/60">
           Wallpaper
         </p>
         <div className="grid grid-cols-3 gap-2.5">
@@ -70,20 +70,20 @@ export default function DisplayWindow() {
                 onClick={() => setWallpaper(key)}
                 className={`rounded-xl border px-4 py-3 text-left transition-colors ${
                   isActive
-                    ? 'border-accent/30 bg-accent/[0.06]'
-                    : 'border-surface/[0.06] bg-surface/[0.02] hover:border-surface/[0.12] hover:bg-surface/[0.04]'
+                    ? 'border-accent/50 bg-accent/15'
+                    : 'border-surface/50 bg-surface/20 hover:border-surface/70 hover:bg-surface/40'
                 }`}
               >
                 <span
                   className={`text-sm font-medium ${
-                    isActive ? 'text-accent/70' : 'text-text/50'
+                    isActive ? 'text-accent' : 'text-text/50'
                   }`}
                 >
                   {opt.label}
                 </span>
                 <p
                   className={`mt-0.5 text-xs ${
-                    isActive ? 'text-accent/40' : 'text-text/25'
+                    isActive ? 'text-accent/60' : 'text-text/40'
                   }`}
                 >
                   {opt.description}

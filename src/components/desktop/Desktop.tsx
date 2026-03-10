@@ -108,7 +108,7 @@ export default function Desktop() {
       <Wallpaper />
 
       {/* Translucent background overlay (between wallpaper and content) */}
-      <div className="pointer-events-none absolute inset-0 bg-bg/30" />
+      <div className="pointer-events-none absolute inset-0 bg-bg/15" />
 
       {/* Noise texture */}
       <div

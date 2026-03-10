@@ -46,7 +46,7 @@ function ProjectDetail({ project, onBack }: { project: Project; onBack: () => vo
     >
       <button
         onClick={onBack}
-        className="mb-4 flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm text-accent/50 transition-colors hover:bg-accent/[0.06] hover:text-accent/70"
+        className="mb-4 flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm text-accent/60 transition-colors hover:bg-accent/15 hover:text-accent"
       >
         <svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <path d="M8 1L3 6L8 11" />
@@ -97,7 +97,7 @@ function ProjectDetail({ project, onBack }: { project: Project; onBack: () => vo
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-lg border border-accent/15 bg-accent/[0.06] px-5 py-2.5 text-sm text-accent/70 transition-colors hover:bg-accent/[0.1]"
+              className="rounded-lg border border-accent/30 bg-accent/15 px-5 py-2.5 text-sm text-accent transition-colors hover:bg-accent/25"
             >
               Live Demo ↗
             </a>
@@ -107,7 +107,7 @@ function ProjectDetail({ project, onBack }: { project: Project; onBack: () => vo
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-lg border border-secondary/15 bg-secondary/[0.06] px-5 py-2.5 text-sm text-secondary/70 transition-colors hover:bg-secondary/[0.1]"
+              className="rounded-lg border border-secondary/30 bg-secondary/15 px-5 py-2.5 text-sm text-secondary transition-colors hover:bg-secondary/25"
             >
               GitHub ↗
             </a>
@@ -121,11 +121,11 @@ function ProjectDetail({ project, onBack }: { project: Project; onBack: () => vo
 function Section({ title, items }: { title: string; items: string[] }) {
   return (
     <div>
-      <p className="text-sm font-medium uppercase tracking-wider text-accent/40">{title}</p>
+      <p className="text-sm font-medium uppercase tracking-wider text-accent/60">{title}</p>
       <ul className="mt-2 space-y-1.5">
         {items.map((item, i) => (
-          <li key={i} className="flex gap-2 text-base leading-relaxed text-text/55">
-            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/30" />
+          <li key={i} className="flex gap-2 text-base leading-relaxed text-text/70">
+            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/50" />
             {item}
           </li>
         ))}
@@ -170,7 +170,7 @@ export default function ProjectsWindow() {
                   <span className="text-base font-semibold text-text/70">
                     {category}
                   </span>
-                  <span className="text-xs text-text/25">
+                  <span className="text-xs text-text/40">
                     {items.length}
                   </span>
                 </button>
@@ -188,22 +188,22 @@ export default function ProjectsWindow() {
                           <button
                             key={p.id}
                             onClick={() => setSelected(p)}
-                            className="group rounded-xl border border-surface/[0.06] bg-surface/[0.02] p-5 text-left transition-colors hover:border-accent/15 hover:bg-accent/[0.03]"
+                            className="group rounded-xl border border-surface/50 bg-surface/20 p-5 text-left transition-colors hover:border-accent/30 hover:bg-accent/10"
                           >
-                            <h3 className="text-base font-medium text-text/70 group-hover:text-accent/80">
+                            <h3 className="text-base font-medium text-text/80 group-hover:text-accent">
                               {p.title}
                             </h3>
-                            <p className="mt-1.5 text-sm leading-relaxed text-text/35">
+                            <p className="mt-1.5 text-sm leading-relaxed text-text/50">
                               {p.tagline}
                             </p>
                             <div className="mt-3 flex flex-wrap gap-1.5">
                               {p.tools.slice(0, 3).map((tool) => (
-                                <span key={tool} className="text-xs text-secondary/30">
+                                <span key={tool} className="text-xs text-secondary/50">
                                   {tool}
                                 </span>
                               ))}
                               {p.tools.length > 3 && (
-                                <span className="text-xs text-text/20">
+                                <span className="text-xs text-text/35">
                                   +{p.tools.length - 3}
                                 </span>
                               )}

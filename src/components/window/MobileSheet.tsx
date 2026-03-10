@@ -17,19 +17,19 @@ export default function MobileSheet({ id, title, icon, children }: MobileSheetPr
 
   return (
     <motion.div
-      className="fixed inset-0 z-50 flex flex-col bg-bg/95 backdrop-blur-xl"
+      className="fixed inset-0 z-50 flex flex-col bg-bg"
       initial={{ y: '100%' }}
       animate={{ y: 0 }}
       exit={{ y: '100%' }}
       transition={{ type: 'spring', stiffness: 400, damping: 35 }}
     >
-      <header className="flex items-center justify-between border-b border-surface/[0.12] bg-panel px-5 py-4">
+      <header className="flex items-center justify-between border-b border-surface/50 bg-panel px-5 py-4">
         <div className="flex items-center gap-3">
           <span className="text-lg">{icon}</span>
           <span className="text-base font-medium text-text/80">{title}</span>
         </div>
         <button
-          className="flex h-8 w-8 items-center justify-center rounded-lg text-text/40 transition-colors hover:bg-surface/[0.08] hover:text-text/70"
+          className="flex h-8 w-8 items-center justify-center rounded-lg text-text/50 transition-colors hover:bg-surface hover:text-text/80"
           onClick={() => closeWindow(id)}
           aria-label="Close"
         >

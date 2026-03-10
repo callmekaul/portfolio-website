@@ -15,15 +15,15 @@ export default function ExperienceWindow() {
               <p className="text-sm text-secondary/45">{exp.company}</p>
             </div>
             <div className="shrink-0 text-right">
-              <p className="text-sm text-accent/35">{exp.period}</p>
-              <p className="text-sm text-text/25">{exp.location}</p>
+              <p className="text-sm text-accent/50">{exp.period}</p>
+              <p className="text-sm text-text/40">{exp.location}</p>
             </div>
           </div>
 
           <ul className="mt-3 space-y-2">
             {exp.bullets.map((bullet, j) => (
-              <li key={j} className="flex gap-2.5 text-sm leading-relaxed text-text/50">
-                <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent/40" />
+              <li key={j} className="flex gap-2.5 text-sm leading-relaxed text-text/65">
+                <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent/50" />
                 {bullet}
               </li>
             ))}

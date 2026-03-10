@@ -7,11 +7,11 @@
 
 @theme {
   --color-bg: #06060c;
-  --color-panel: #1a1a2e;
-  --color-surface: #ffffff;
-  --color-accent: #22d3ee;
-  --color-secondary: #c084fc;
-  --color-text: #ffffff;
+  --color-panel: #12122a;
+  --color-surface: #1c1c3a;
+  --color-accent: #ff2a6d;
+  --color-secondary: #05d9e8;
+  --color-text: #f0e8ff;
 }
 
 * {

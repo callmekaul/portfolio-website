@@ -8,7 +8,7 @@ export const WINDOW_META: Record<WindowId, WindowMeta> = {
   projects:   { title: 'Projects',    icon: '🚀', defaultSize: { width: 700, height: 560 } },
   skills:     { title: 'Skills',      icon: '⚡', defaultSize: { width: 520, height: 480 } },
   resume:     { title: 'Resume',      icon: '📄', defaultSize: { width: 700, height: 750 } },
-  contact:    { title: 'Contact',     icon: '✉️',  defaultSize: { width: 520, height: 580 } },
+  contact:    { title: 'Contact',     icon: '✉️',  defaultSize: { width: 520, height: 720 } },
   display:    { title: 'Display',    icon: '🎨', defaultSize: { width: 480, height: 520 } },
   music:      { title: 'Music',      icon: '🎵', defaultSize: { width: 420, height: 520 } },
 };

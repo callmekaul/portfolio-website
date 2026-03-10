@@ -45,7 +45,7 @@ function StartMenu({ onClose, startBtnRef }: { onClose: () => void; startBtnRef:
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: 8, scale: 0.96 }}
       transition={{ duration: 0.15 }}
-      className="absolute bottom-14 left-3 z-[10000] w-56 rounded-xl border border-surface/[0.12] bg-panel p-2"
+      className="absolute bottom-14 left-3 z-[10000] w-56 rounded-xl border border-surface/50 bg-panel p-2 shadow-lg shadow-black/40"
     >
       {WINDOW_IDS.map((id) => {
         const meta = WINDOW_META[id];
@@ -56,7 +56,7 @@ function StartMenu({ onClose, startBtnRef }: { onClose: () => void; startBtnRef:
               openWindow(id);
               onClose();
             }}
-            className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-text/60 transition-colors hover:bg-surface/[0.08] hover:text-text/80"
+            className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-text/70 transition-colors hover:bg-surface hover:text-text/90"
           >
             <span className="text-base">{meta.icon}</span>
             <span>{meta.title}</span>
@@ -84,15 +84,15 @@ export default function Taskbar() {
         {startOpen && <StartMenu onClose={() => setStartOpen(false)} startBtnRef={startBtnRef} />}
       </AnimatePresence>
 
-      <div className="absolute bottom-0 left-0 right-0 z-[9999] flex h-12 items-center border-t border-surface/[0.12] bg-panel px-4">
+      <div className="absolute bottom-0 left-0 right-0 z-[9999] flex h-12 items-center border-t border-surface/50 bg-panel px-4">
         {/* Start button */}
         <button
           ref={startBtnRef}
           onClick={() => setStartOpen((prev) => !prev)}
           className={`mr-2 flex h-8 w-8 items-center justify-center rounded-lg transition-colors ${
             startOpen
-              ? 'bg-accent/[0.1] text-accent/70'
-              : 'text-text/40 hover:bg-surface/[0.08] hover:text-text/60'
+              ? 'bg-accent/20 text-accent'
+              : 'text-text/50 hover:bg-surface hover:text-text/70'
           }`}
           aria-label="Start menu"
         >
@@ -121,8 +121,8 @@ export default function Taskbar() {
                   transition={{ type: 'spring', stiffness: 500, damping: 25 }}
                   className={`flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm transition-colors ${
                     isMinimized
-                      ? 'text-text/30 hover:bg-surface/[0.04]'
-                      : 'bg-accent/[0.06] text-accent/60 hover:bg-accent/[0.1]'
+                      ? 'text-text/40 hover:bg-surface'
+                      : 'bg-accent/15 text-accent/80 hover:bg-accent/25'
                   }`}
                   onClick={() => {
                     if (isMinimized) {
@@ -143,7 +143,7 @@ export default function Taskbar() {
         </div>
 
         {/* Right: clock */}
-        <div className="ml-auto text-xs text-text/25">
+        <div className="ml-auto text-xs text-text/40">
           <Clock />
         </div>
       </div>

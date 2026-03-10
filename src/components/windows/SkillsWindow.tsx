@@ -14,15 +14,15 @@ const item = {
 };
 
 const categoryColors = [
-  'border-accent/10 bg-accent/[0.05] text-accent/60',
-  'border-secondary/10 bg-secondary/[0.05] text-secondary/60',
-  'border-accent/8 bg-accent/[0.03] text-accent/45',
+  'border-accent/25 bg-accent/10 text-accent/70',
+  'border-secondary/25 bg-secondary/10 text-secondary/70',
+  'border-accent/20 bg-accent/8 text-accent/60',
 ];
 
 const labelColors = [
-  'text-accent/40',
-  'text-secondary/40',
-  'text-accent/30',
+  'text-accent/60',
+  'text-secondary/60',
+  'text-accent/50',
 ];
 
 export default function SkillsWindow() {

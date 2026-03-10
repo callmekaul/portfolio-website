@@ -29,7 +29,7 @@ export default function WindowTitleBar({ id, title, icon, onPointerDown }: Windo
       <div className="flex items-center gap-2">
         {/* Minimize */}
         <button
-          className="flex h-7 w-7 items-center justify-center rounded-md text-text/40 transition-colors hover:bg-surface/[0.08] hover:text-text/70"
+          className="flex h-7 w-7 items-center justify-center rounded-md text-text/50 transition-colors hover:bg-surface hover:text-text/80"
           onClick={(e) => { e.stopPropagation(); minimizeWindow(id); }}
           onPointerDown={(e) => e.stopPropagation()}
           aria-label="Minimize"
@@ -40,7 +40,7 @@ export default function WindowTitleBar({ id, title, icon, onPointerDown }: Windo
         </button>
         {/* Maximize / Restore */}
         <button
-          className="flex h-7 w-7 items-center justify-center rounded-md text-text/40 transition-colors hover:bg-surface/[0.08] hover:text-text/70"
+          className="flex h-7 w-7 items-center justify-center rounded-md text-text/50 transition-colors hover:bg-surface hover:text-text/80"
           onClick={(e) => { e.stopPropagation(); toggleMaximize(id); }}
           onPointerDown={(e) => e.stopPropagation()}
           aria-label={isMaximized ? 'Restore' : 'Maximize'}
@@ -60,7 +60,7 @@ export default function WindowTitleBar({ id, title, icon, onPointerDown }: Windo
         </button>
         {/* Close */}
         <button
-          className="flex h-7 w-7 items-center justify-center rounded-md text-text/40 transition-colors hover:bg-red-500/20 hover:text-red-400"
+          className="flex h-7 w-7 items-center justify-center rounded-md text-text/50 transition-colors hover:bg-red-500/20 hover:text-red-400"
           onClick={(e) => { e.stopPropagation(); closeWindow(id); }}
           onPointerDown={(e) => e.stopPropagation()}
           aria-label="Close"

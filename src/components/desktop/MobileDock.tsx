@@ -9,7 +9,7 @@ export default function MobileDock() {
 
   return (
     <div className="absolute bottom-0 left-0 right-0 p-3 pb-5">
-      <div className="grid grid-cols-4 gap-3 rounded-2xl border border-surface/[0.12] bg-panel/80 backdrop-blur-md p-3">
+      <div className="grid grid-cols-4 gap-3 rounded-2xl border border-surface/50 bg-panel p-3">
         {WINDOW_IDS.map((id) => {
           const meta = WINDOW_META[id];
           return (
@@ -20,10 +20,10 @@ export default function MobileDock() {
               whileTap={{ scale: 0.92 }}
               transition={{ duration: 0.1 }}
             >
-              <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-surface/[0.08] bg-surface/[0.04] text-lg">
+              <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-surface/50 bg-surface/30 text-lg">
                 {meta.icon}
               </div>
-              <span className="text-[10px] font-medium text-text/35">{meta.title}</span>
+              <span className="text-[10px] font-medium text-text/50">{meta.title}</span>
             </motion.button>
           );
         })}

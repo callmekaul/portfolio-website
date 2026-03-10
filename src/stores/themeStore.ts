@@ -5,19 +5,19 @@ import { ThemePreset, WallpaperType, ThemeColors, ThemeStore } from '@/types';
 export const THEME_PRESETS: Record<ThemePreset, { label: string; colors: ThemeColors }> = {
   cyber: {
     label: 'Cyber',
-    colors: { bg: '#06060c', panel: '#1a1a2e', surface: '#ffffff', accent: '#22d3ee', secondary: '#c084fc', text: '#ffffff' },
+    colors: { bg: '#06060c', panel: '#12122a', surface: '#1c1c3a', accent: '#ff2a6d', secondary: '#05d9e8', text: '#f0e8ff' },
   },
   ocean: {
     label: 'Ocean',
-    colors: { bg: '#050a18', panel: '#0f2847', surface: '#a0c4ff', accent: '#38bdf8', secondary: '#2dd4bf', text: '#e0f0ff' },
+    colors: { bg: '#040c1a', panel: '#0c1e3c', surface: '#14284e', accent: '#38bdf8', secondary: '#2dd4bf', text: '#dbeafe' },
   },
   ember: {
     label: 'Ember',
-    colors: { bg: '#120808', panel: '#2e1515', surface: '#ffd0b0', accent: '#fb923c', secondary: '#f472b6', text: '#fff0e8' },
+    colors: { bg: '#0e0606', panel: '#261010', surface: '#381a1a', accent: '#fb923c', secondary: '#f472b6', text: '#fff0e8' },
   },
   sunset: {
     label: 'Sunset',
-    colors: { bg: '#1a0a1e', panel: '#2d1233', surface: '#ffd6e0', accent: '#fbbf24', secondary: '#f472b6', text: '#fff0f5' },
+    colors: { bg: '#120818', panel: '#221030', surface: '#321a48', accent: '#fbbf24', secondary: '#f472b6', text: '#fff0f5' },
   },
 };
 

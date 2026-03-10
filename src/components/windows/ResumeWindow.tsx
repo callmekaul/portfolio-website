@@ -15,7 +15,7 @@ export default function ResumeWindow() {
           href="/AdityaKaul_CV.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-xl border border-accent/15 bg-accent/[0.07] px-7 py-3.5 text-base text-accent/70 transition-colors hover:bg-accent/[0.12]"
+          className="rounded-xl border border-accent/30 bg-accent/15 px-7 py-3.5 text-base text-accent transition-colors hover:bg-accent/25"
         >
           Open Resume ↗
         </a>
@@ -30,14 +30,14 @@ export default function ResumeWindow() {
           href="/AdityaKaul_CV.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="rounded-lg border border-accent/15 bg-accent/[0.06] px-5 py-2.5 text-sm text-accent/60 transition-colors hover:bg-accent/[0.1]"
+          className="rounded-lg border border-accent/30 bg-accent/15 px-5 py-2.5 text-sm text-accent transition-colors hover:bg-accent/25"
         >
           Open in New Tab ↗
         </a>
       </div>
       <iframe
         src="/AdityaKaul_CV.pdf"
-        className="flex-1 rounded-lg border border-surface/[0.06]"
+        className="flex-1 rounded-lg border border-surface/50"
         title="Resume"
         style={{ minHeight: 450 }}
       />
