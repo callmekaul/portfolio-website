@@ -7,14 +7,6 @@ export const projects: Project[] = [
     title: 'HireWise — Automated Hiring Agent',
     tagline: 'Multi-Agent Recruitment Assistant',
     tools: ['LangGraph', 'LangChain', 'FastAPI', 'Next.js', 'Anthropic API', 'OpenAI API', 'WebSockets'],
-    images: [
-      '/projects/hirewise/1.png',
-      '/projects/hirewise/2.png',
-      '/projects/hirewise/3.png',
-      '/projects/hirewise/4.png',
-      '/projects/hirewise/5.png',
-      '/projects/hirewise/6.png',
-    ],
     challenge: [
       'Different companies have varying requirements for the same role, based on their unique context, culture, and needs',
       'Manually creating an Ideal Candidate Profile and screening candidates against it is time-consuming and subjective',
@@ -38,11 +30,6 @@ export const projects: Project[] = [
     title: 'UPSC Essay Grader',
     tagline: 'Hollistic Multi-Criterion UPSC Essay Evaluator',
     tools: ['LangGraph', 'LangChain', 'FastAPI', 'Pydantic'],
-    images: [
-      '/projects/upsc-essay-grader/1.png',
-      '/projects/upsc-essay-grader/2.png',
-      '/projects/upsc-essay-grader/3.png',
-    ],
     challenge: [
       'Manual essay grading is time-consuming and subjective, especially at UPSC scale',
       'Students receive generic feedback without actionable, criterion-specific suggestions',
@@ -67,13 +54,6 @@ export const projects: Project[] = [
     title: 'Flexist - AI Powered Fitness SaaS',
     tagline: 'Personal Trainer in Your Pocket',
     tools: ['React Native', 'TypeScript', 'Expo', 'PostgreSQL', 'Flask', 'OpenAI API'],
-    images: [
-      '/projects/flexist/1.png',
-      '/projects/flexist/2.png',
-      '/projects/flexist/3.png',
-      '/projects/flexist/4.png',
-      '/projects/flexist/5.png',
-    ],
     challenge: [
       'Conventional Personal Training is Expensive, and majority gymmers only need fitness plans and diet advice, not hand-holding through every workout',
       'Huge Gap between gym membership and personal training - users want guidance but don\'t need full-time trainers',
