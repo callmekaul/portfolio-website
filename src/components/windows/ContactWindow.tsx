@@ -73,7 +73,7 @@ export default function ContactWindow() {
                     <p className="text-base font-medium leading-snug text-text sm:text-lg">
                       {s.question}
                     </p>
-                    <p className="text-xs leading-relaxed text-text sm:text-sm">
+                    <p className="text-xs leading-relaxed text-secondary sm:text-sm">
                       {highlightKeyword(s.answer, s.keyword)}
                     </p>
                   </div>
