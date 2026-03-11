@@ -12,6 +12,7 @@ import MobileDock from './MobileDock';
 import WindowManager from '../window/WindowManager';
 import Taskbar from './Taskbar';
 import Wallpaper from './Wallpaper';
+import MusicProvider from './MusicProvider';
 
 export default function Desktop() {
   const constraintsRef = useRef<HTMLDivElement>(null);
@@ -66,9 +67,12 @@ export default function Desktop() {
     if (isMobile === null || hasOpened.current) return;
     if (!isMobile) {
       hasOpened.current = true;
-      const { openWindow } = useWindowStore.getState();
-      openWindow('music');
+      const { openWindow, minimizeWindow } = useWindowStore.getState();
+      openWindow('contact');
       openWindow('about');
+      // Open music minimized — shows in taskbar right section
+      openWindow('music');
+      minimizeWindow('music');
       // Clamp immediately after opening so they fit the viewport
       clampWindows.current();
     }
@@ -116,6 +120,7 @@ export default function Desktop() {
         style={{ backgroundImage: 'url(/noise.svg)', backgroundRepeat: 'repeat' }}
       />
 
+      <MusicProvider />
       {isMobile && <MobileHero />}
       {!isMobile && <DesktopIcons />}
       <WindowManager constraintsRef={constraintsRef} />

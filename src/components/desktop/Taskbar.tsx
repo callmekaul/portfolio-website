@@ -3,6 +3,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useWindowStore } from '@/stores/windowStore';
+import { useMusicStore } from '@/stores/musicStore';
+import { playlist } from '@/data/playlist';
 import { WINDOW_IDS, WINDOW_META } from '@/lib/constants';
 
 function Clock() {
@@ -67,16 +69,39 @@ function StartMenu({ onClose, startBtnRef }: { onClose: () => void; startBtnRef:
   );
 }
 
+/* ------------------------------------------------------------------ */
+/*  Taskbar                                                            */
+/* ------------------------------------------------------------------ */
 export default function Taskbar() {
   const windows = useWindowStore((s) => s.windows);
+  const openWindow = useWindowStore((s) => s.openWindow);
   const focusWindow = useWindowStore((s) => s.focusWindow);
   const restoreWindow = useWindowStore((s) => s.restoreWindow);
   const minimizeWindow = useWindowStore((s) => s.minimizeWindow);
   const topZIndex = useWindowStore((s) => s.topZIndex);
+  const currentIndex = useMusicStore((s) => s.currentIndex);
+  const isPlaying = useMusicStore((s) => s.isPlaying);
   const [startOpen, setStartOpen] = useState(false);
   const startBtnRef = useRef<HTMLButtonElement>(null);
+  const track = playlist[currentIndex];
 
-  const openWindows = WINDOW_IDS.filter((id) => windows[id].isOpen);
+  const musicWin = windows.music;
+  const musicVisible = musicWin.isOpen && !musicWin.isMinimized;
+
+  // Filter music out of regular taskbar tabs — it lives in the right section
+  const openWindows = WINDOW_IDS.filter((id) => id !== 'music' && windows[id].isOpen);
+
+  const handleMusicClick = () => {
+    if (!musicWin.isOpen) {
+      openWindow('music');
+    } else if (musicWin.isMinimized) {
+      restoreWindow('music');
+    } else if (musicWin.zIndex === topZIndex) {
+      minimizeWindow('music');
+    } else {
+      focusWindow('music');
+    }
+  };
 
   return (
     <>
@@ -142,9 +167,36 @@ export default function Taskbar() {
           </AnimatePresence>
         </div>
 
-        {/* Right: clock */}
-        <div className="ml-auto text-xs text-text/40">
-          <Clock />
+        {/* Right: music + clock */}
+        <div className="ml-auto flex items-center gap-3">
+          {/* Music button — acts as minimized music window */}
+          <button
+            onClick={handleMusicClick}
+            className={`flex h-8 items-center gap-2 rounded-lg px-2 transition-colors ${
+              musicVisible
+                ? 'border border-accent/40 bg-accent/20 text-accent'
+                : isPlaying
+                  ? 'border border-accent/25 bg-accent/10 text-accent/70 hover:bg-accent/20 hover:text-accent'
+                  : 'text-text/40 hover:bg-surface hover:text-text/60'
+            }`}
+            aria-label="Music player"
+          >
+            <svg className="shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 3v10.55A4 4 0 1014 17V7h4V3h-6z" />
+            </svg>
+            <span className="max-w-[120px] truncate text-xs">{track.title}</span>
+            {isPlaying && (
+              <span className="flex items-center gap-[2px]">
+                <span className="inline-block h-2.5 w-[2px] animate-pulse rounded-full bg-current" style={{ animationDelay: '0ms' }} />
+                <span className="inline-block h-3 w-[2px] animate-pulse rounded-full bg-current" style={{ animationDelay: '150ms' }} />
+                <span className="inline-block h-2 w-[2px] animate-pulse rounded-full bg-current" style={{ animationDelay: '300ms' }} />
+              </span>
+            )}
+          </button>
+
+          <div className="text-xs text-text/40">
+            <Clock />
+          </div>
         </div>
       </div>
     </>

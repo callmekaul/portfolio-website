@@ -50,7 +50,7 @@ export default function ContactWindow() {
 
   return (
     <div className="flex h-full flex-col">
-      <div ref={constraintsRef} className="relative min-h-0 flex-1 overflow-hidden">
+      <div ref={constraintsRef} className="window-scroll relative min-h-0 flex-1 overflow-y-auto overflow-x-hidden">
         <motion.div
           drag="x"
           dragConstraints={constraintsRef}
@@ -66,7 +66,7 @@ export default function ContactWindow() {
                 animate={{ x: 0, opacity: 1 }}
                 exit={{ x: -60, opacity: 0 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-                className="flex h-full flex-col justify-center space-y-5 px-1"
+                className="space-y-5 px-1"
               >
                 {services.map((s, i) => (
                   <div key={i} className="space-y-1.5">
