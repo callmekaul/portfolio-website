@@ -67,8 +67,8 @@ export default function MusicWindow() {
           {isPlaying ? '♫' : '♪'}
         </div>
         <div className="min-w-0 flex-1">
-          <p className="truncate text-sm font-semibold text-text/90 sm:text-base">{track.title}</p>
-          <p className="truncate text-xs text-text/40 sm:text-sm">{track.artist}</p>
+          <p className="truncate text-sm font-semibold text-text sm:text-base">{track.title}</p>
+          <p className="truncate text-xs text-text sm:text-sm">{track.artist}</p>
         </div>
       </div>
 
@@ -80,7 +80,7 @@ export default function MusicWindow() {
           onClick={seek}
         >
           <div
-            className="absolute left-0 top-0 h-full rounded-full bg-accent/70 transition-[width] duration-100"
+            className="absolute left-0 top-0 h-full rounded-full bg-accent transition-[width] duration-100"
             style={{ width: `${progress}%` }}
           />
           <div
@@ -88,7 +88,7 @@ export default function MusicWindow() {
             style={{ left: `${progress}%` }}
           />
         </div>
-        <div className="flex justify-between text-[11px] text-text/40">
+        <div className="flex justify-between text-[11px] text-text">
           <span>{formatTime(currentTime)}</span>
           <span>{formatTime(duration)}</span>
         </div>
@@ -98,7 +98,7 @@ export default function MusicWindow() {
       <div className="flex items-center justify-between">
         {/* Volume */}
         <div className="flex w-24 items-center gap-2">
-          <svg className="shrink-0 text-text/45" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <svg className="shrink-0 text-text" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
             <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0014 8.14v7.72A4.5 4.5 0 0016.5 12z" />
           </svg>
           <input
@@ -113,7 +113,7 @@ export default function MusicWindow() {
 
         {/* Playback controls */}
         <div className="flex items-center gap-5">
-          <button onClick={() => useMusicStore.getState().prevTrack()} className="text-text/50 transition-colors hover:text-text/80">
+          <button onClick={() => useMusicStore.getState().prevTrack()} className="text-text transition-colors hover:text-accent">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
               <path d="M6 6h2v12H6zm3.5 6 8.5 6V6z" />
             </svg>
@@ -134,7 +134,7 @@ export default function MusicWindow() {
             )}
           </button>
 
-          <button onClick={() => useMusicStore.getState().nextTrack()} className="text-text/50 transition-colors hover:text-text/80">
+          <button onClick={() => useMusicStore.getState().nextTrack()} className="text-text transition-colors hover:text-accent">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
               <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6z" />
             </svg>
@@ -145,7 +145,7 @@ export default function MusicWindow() {
         <button
           onClick={togglePlaylist}
           className={`flex h-8 w-8 items-center justify-center rounded-lg transition-colors ${
-            showPlaylist ? 'bg-accent/20 text-accent' : 'text-text/40 hover:text-text/70'
+            showPlaylist ? 'bg-accent/20 text-accent' : 'text-text hover:text-accent'
           }`}
           title="Toggle playlist"
         >
@@ -173,15 +173,15 @@ export default function MusicWindow() {
                   className={`flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left transition-colors ${
                     i === currentIndex
                       ? 'bg-accent/15 text-accent'
-                      : 'text-text/60 hover:bg-surface/30 hover:text-text/80'
+                      : 'text-text hover:bg-surface/30 hover:text-accent'
                   }`}
                 >
-                  <span className="w-5 text-center text-xs text-text/40">
+                  <span className="w-5 text-center text-xs text-text">
                     {i === currentIndex && isPlaying ? '▶' : i + 1}
                   </span>
                   <div className="min-w-0 flex-1">
                     <p className="truncate text-sm font-medium">{t.title}</p>
-                    <p className="truncate text-xs text-text/45">{t.artist}</p>
+                    <p className="truncate text-xs text-text">{t.artist}</p>
                   </div>
                 </button>
               ))}

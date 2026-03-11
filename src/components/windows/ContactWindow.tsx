@@ -70,17 +70,17 @@ export default function ContactWindow() {
               >
                 {services.map((s, i) => (
                   <div key={i} className="space-y-1.5">
-                    <p className="text-base font-medium leading-snug text-text/80 sm:text-lg">
+                    <p className="text-base font-medium leading-snug text-text sm:text-lg">
                       {s.question}
                     </p>
-                    <p className="text-xs leading-relaxed text-text/50 sm:text-sm">
+                    <p className="text-xs leading-relaxed text-text sm:text-sm">
                       {highlightKeyword(s.answer, s.keyword)}
                     </p>
                   </div>
                 ))}
 
                 <div className="pt-2">
-                  <p className="text-base leading-relaxed text-text/80 sm:text-lg">
+                  <p className="text-base leading-relaxed text-text sm:text-lg">
                     Want someone to do it for you?
                   </p>
                   <button
@@ -102,7 +102,7 @@ export default function ContactWindow() {
               >
                 {/* Socials */}
                 <div>
-                  <p className="mb-3 text-sm font-medium uppercase tracking-wider text-accent/60">
+                  <p className="mb-3 text-sm font-medium uppercase tracking-wider text-accent">
                     Connect
                   </p>
                   <div className="flex gap-3">
@@ -127,7 +127,7 @@ export default function ContactWindow() {
 
                 {/* Contact Form */}
                 <form onSubmit={handleSubmit} className="space-y-3.5">
-                  <p className="text-sm font-medium uppercase tracking-wider text-accent/60">
+                  <p className="text-sm font-medium uppercase tracking-wider text-accent">
                     Send a Message
                   </p>
 
@@ -149,7 +149,7 @@ export default function ContactWindow() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
-                    className="w-full rounded-lg border border-surface/50 bg-surface/30 px-3 py-2.5 text-sm text-text/80 outline-none placeholder:text-text/30 focus:border-accent/40 sm:px-4 sm:py-3 sm:text-base"
+                    className="w-full rounded-lg border border-surface/50 bg-surface/30 px-3 py-2.5 text-sm text-text outline-none placeholder:text-text/30 focus:border-accent/40 sm:px-4 sm:py-3 sm:text-base"
                   />
                   <input
                     type="email"
@@ -157,7 +157,7 @@ export default function ContactWindow() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="w-full rounded-lg border border-surface/50 bg-surface/30 px-3 py-2.5 text-sm text-text/80 outline-none placeholder:text-text/30 focus:border-accent/40 sm:px-4 sm:py-3 sm:text-base"
+                    className="w-full rounded-lg border border-surface/50 bg-surface/30 px-3 py-2.5 text-sm text-text outline-none placeholder:text-text/30 focus:border-accent/40 sm:px-4 sm:py-3 sm:text-base"
                   />
                   <textarea
                     placeholder="Message"
@@ -165,7 +165,7 @@ export default function ContactWindow() {
                     onChange={(e) => setMessage(e.target.value)}
                     required
                     rows={4}
-                    className="w-full resize-none rounded-lg border border-surface/50 bg-surface/30 px-3 py-2.5 text-sm text-text/80 outline-none placeholder:text-text/30 focus:border-accent/40 sm:px-4 sm:py-3 sm:text-base"
+                    className="w-full resize-none rounded-lg border border-surface/50 bg-surface/30 px-3 py-2.5 text-sm text-text outline-none placeholder:text-text/30 focus:border-accent/40 sm:px-4 sm:py-3 sm:text-base"
                   />
 
                   <button
@@ -177,12 +177,12 @@ export default function ContactWindow() {
                   </button>
 
                   {status === 'sent' && (
-                    <p className="text-center text-sm text-green-400/70">
+                    <p className="text-center text-sm text-green-400">
                       Message sent successfully!
                     </p>
                   )}
                   {status === 'error' && (
-                    <p className="text-center text-sm text-red-400/70">
+                    <p className="text-center text-sm text-red-400">
                       Failed to send. Please try again.
                     </p>
                   )}
@@ -201,7 +201,7 @@ export default function ContactWindow() {
             onClick={() => setPage(i)}
             className={`h-1.5 rounded-full transition-all ${
               page === i
-                ? 'w-6 bg-accent/70'
+                ? 'w-6 bg-accent'
                 : 'w-1.5 bg-text/20 hover:bg-text/30'
             }`}
           />
@@ -226,7 +226,7 @@ function SocialLink({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="flex h-12 w-12 items-center justify-center rounded-xl border border-surface/50 bg-surface/30 text-text/50 transition-colors hover:border-accent/40 hover:bg-accent/15 hover:text-accent"
+      className="flex h-12 w-12 items-center justify-center rounded-xl border border-surface/50 bg-surface/30 text-text transition-colors hover:border-accent/40 hover:bg-accent/15 hover:text-accent"
     >
       {children}
     </a>

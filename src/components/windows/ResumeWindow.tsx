@@ -8,7 +8,7 @@ export default function ResumeWindow() {
   if (isMobile) {
     return (
       <div className="flex flex-col items-center gap-5 py-10">
-        <p className="text-base text-text/50">
+        <p className="text-base text-text">
           Tap below to view or download my resume.
         </p>
         <a

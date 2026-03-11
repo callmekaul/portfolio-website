@@ -46,7 +46,7 @@ function ProjectDetail({ project, onBack }: { project: Project; onBack: () => vo
     >
       <button
         onClick={onBack}
-        className="mb-4 flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm text-accent/60 transition-colors hover:bg-accent/15 hover:text-accent"
+        className="mb-4 flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm text-accent transition-colors hover:bg-accent/15"
       >
         <svg width="14" height="14" viewBox="0 0 12 12" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
           <path d="M8 1L3 6L8 11" />
@@ -75,8 +75,8 @@ function ProjectDetail({ project, onBack }: { project: Project; onBack: () => vo
         )}
       </AnimatePresence>
 
-      <h2 className="text-lg font-semibold text-text/90 sm:text-xl">{project.title}</h2>
-      <p className="mt-1 text-sm text-text/50 sm:text-base">{project.tagline}</p>
+      <h2 className="text-lg font-semibold text-text sm:text-xl">{project.title}</h2>
+      <p className="mt-1 text-sm text-text sm:text-base">{project.tagline}</p>
 
       <div className="mt-3 flex flex-wrap gap-2">
         {project.tools.map((tool) => (
@@ -121,11 +121,11 @@ function ProjectDetail({ project, onBack }: { project: Project; onBack: () => vo
 function Section({ title, items }: { title: string; items: string[] }) {
   return (
     <div>
-      <p className="text-sm font-medium uppercase tracking-wider text-accent/60">{title}</p>
+      <p className="text-sm font-medium uppercase tracking-wider text-accent">{title}</p>
       <ul className="mt-2 space-y-1.5">
         {items.map((item, i) => (
-          <li key={i} className="flex gap-2 text-sm leading-relaxed text-text/70 sm:text-base">
-            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/50" />
+          <li key={i} className="flex gap-2 text-sm leading-relaxed text-text sm:text-base">
+            <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
             {item}
           </li>
         ))}
@@ -164,13 +164,13 @@ export default function ProjectsWindow() {
               <div key={category}>
                 <button
                   onClick={() => toggleCategory(category)}
-                  className="mb-3 flex w-full items-center gap-2.5 text-left transition-colors hover:text-accent/90"
+                  className="mb-3 flex w-full items-center gap-2.5 text-left transition-colors hover:text-accent"
                 >
                   <ChevronIcon expanded={!isCollapsed} />
-                  <span className="text-sm font-semibold text-text/70 sm:text-base">
+                  <span className="text-sm font-semibold text-text sm:text-base">
                     {category}
                   </span>
-                  <span className="text-xs text-text/40">
+                  <span className="text-xs text-text">
                     {items.length}
                   </span>
                 </button>
@@ -190,20 +190,20 @@ export default function ProjectsWindow() {
                             onClick={() => setSelected(p)}
                             className="group rounded-xl border border-surface/50 bg-surface/20 p-5 text-left transition-colors hover:border-accent/30 hover:bg-accent/10"
                           >
-                            <h3 className="text-sm font-medium text-text/80 group-hover:text-accent sm:text-base">
+                            <h3 className="text-sm font-medium text-text group-hover:text-accent sm:text-base">
                               {p.title}
                             </h3>
-                            <p className="mt-1.5 text-xs leading-relaxed text-text/50 sm:text-sm">
+                            <p className="mt-1.5 text-xs leading-relaxed text-text sm:text-sm">
                               {p.tagline}
                             </p>
                             <div className="mt-3 flex flex-wrap gap-1.5">
                               {p.tools.slice(0, 3).map((tool) => (
-                                <span key={tool} className="text-xs text-secondary/50">
+                                <span key={tool} className="text-xs text-secondary">
                                   {tool}
                                 </span>
                               ))}
                               {p.tools.length > 3 && (
-                                <span className="text-xs text-text/35">
+                                <span className="text-xs text-text">
                                   +{p.tools.length - 3}
                                 </span>
                               )}

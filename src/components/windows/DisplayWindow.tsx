@@ -10,7 +10,7 @@ export default function DisplayWindow() {
     <div className="space-y-6">
       {/* Theme Presets */}
       <div>
-        <p className="mb-3 text-sm font-medium uppercase tracking-wider text-accent/60">
+        <p className="mb-3 text-sm font-medium uppercase tracking-wider text-accent">
           Theme
         </p>
         <div className="grid grid-cols-2 gap-2.5">
@@ -44,7 +44,7 @@ export default function DisplayWindow() {
                 </div>
                 <span
                   className={`text-xs font-medium ${
-                    isActive ? 'text-accent' : 'text-text/40'
+                    isActive ? 'text-accent' : 'text-text'
                   }`}
                 >
                   {preset.label}
@@ -57,7 +57,7 @@ export default function DisplayWindow() {
 
       {/* Wallpaper */}
       <div>
-        <p className="mb-3 text-sm font-medium uppercase tracking-wider text-accent/60">
+        <p className="mb-3 text-sm font-medium uppercase tracking-wider text-accent">
           Wallpaper
         </p>
         <div className="grid grid-cols-3 gap-2.5">
@@ -76,14 +76,14 @@ export default function DisplayWindow() {
               >
                 <span
                   className={`text-sm font-medium ${
-                    isActive ? 'text-accent' : 'text-text/50'
+                    isActive ? 'text-accent' : 'text-text'
                   }`}
                 >
                   {opt.label}
                 </span>
                 <p
                   className={`mt-0.5 text-xs ${
-                    isActive ? 'text-accent/60' : 'text-text/40'
+                    isActive ? 'text-accent' : 'text-text'
                   }`}
                 >
                   {opt.description}
