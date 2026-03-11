@@ -75,8 +75,8 @@ function ProjectDetail({ project, onBack }: { project: Project; onBack: () => vo
         )}
       </AnimatePresence>
 
-      <h2 className="text-xl font-semibold text-text/90">{project.title}</h2>
-      <p className="mt-1 text-base text-text/50">{project.tagline}</p>
+      <h2 className="text-lg font-semibold text-text/90 sm:text-xl">{project.title}</h2>
+      <p className="mt-1 text-sm text-text/50 sm:text-base">{project.tagline}</p>
 
       <div className="mt-3 flex flex-wrap gap-2">
         {project.tools.map((tool) => (
@@ -124,7 +124,7 @@ function Section({ title, items }: { title: string; items: string[] }) {
       <p className="text-sm font-medium uppercase tracking-wider text-accent/60">{title}</p>
       <ul className="mt-2 space-y-1.5">
         {items.map((item, i) => (
-          <li key={i} className="flex gap-2 text-base leading-relaxed text-text/70">
+          <li key={i} className="flex gap-2 text-sm leading-relaxed text-text/70 sm:text-base">
             <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent/50" />
             {item}
           </li>
@@ -167,7 +167,7 @@ export default function ProjectsWindow() {
                   className="mb-3 flex w-full items-center gap-2.5 text-left transition-colors hover:text-accent/90"
                 >
                   <ChevronIcon expanded={!isCollapsed} />
-                  <span className="text-base font-semibold text-text/70">
+                  <span className="text-sm font-semibold text-text/70 sm:text-base">
                     {category}
                   </span>
                   <span className="text-xs text-text/40">
@@ -190,10 +190,10 @@ export default function ProjectsWindow() {
                             onClick={() => setSelected(p)}
                             className="group rounded-xl border border-surface/50 bg-surface/20 p-5 text-left transition-colors hover:border-accent/30 hover:bg-accent/10"
                           >
-                            <h3 className="text-base font-medium text-text/80 group-hover:text-accent">
+                            <h3 className="text-sm font-medium text-text/80 group-hover:text-accent sm:text-base">
                               {p.title}
                             </h3>
-                            <p className="mt-1.5 text-sm leading-relaxed text-text/50">
+                            <p className="mt-1.5 text-xs leading-relaxed text-text/50 sm:text-sm">
                               {p.tagline}
                             </p>
                             <div className="mt-3 flex flex-wrap gap-1.5">

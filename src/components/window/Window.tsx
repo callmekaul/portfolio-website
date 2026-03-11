@@ -193,7 +193,7 @@ export default function Window({ id, constraintsRef, children }: WindowProps) {
           if (!isMaximized) dragControls.start(e);
         }}
       />
-      <div className="window-scroll flex-1 overflow-y-auto p-6">
+      <div className="window-scroll flex-1 overflow-y-auto p-4 sm:p-6">
         {children}
       </div>
 
@@ -201,23 +201,23 @@ export default function Window({ id, constraintsRef, children }: WindowProps) {
       {!isMaximized && (
         <>
           <div
-            className="absolute right-0 top-0 h-full w-2 cursor-e-resize"
+            className="absolute right-0 top-0 h-full w-2 cursor-e-resize touch-none"
             onPointerDown={onResizeStart('e')}
           />
           <div
-            className="absolute bottom-0 left-0 h-2 w-full cursor-s-resize"
+            className="absolute bottom-0 left-0 h-2 w-full cursor-s-resize touch-none"
             onPointerDown={onResizeStart('s')}
           />
           <div
-            className="absolute left-0 top-0 h-full w-2 cursor-w-resize"
+            className="absolute left-0 top-0 h-full w-2 cursor-w-resize touch-none"
             onPointerDown={onResizeStart('w')}
           />
           <div
-            className="absolute bottom-0 right-0 h-4 w-4 cursor-se-resize"
+            className="absolute bottom-0 right-0 h-4 w-4 cursor-se-resize touch-none"
             onPointerDown={onResizeStart('se')}
           />
           <div
-            className="absolute bottom-0 left-0 h-4 w-4 cursor-sw-resize"
+            className="absolute bottom-0 left-0 h-4 w-4 cursor-sw-resize touch-none"
             onPointerDown={onResizeStart('sw')}
           />
         </>

@@ -70,22 +70,22 @@ export default function ContactWindow() {
               >
                 {services.map((s, i) => (
                   <div key={i} className="space-y-1.5">
-                    <p className="text-lg font-medium leading-snug text-text/80">
+                    <p className="text-base font-medium leading-snug text-text/80 sm:text-lg">
                       {s.question}
                     </p>
-                    <p className="text-sm leading-relaxed text-text/50">
+                    <p className="text-xs leading-relaxed text-text/50 sm:text-sm">
                       {highlightKeyword(s.answer, s.keyword)}
                     </p>
                   </div>
                 ))}
 
                 <div className="pt-2">
-                  <p className="text-lg leading-relaxed text-text/80">
+                  <p className="text-base leading-relaxed text-text/80 sm:text-lg">
                     Want someone to do it for you?
                   </p>
                   <button
                     onClick={() => setPage(1)}
-                    className="mt-3 w-full rounded-lg border border-accent/30 bg-accent/15 py-3 text-base text-accent transition-colors hover:bg-accent/25"
+                    className="mt-3 w-full rounded-lg border border-accent/30 bg-accent/15 py-2.5 text-sm text-accent transition-colors hover:bg-accent/25 sm:py-3 sm:text-base"
                   >
                     Contact Me
                   </button>
@@ -149,7 +149,7 @@ export default function ContactWindow() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
-                    className="w-full rounded-lg border border-surface/50 bg-surface/30 px-4 py-3 text-base text-text/80 outline-none placeholder:text-text/30 focus:border-accent/40"
+                    className="w-full rounded-lg border border-surface/50 bg-surface/30 px-3 py-2.5 text-sm text-text/80 outline-none placeholder:text-text/30 focus:border-accent/40 sm:px-4 sm:py-3 sm:text-base"
                   />
                   <input
                     type="email"
@@ -157,7 +157,7 @@ export default function ContactWindow() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="w-full rounded-lg border border-surface/50 bg-surface/30 px-4 py-3 text-base text-text/80 outline-none placeholder:text-text/30 focus:border-accent/40"
+                    className="w-full rounded-lg border border-surface/50 bg-surface/30 px-3 py-2.5 text-sm text-text/80 outline-none placeholder:text-text/30 focus:border-accent/40 sm:px-4 sm:py-3 sm:text-base"
                   />
                   <textarea
                     placeholder="Message"
@@ -165,13 +165,13 @@ export default function ContactWindow() {
                     onChange={(e) => setMessage(e.target.value)}
                     required
                     rows={4}
-                    className="w-full resize-none rounded-lg border border-surface/50 bg-surface/30 px-4 py-3 text-base text-text/80 outline-none placeholder:text-text/30 focus:border-accent/40"
+                    className="w-full resize-none rounded-lg border border-surface/50 bg-surface/30 px-3 py-2.5 text-sm text-text/80 outline-none placeholder:text-text/30 focus:border-accent/40 sm:px-4 sm:py-3 sm:text-base"
                   />
 
                   <button
                     type="submit"
                     disabled={status === 'sending'}
-                    className="w-full rounded-lg border border-accent/30 bg-accent/15 py-3 text-base text-accent transition-colors hover:bg-accent/25 disabled:opacity-50"
+                    className="w-full rounded-lg border border-accent/30 bg-accent/15 py-2.5 text-sm text-accent transition-colors hover:bg-accent/25 disabled:opacity-50 sm:py-3 sm:text-base"
                   >
                     {status === 'sending' ? 'Sending...' : 'Send Message'}
                   </button>

@@ -63,12 +63,12 @@ export default function MusicWindow() {
     <div className="flex h-full flex-col gap-4">
       {/* Now Playing */}
       <div className="flex items-center gap-4">
-        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-accent/30 to-secondary/30 text-2xl">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-accent/30 to-secondary/30 text-xl sm:h-14 sm:w-14 sm:text-2xl">
           {isPlaying ? '♫' : '♪'}
         </div>
         <div className="min-w-0 flex-1">
-          <p className="truncate text-base font-semibold text-text/90">{track.title}</p>
-          <p className="truncate text-sm text-text/40">{track.artist}</p>
+          <p className="truncate text-sm font-semibold text-text/90 sm:text-base">{track.title}</p>
+          <p className="truncate text-xs text-text/40 sm:text-sm">{track.artist}</p>
         </div>
       </div>
 

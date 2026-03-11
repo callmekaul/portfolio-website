@@ -36,19 +36,37 @@ export default function Desktop() {
 
       const patch: typeof updates[string] = {};
 
-      // Vertical: adjust height to fit
-      const available = vh - taskbarH - padding - win.position.y;
-      const maxH = WINDOW_META[id].defaultSize.height;
-      const targetH = Math.max(240, Math.min(maxH, available));
-      if (targetH !== win.size.height) {
-        patch.size = { width: win.size.width, height: targetH };
+      // Shrink width if wider than viewport (with padding)
+      const maxW = vw - padding * 2;
+      const defaultW = WINDOW_META[id].defaultSize.width;
+      const targetW = Math.max(320, Math.min(defaultW, maxW));
+
+      // Shrink height if taller than available space
+      const availableH = vh - taskbarH - padding;
+      const defaultH = WINDOW_META[id].defaultSize.height;
+      const targetH = Math.max(240, Math.min(defaultH, availableH));
+
+      if (targetW !== win.size.width || targetH !== win.size.height) {
+        patch.size = { width: targetW, height: targetH };
       }
 
-      // Horizontal: push window left so at least 25% stays visible
+      // Reposition: ensure window fits within viewport
       const winW = patch.size ? patch.size.width : win.size.width;
-      const maxX = vw - winW * 0.25;
-      if (win.position.x > maxX) {
-        patch.position = { x: Math.max(0, maxX), y: win.position.y };
+      const winH = patch.size ? patch.size.height : win.size.height;
+      let newX = win.position.x;
+      let newY = win.position.y;
+
+      // Push left if overflowing right edge
+      if (newX + winW > vw - padding) {
+        newX = Math.max(padding, vw - padding - winW);
+      }
+      // Push up if overflowing bottom (above taskbar)
+      if (newY + winH > vh - taskbarH - padding) {
+        newY = Math.max(0, vh - taskbarH - padding - winH);
+      }
+
+      if (newX !== win.position.x || newY !== win.position.y) {
+        patch.position = { x: newX, y: newY };
       }
 
       if (patch.size || patch.position) {

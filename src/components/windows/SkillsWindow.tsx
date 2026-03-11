@@ -43,7 +43,7 @@ export default function SkillsWindow() {
               <motion.span
                 key={skill}
                 variants={item}
-                className={`rounded-lg border px-4 py-2 text-sm ${categoryColors[i % categoryColors.length]}`}
+                className={`rounded-lg border px-3 py-1.5 text-xs sm:px-4 sm:py-2 sm:text-sm ${categoryColors[i % categoryColors.length]}`}
               >
                 {skill}
               </motion.span>

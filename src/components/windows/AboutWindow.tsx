@@ -22,11 +22,11 @@ export default function AboutWindow() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-semibold text-text/90">{about.name}</h2>
-        <p className="mt-1 text-base text-secondary/50">{getAge(about.birthdate)} · {about.title}</p>
+        <h2 className="text-xl font-semibold text-text/90 sm:text-2xl">{about.name}</h2>
+        <p className="mt-1 text-sm text-secondary/50 sm:text-base">{getAge(about.birthdate)} · {about.title}</p>
       </div>
 
-      <p className="text-base leading-relaxed text-text/60">{about.bio}</p>
+      <p className="text-sm leading-relaxed text-text/60 sm:text-base">{about.bio}</p>
 
       <div className="flex flex-wrap gap-2.5">
         {[
@@ -36,7 +36,7 @@ export default function AboutWindow() {
         ].map((tag) => (
           <span
             key={tag.text}
-            className={`rounded-lg border ${tag.border} ${tag.bg} px-3 py-1.5 text-xs ${tag.color}`}
+            className={`rounded-lg border ${tag.border} ${tag.bg} px-2.5 py-1 text-[11px] sm:px-3 sm:py-1.5 sm:text-xs ${tag.color}`}
           >
             {tag.text}
           </span>
@@ -48,9 +48,9 @@ export default function AboutWindow() {
         <div className="space-y-3">
           {about.education.map((edu) => (
             <GlassCard key={edu.institution}>
-              <p className="text-sm font-medium text-text/80">{edu.institution}</p>
-              <p className="mt-0.5 text-sm text-text/50">{edu.degree}</p>
-              <p className="mt-1 text-xs text-text/45">{edu.location} · {edu.period}</p>
+              <p className="text-xs font-medium text-text/80 sm:text-sm">{edu.institution}</p>
+              <p className="mt-0.5 text-xs text-text/50 sm:text-sm">{edu.degree}</p>
+              <p className="mt-1 text-[11px] text-text/45 sm:text-xs">{edu.location} · {edu.period}</p>
             </GlassCard>
           ))}
         </div>
@@ -62,7 +62,7 @@ export default function AboutWindow() {
           {about.hobbies.map((hobby) => (
             <span
               key={hobby}
-              className="rounded-lg border border-secondary/25 bg-secondary/10 px-3.5 py-2 text-sm text-secondary/70"
+              className="rounded-lg border border-secondary/25 bg-secondary/10 px-3 py-1.5 text-xs text-secondary/70 sm:px-3.5 sm:py-2 sm:text-sm"
             >
               {hobby}
             </span>

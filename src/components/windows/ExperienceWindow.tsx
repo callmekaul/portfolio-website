@@ -11,18 +11,18 @@ export default function ExperienceWindow() {
         <GlassCard key={i}>
           <div className="flex items-start justify-between gap-3">
             <div>
-              <h3 className="text-base font-semibold text-text/80">{exp.role}</h3>
-              <p className="text-sm text-secondary/45">{exp.company}</p>
+              <h3 className="text-sm font-semibold text-text/80 sm:text-base">{exp.role}</h3>
+              <p className="text-xs text-secondary/45 sm:text-sm">{exp.company}</p>
             </div>
             <div className="shrink-0 text-right">
-              <p className="text-sm text-accent/50">{exp.period}</p>
-              <p className="text-sm text-text/40">{exp.location}</p>
+              <p className="text-xs text-accent/50 sm:text-sm">{exp.period}</p>
+              <p className="text-xs text-text/40 sm:text-sm">{exp.location}</p>
             </div>
           </div>
 
           <ul className="mt-3 space-y-2">
             {exp.bullets.map((bullet, j) => (
-              <li key={j} className="flex gap-2.5 text-sm leading-relaxed text-text/65">
+              <li key={j} className="flex gap-2.5 text-xs leading-relaxed text-text/65 sm:text-sm">
                 <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent/50" />
                 {bullet}
               </li>
